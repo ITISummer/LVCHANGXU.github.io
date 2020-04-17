@@ -152,6 +152,95 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-LeetCode-0001-Two-Sum" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/17/LeetCode-0001-Two-Sum/">LeetCode_0001_Two Sum</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/17/LeetCode-0001-Two-Sum/" class="archive-article-date">
+  	<time datetime="2020-04-17T04:16:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>哎，好久都没写过博客了，昨天突然感觉自己不能再持续颓废了，所以就想找点事情做，然后想起了我以前浏览过的一个刷题网站——LeetCode，我相信很多人都知道这个网站吧！是一个国外的刷题网站，汇聚了很多IT公司的面试题，当然这个网站也有很多适应不同国家语言相应的，如果英语非常吃力的话可以在主网站找到对应国家的网站，题都是一样的！然后今天，对，今天开始的，刷了第一道题，第一道题还算是简单的，用最笨但是最简单的方法去做就可以了，当然网上会有很多有技巧的结题思路，可以参照参照，拓展自己的思维也是非常好的。</p>
+<h1 id="两数之和-Two-Sum"><a href="#两数之和-Two-Sum" class="headerlink" title="两数之和-Two Sum"></a>两数之和-Two Sum</h1><ul>
+<li>在这里呢，我就用最笨但是最简单的方法吧!(其实是我不会其他的方法，哈哈！)</li>
+<li><strong>原题</strong>:<br><br>给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。<br>你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。<br><br>==示例==:<br><br>给定 nums = [2, 7, 11, 15], target = 9</li>
+</ul>
+<p>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p>
+<ul>
+<li><strong>解答</strong><br></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class TwoSum_1 &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">			@SuppressWarnings(&#123; &quot;resource&quot;&#125;)</span><br><span class="line">			Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">			System.out.println(&quot;Please input the array&#39;s length:&quot;);			</span><br><span class="line">			int length&#x3D;input.nextInt();</span><br><span class="line">			int []nums&#x3D;new int[length];</span><br><span class="line">			System.out.println(&quot;Please input the array elements:&quot;);</span><br><span class="line">			for(int i&#x3D;0;i&lt;nums.length;i++) &#123;</span><br><span class="line">					nums[i]&#x3D;input.nextInt();</span><br><span class="line">			&#125;&#x2F;&#x2F;end for</span><br><span class="line">			System.out.println(&quot;Please input the target:&quot;);</span><br><span class="line">			int target&#x3D;input.nextInt();</span><br><span class="line">			System.out.println(Arrays.toString(twoSum(nums,target)));</span><br><span class="line">	&#125;&#x2F;&#x2F; end main()</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> *</span><br><span class="line"> *the function of judge </span><br><span class="line"> *@param</span><br><span class="line"> *	</span><br><span class="line"> * *&#x2F;</span><br><span class="line">	public static int[] twoSum(int[] nums, int target) &#123;</span><br><span class="line">		int i, j; &#x2F;&#x2F; index</span><br><span class="line">		for (i &#x3D; 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">			for (j &#x3D; i+1; j &lt; nums.length; j++) &#123;</span><br><span class="line">				if (target - nums[j] &#x3D;&#x3D; nums[i]) &#123;</span><br><span class="line">					return new int[] &#123;i,j&#125;;</span><br><span class="line">				&#125; &#x2F;&#x2F; end if</span><br><span class="line">			&#125; &#x2F;&#x2F; end for</span><br><span class="line">		&#125; &#x2F;&#x2F; end for</span><br><span class="line">		 throw new IllegalArgumentException(&quot;No two sum solution&quot;);</span><br><span class="line">	&#125;&#x2F;&#x2F; end twoSum()</span><br><span class="line"></span><br><span class="line">&#125;&#x2F;&#x2F; end TwoSum_1</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>运行结果：</strong><br>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-YJjHSrA4-1586582501538)(<a href="https://a1.qpic.cn/psb?/V13mCE9d2xyaTQ/ro8KDWA87WMxXDekKf7Y34iv2ruvGLebyh39mgJD1S4!/m/dFQBAAAAAAAAnull&amp;bo=2gJ6AAAAAAADB4A!&amp;rf=photolist&amp;t=5)]" target="_blank" rel="noopener">https://a1.qpic.cn/psb?/V13mCE9d2xyaTQ/ro8KDWA87WMxXDekKf7Y34iv2ruvGLebyh39mgJD1S4!/m/dFQBAAAAAAAAnull&amp;bo=2gJ6AAAAAAADB4A!&amp;rf=photolist&amp;t=5)]</a></li>
+<li>正如你说看到的，运行效率很低下！Oops!</li>
+<li><strong>解题思路：</strong><br><br>正如网上的很多雷同的方法一样，就是通过遍历。但是在遍历的时候注意下第二层循环的起点是需要在第一层循环后一个的，不然就会容易出错，比如我在写的时候，刚开始没注意，直接第二层循环也是<code>for (j = 0; j &lt; nums.length; j++)</code>，然后导致有一组测试数据<code>[3,2,4]</code>没通过，比如当target=6的时候，得到的结果是[0,0],但是实际的结果应该是[1,2]，因为当i=0的时候，如果是j=0的话，是符合代码的逻辑的，但是我写的代码的逻辑是错误的，所以得到的结果是[0,0],最后我调试了下，然后发现了这个bug吧，嗯，虽然是很小的一个bug，但是还是有收获的。</li>
+<li>每天进步一点点，累计起来就会很多！加油吧，To myself，To everyone！！！去学习新的解题思路了。拜~</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/17/LeetCode-0001-Two-Sum/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-关于-jdk-Calendar-类的基本使用的梳理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

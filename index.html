@@ -152,6 +152,113 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-蓝桥杯-基础练习-十六进制转八进制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/17/%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9F%BA%E7%A1%80%E7%BB%83%E4%B9%A0-%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%85%AB%E8%BF%9B%E5%88%B6/">蓝桥杯-基础练习-十六进制转八进制</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/17/%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9F%BA%E7%A1%80%E7%BB%83%E4%B9%A0-%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%85%AB%E8%BF%9B%E5%88%B6/" class="archive-article-date">
+  	<time datetime="2020-04-17T15:55:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>今天做了一道算法题，是十六进制转八进制的，题目如下:</p>
+<hr>
+<blockquote>
+<p>问题描述<br>　　给定n个十六进制正整数，输出它们对应的八进制数。</p>
+</blockquote>
+<blockquote>
+<p>输入格式<br>　　输入的第一行为一个正整数n （1&lt;=n&lt;=10）。<br>　　接下来n行，每行一个由0<del>9、大写字母A</del>F组成的字符串，表示要转换的十六进制正整数，每个十六进制数长度不超过100000。</p>
+</blockquote>
+<blockquote>
+<p>输出格式<br>　　输出n行，每行为输入对应的八进制正整数。</p>
+</blockquote>
+<blockquote>
+<p>　　【注意】<br>　　输入的十六进制数不会有前导0，比如012A。<br>　　输出的八进制数也不能有前导0。</p>
+</blockquote>
+<blockquote>
+<p>样例输入<br>　　2<br>　　39<br>　　123ABC</p>
+</blockquote>
+<blockquote>
+<p>样例输出<br>　　71<br>　　4435274</p>
+</blockquote>
+<blockquote>
+<p>　　【提示】<br>　　先将十六进制数转换成某进制数，再由某进制数转换成八进制。</p>
+</blockquote>
+<hr>
+<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>  这道题通过转十进制肯定是不行的，因为题目中说十六进制的长度可以很长，所以还是转二进制好一点，然后还需要考虑的是，转二进制可以使用 switch 来控制每一个十六进制字符串中的字符都能够匹配到对应十六进制字符的二进制表示方法，这可以是一个办法，但是其实使用数组和 map 的方法更好，看着更简洁，然后就是考虑到其中的字符串添加问题，因为有重复的字符串添加操作，所以字符串方面考虑用 StringBuilder 吧</p>
+<p>除了以上考虑的，还需要考虑一些细节问题：</p>
+<ol>
+<li>将十六进制转成二进制后，需要考虑到转成二进制后的位数是否能够 模 3，如果不能的话，需要在二进制字符串开头补零</li>
+<li>然后在转换成八进制的过程中还需要考虑，得到的八进制还需要考虑前两位是否可能是 0 ，因为在题中说明了 输入的十六进制数不会有前导0，比如012A ，然后即使是十六进制转换成二进制的时候，0 最多的情况也就是十六进制的 1(0001)，然后补零的情况最坏也只是补两个 0 ，也就是最坏的情况合起来也就是 (000001)，这样也只需要在转换成八进制的时候判断两次是否是 0 就行了。</li>
+</ol>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Map;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * input:</span><br><span class="line"> * 2</span><br><span class="line"> * 39</span><br><span class="line"> * 123ABC</span><br><span class="line"> * output:</span><br><span class="line"> * 71</span><br><span class="line"> * 4435274</span><br><span class="line"> * &#x2F;&#x2F;1. hex to binary</span><br><span class="line"> * &#x2F;&#x2F;2. add &quot;00&quot; or &quot;0&quot;</span><br><span class="line"> * &#x2F;&#x2F;3. binary to oct</span><br><span class="line"> * &#x2F;&#x2F;4. remove the heading zero</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        String[] hexMapping &#x3D; &#123;</span><br><span class="line">                &quot;0000&quot;, &quot;0001&quot;, &quot;0010&quot;, &quot;0011&quot;, &quot;0100&quot;, &quot;0101&quot;, &quot;0110&quot;, &quot;0111&quot;,</span><br><span class="line">                &quot;1000&quot;, &quot;1001&quot;, &quot;1010&quot;, &quot;1011&quot;, &quot;1100&quot;, &quot;1101&quot;, &quot;1110&quot;, &quot;1111&quot;</span><br><span class="line">        &#125;;</span><br><span class="line">        Map&lt;String, String&gt; octMapping &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">        octMapping.put(&quot;000&quot;, &quot;0&quot;);</span><br><span class="line">        octMapping.put(&quot;001&quot;, &quot;1&quot;);</span><br><span class="line">        octMapping.put(&quot;010&quot;, &quot;2&quot;);</span><br><span class="line">        octMapping.put(&quot;011&quot;, &quot;3&quot;);</span><br><span class="line">        octMapping.put(&quot;100&quot;, &quot;4&quot;);</span><br><span class="line">        octMapping.put(&quot;101&quot;, &quot;5&quot;);</span><br><span class="line">        octMapping.put(&quot;110&quot;, &quot;6&quot;);</span><br><span class="line">        octMapping.put(&quot;111&quot;, &quot;7&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">        int n &#x3D; input.nextInt();</span><br><span class="line">&#x2F;&#x2F;		consuming the &lt;enter&gt; from input above</span><br><span class="line">&#x2F;&#x2F;        input.nextLine();</span><br><span class="line"></span><br><span class="line">		StringBuilder hex2Bin;</span><br><span class="line">		String hexString &#x3D; &quot;&quot;;</span><br><span class="line"></span><br><span class="line">		for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line"></span><br><span class="line">            hex2Bin &#x3D; new StringBuilder(&quot;&quot;);</span><br><span class="line">            hexString &#x3D; input.next();</span><br><span class="line">            &#x2F;&#x2F; hex to bin</span><br><span class="line">            int hexLen &#x3D; hexString.length();</span><br><span class="line">            for (int j &#x3D; 0; j &lt; hexLen; j++) &#123;</span><br><span class="line">                if (hexString.charAt(j) &gt; &#39;9&#39;) &#123;</span><br><span class="line">                    hex2Bin.append(hexMapping[hexString.charAt(j) - &#39;A&#39; + 10]);</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    hex2Bin.append(hexMapping[hexString.charAt(j) - &#39;0&#39;]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; &#x2F;&#x2F;end for</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; add &quot;00&quot; or &quot;0&quot;</span><br><span class="line">            int len &#x3D; hex2Bin.length();</span><br><span class="line">            if (len % 3 &#x3D;&#x3D; 1) &#123;</span><br><span class="line">                hex2Bin.insert(0, &quot;00&quot;);</span><br><span class="line">            &#125; else if (len % 3 &#x3D;&#x3D; 2) &#123;</span><br><span class="line">                hex2Bin.insert(0, &quot;0&quot;);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; bin to oct</span><br><span class="line">            int newLen &#x3D; hex2Bin.length();</span><br><span class="line">            String temp &#x3D; &quot;&quot;;</span><br><span class="line">            for (int j &#x3D; 0; j &lt; newLen; j +&#x3D; 3) &#123;</span><br><span class="line">                temp &#x3D; octMapping.get(hex2Bin.substring(j, j + 3));</span><br><span class="line">                if ((j &#x3D;&#x3D; 0 &amp;&amp; temp.equals(&quot;0&quot;)) || (j &#x3D;&#x3D; 3 &amp;&amp; temp.equals(&quot;0&quot;))) &#123;</span><br><span class="line">                    continue;</span><br><span class="line">                &#125;</span><br><span class="line">				System.out.print(temp);</span><br><span class="line">            &#125; &#x2F;&#x2F;end for</span><br><span class="line">        &#125;&#x2F;&#x2F;end for</span><br><span class="line">        input.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="后感"><a href="#后感" class="headerlink" title="后感"></a>后感</h1><p>不过我得说下，我即使通过了例子，但是也没通过那个 OJ 系统，我真的是醉了，我还不知道具体的问题在哪，明天再 debug 下，顺便推荐下我今天发现的一个博主，很厉害。</p>
+<p><a href="https://www.liuchuo.net/archives/1278" target="_blank" rel="noopener">蓝桥杯-基础练习 十六进制转八进制</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">lanqiaoOJ</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/17/%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9F%BA%E7%A1%80%E7%BB%83%E4%B9%A0-%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%85%AB%E8%BF%9B%E5%88%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Linux安装xampp来搭建WordPress网站-图文教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1175,98 +1282,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/17/LeetCode-0038-CountandSay/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-LeetCode-0035-SearchInsertPosition" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/LeetCode-0035-SearchInsertPosition/">LeetCode_0035_SearchInsertPosition</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/17/LeetCode-0035-SearchInsertPosition/" class="archive-article-date">
-  	<time datetime="2020-04-17T04:25:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>嗯，这道题其实没什么好讲的，都是很简单的思路，主要是可能我们平时移动数组元素都是借助于另一个空间存储其中的某些元素。可能形成了这种关心思维后有点不能接受这种思想吧，一时转不过弯，但是当你知道这种思想了以后，剩下的就简单了，况且这种思想其实很简单，算是一种小技巧吧！嗯，技巧就是通过设置两个标志，比如，设置标志j来指向数组nums的第一个位置，然后标志i也指向数组nums的第一个位置，然后往后查找，如果在数组nums中有与给定的数据相同的元素，则通过j来指向数组中的这个元素，然后i继续往后面找，当找到后面第一个与当前j不同的元素时（或者说当找到与给定的数据不同的第一个元素的时候就将i所指向的值赋给当前j所指向的位置的元素，注意：这里所假设的前提条件是，当找到了第一个与给定数据相同的元素位置后的情况，假如没有的话，那么i和j是同步往后移动的。）具体见代码，一看便懂了的。我表达能力超差。o_o！！！</p>
-<h1 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h1><p>给定一个排序数组和一个目标值，如果找到目标，返回索引。如果没有，返回按顺序插入的索引所在的位置。<br>您可以假定数组中没有重复项。<br></p>
-<p><strong>Example 1:</strong><br></p>
-<blockquote>
-<p>Input: [1,3,5,6], 5<br><br>Output: 2<br></p>
-</blockquote>
-<p><strong>Example 2:</strong><br></p>
-<blockquote>
-<p>Input: [1,3,5,6], 2<br><br>Output: 1<br></p>
-</blockquote>
-<p><strong>Example 3:</strong><br></p>
-<blockquote>
-<p>Input: [1,3,5,6], 7<br><br>Output: 4<br></p>
-</blockquote>
-<p><strong>Example 4:</strong><br></p>
-<blockquote>
-<p>Input: [1,3,5,6], 0<br><br>Output: 0<br></p>
-</blockquote>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">package javaLeetCode.primary;</span><br><span class="line"></span><br><span class="line">public class SearchInsertPosition_35 &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		int []nums &#x3D; &#123;1,3,5,6&#125;;</span><br><span class="line">		System.out.println(searchInsert_2(nums, 0));</span><br><span class="line">	&#125;&#x2F;&#x2F;end main()</span><br><span class="line">	</span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Conventional idea.</span><br><span class="line">	 * sequential search.</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 * Test Data:</span><br><span class="line">	 * Input: [1,3,5,6], 5</span><br><span class="line">	 *	Output: 2</span><br><span class="line">	 *</span><br><span class="line">	 *Input: [1,3,5,6], 2</span><br><span class="line">	 *	Output: 1</span><br><span class="line">	 *</span><br><span class="line">	 *Input: [1,3,5,6], 7</span><br><span class="line">	 *	Output: 4</span><br><span class="line">	 *</span><br><span class="line">	 *Input: [1,3,5,6], 0</span><br><span class="line">	 *	Output: 0</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">public static int searchInsert_1(int[] nums, int target) &#123;</span><br><span class="line">        for(int i &#x3D;0;i&lt;nums.length;i++) &#123;</span><br><span class="line">        	if(nums[i]&#x3D;&#x3D;target) &#123;</span><br><span class="line">        		return i;</span><br><span class="line">        	&#125;else &#123;</span><br><span class="line">        		continue;</span><br><span class="line">        	&#125;&#x2F;&#x2F;end if</span><br><span class="line">        &#125;&#x2F;&#x2F;end for</span><br><span class="line">        for(int i&#x3D;0;i&lt;nums.length;i++) &#123;</span><br><span class="line">    		if(target&gt;nums[i]) &#123;</span><br><span class="line">    			continue;</span><br><span class="line">    		&#125;else &#123;</span><br><span class="line">    			return i;</span><br><span class="line">    		&#125;&#x2F;&#x2F;end if</span><br><span class="line">    	&#125;&#x2F;&#x2F;end for</span><br><span class="line">	return nums.length;</span><br><span class="line">    &#125;&#x2F;&#x2F;end searchInsert()</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * Conventional  idea.</span><br><span class="line"> * binary search.</span><br><span class="line"> * *&#x2F;</span><br><span class="line">public static int searchInsert_2(int[] nums, int target) &#123;</span><br><span class="line">	int low &#x3D; 0;</span><br><span class="line">	int high &#x3D; nums.length-1;</span><br><span class="line">	int mid &#x3D; -1;</span><br><span class="line">	int returnInt &#x3D; -1;</span><br><span class="line">	&#x2F;&#x2F;Search the array &quot;nums&quot; for the &quot;target&quot; target.</span><br><span class="line">		while(low&lt;&#x3D;high) &#123;</span><br><span class="line">			mid &#x3D; (low+high)&#x2F;2;</span><br><span class="line">			if(target&#x3D;&#x3D;nums[mid]) &#123;</span><br><span class="line">				returnInt &#x3D; mid;</span><br><span class="line">				return returnInt;</span><br><span class="line">			&#125;else if(target&lt;nums[mid]) &#123;</span><br><span class="line">				high &#x3D; mid - 1;</span><br><span class="line">			&#125;else if(target&gt;nums[mid]) &#123;</span><br><span class="line">				low &#x3D; mid +1;</span><br><span class="line">			&#125;&#x2F;&#x2F;end if</span><br><span class="line">		&#125;&#x2F;&#x2F;end while</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;Find insert position.</span><br><span class="line">		if(low&gt;high) &#123;</span><br><span class="line">			for(int i&#x3D;0;i&lt;nums.length;i++) &#123;</span><br><span class="line">	    		if(target&gt;nums[i]) &#123;</span><br><span class="line">	    			continue;</span><br><span class="line">	    		&#125;else &#123;</span><br><span class="line">	    			returnInt &#x3D; i;</span><br><span class="line">	    			return returnInt;</span><br><span class="line">	    		&#125;&#x2F;&#x2F;end if</span><br><span class="line">	    	&#125;&#x2F;&#x2F;end for</span><br><span class="line">		&#125;&#x2F;&#x2F;end if</span><br><span class="line">	return nums.length;</span><br><span class="line">&#125;&#x2F;&#x2F;end searchInsert()</span><br><span class="line"></span><br><span class="line">&#125;&#x2F;&#x2F;end  SearchInsertPosition_35</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/LeetCode-0035-SearchInsertPosition/">展开全文 >></a>
         </p>
       
 
