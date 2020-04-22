@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hexo</title>
+  <title>Summer&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="Summer&#39;s Blog">
 <meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Summer&#39;s Blog">
 <meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="Summer Lv">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Summer&#39;s Blog" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -46,7 +46,7 @@
 			<img src="" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">John Doe</a></h1>
+		  <h1 class="header-author"><a href="/">Summer Lv</a></h1>
 		</hgroup>
 		
 
@@ -104,7 +104,7 @@
 				<img src="" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">John Doe</h1>
+			  <h1 class="header-author js-header-author">Summer Lv</h1>
 			</hgroup>
 			
 			
@@ -152,45 +152,106 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-LeetCode-0035-SearchInsertPosition" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Linux安装xampp来搭建WordPress网站-图文教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/LeetCode-0035-SearchInsertPosition/">LeetCode_0035_SearchInsertPosition</a>
+      <a class="article-title" href="/2020/04/17/Linux%E5%AE%89%E8%A3%85xampp%E6%9D%A5%E6%90%AD%E5%BB%BAWordPress%E7%BD%91%E7%AB%99-%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B/">Linux安装xampp来搭建WordPress网站(图文教程)</a>
     </h1>
   
 
         
-        <a href="/2020/04/17/LeetCode-0035-SearchInsertPosition/" class="archive-article-date">
-  	<time datetime="2020-04-17T04:25:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+        <a href="/2020/04/17/Linux%E5%AE%89%E8%A3%85xampp%E6%9D%A5%E6%90%AD%E5%BB%BAWordPress%E7%BD%91%E7%AB%99-%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2020-04-17T04:35:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>嗯，这道题其实没什么好讲的，都是很简单的思路，主要是可能我们平时移动数组元素都是借助于另一个空间存储其中的某些元素。可能形成了这种关心思维后有点不能接受这种思想吧，一时转不过弯，但是当你知道这种思想了以后，剩下的就简单了，况且这种思想其实很简单，算是一种小技巧吧！嗯，技巧就是通过设置两个标志，比如，设置标志j来指向数组nums的第一个位置，然后标志i也指向数组nums的第一个位置，然后往后查找，如果在数组nums中有与给定的数据相同的元素，则通过j来指向数组中的这个元素，然后i继续往后面找，当找到后面第一个与当前j不同的元素时（或者说当找到与给定的数据不同的第一个元素的时候就将i所指向的值赋给当前j所指向的位置的元素，注意：这里所假设的前提条件是，当找到了第一个与给定数据相同的元素位置后的情况，假如没有的话，那么i和j是同步往后移动的。）具体见代码，一看便懂了的。我表达能力超差。o_o！！！</p>
-<h1 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h1><p>给定一个排序数组和一个目标值，如果找到目标，返回索引。如果没有，返回按顺序插入的索引所在的位置。<br>您可以假定数组中没有重复项。<br></p>
-<p><strong>Example 1:</strong><br></p>
-<blockquote>
-<p>Input: [1,3,5,6], 5<br><br>Output: 2<br></p>
-</blockquote>
-<p><strong>Example 2:</strong><br></p>
-<blockquote>
-<p>Input: [1,3,5,6], 2<br><br>Output: 1<br></p>
-</blockquote>
-<p><strong>Example 3:</strong><br></p>
-<blockquote>
-<p>Input: [1,3,5,6], 7<br><br>Output: 4<br></p>
-</blockquote>
-<p><strong>Example 4:</strong><br></p>
-<blockquote>
-<p>Input: [1,3,5,6], 0<br><br>Output: 0<br></p>
-</blockquote>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">package javaLeetCode.primary;</span><br><span class="line"></span><br><span class="line">public class SearchInsertPosition_35 &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		int []nums &#x3D; &#123;1,3,5,6&#125;;</span><br><span class="line">		System.out.println(searchInsert_2(nums, 0));</span><br><span class="line">	&#125;&#x2F;&#x2F;end main()</span><br><span class="line">	</span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Conventional idea.</span><br><span class="line">	 * sequential search.</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 * Test Data:</span><br><span class="line">	 * Input: [1,3,5,6], 5</span><br><span class="line">	 *	Output: 2</span><br><span class="line">	 *</span><br><span class="line">	 *Input: [1,3,5,6], 2</span><br><span class="line">	 *	Output: 1</span><br><span class="line">	 *</span><br><span class="line">	 *Input: [1,3,5,6], 7</span><br><span class="line">	 *	Output: 4</span><br><span class="line">	 *</span><br><span class="line">	 *Input: [1,3,5,6], 0</span><br><span class="line">	 *	Output: 0</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">public static int searchInsert_1(int[] nums, int target) &#123;</span><br><span class="line">        for(int i &#x3D;0;i&lt;nums.length;i++) &#123;</span><br><span class="line">        	if(nums[i]&#x3D;&#x3D;target) &#123;</span><br><span class="line">        		return i;</span><br><span class="line">        	&#125;else &#123;</span><br><span class="line">        		continue;</span><br><span class="line">        	&#125;&#x2F;&#x2F;end if</span><br><span class="line">        &#125;&#x2F;&#x2F;end for</span><br><span class="line">        for(int i&#x3D;0;i&lt;nums.length;i++) &#123;</span><br><span class="line">    		if(target&gt;nums[i]) &#123;</span><br><span class="line">    			continue;</span><br><span class="line">    		&#125;else &#123;</span><br><span class="line">    			return i;</span><br><span class="line">    		&#125;&#x2F;&#x2F;end if</span><br><span class="line">    	&#125;&#x2F;&#x2F;end for</span><br><span class="line">	return nums.length;</span><br><span class="line">    &#125;&#x2F;&#x2F;end searchInsert()</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * Conventional  idea.</span><br><span class="line"> * binary search.</span><br><span class="line"> * *&#x2F;</span><br><span class="line">public static int searchInsert_2(int[] nums, int target) &#123;</span><br><span class="line">	int low &#x3D; 0;</span><br><span class="line">	int high &#x3D; nums.length-1;</span><br><span class="line">	int mid &#x3D; -1;</span><br><span class="line">	int returnInt &#x3D; -1;</span><br><span class="line">	&#x2F;&#x2F;Search the array &quot;nums&quot; for the &quot;target&quot; target.</span><br><span class="line">		while(low&lt;&#x3D;high) &#123;</span><br><span class="line">			mid &#x3D; (low+high)&#x2F;2;</span><br><span class="line">			if(target&#x3D;&#x3D;nums[mid]) &#123;</span><br><span class="line">				returnInt &#x3D; mid;</span><br><span class="line">				return returnInt;</span><br><span class="line">			&#125;else if(target&lt;nums[mid]) &#123;</span><br><span class="line">				high &#x3D; mid - 1;</span><br><span class="line">			&#125;else if(target&gt;nums[mid]) &#123;</span><br><span class="line">				low &#x3D; mid +1;</span><br><span class="line">			&#125;&#x2F;&#x2F;end if</span><br><span class="line">		&#125;&#x2F;&#x2F;end while</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;Find insert position.</span><br><span class="line">		if(low&gt;high) &#123;</span><br><span class="line">			for(int i&#x3D;0;i&lt;nums.length;i++) &#123;</span><br><span class="line">	    		if(target&gt;nums[i]) &#123;</span><br><span class="line">	    			continue;</span><br><span class="line">	    		&#125;else &#123;</span><br><span class="line">	    			returnInt &#x3D; i;</span><br><span class="line">	    			return returnInt;</span><br><span class="line">	    		&#125;&#x2F;&#x2F;end if</span><br><span class="line">	    	&#125;&#x2F;&#x2F;end for</span><br><span class="line">		&#125;&#x2F;&#x2F;end if</span><br><span class="line">	return nums.length;</span><br><span class="line">&#125;&#x2F;&#x2F;end searchInsert()</span><br><span class="line"></span><br><span class="line">&#125;&#x2F;&#x2F;end  SearchInsertPosition_35</span><br></pre></td></tr></table></figure>
+        <h1 id="下载-xampp"><a href="#下载-xampp" class="headerlink" title="下载 xampp"></a>下载 xampp</h1><p><a href="http://cloud.yundashi168.com/archives/250#xampp" target="_blank" rel="noopener">本博文是根据此博文学习的，相当于是跟着做，然后做一个学习记录吧</a><br><a href="https://www.apachefriends.org/download.html" target="_blank" rel="noopener">点击访问 xampp 网站</a></p>
+<p><strong><em>【注意：】注意文中所给命令运行时请根据自己下载的 文件 的版本号对应，切不可直接复制</em></strong></p>
+<p><img src="https://pic.downk.cc/item/5e71c8c6e83c3a1e3abfd7f2.png" alt=""></p>
+<p>本文下载的版本是途中红色勾选框中的版本</p>
+<h1 id="下载-WordPress"><a href="#下载-WordPress" class="headerlink" title="下载 WordPress"></a>下载 WordPress</h1><p><a href="https://wordpress.org/download/" target="_blank" rel="noopener">点击访问 wordpress 官网</a></p>
+<p><img src="https://pic.downk.cc/item/5e71c9e4e83c3a1e3ac0f437.png" alt=""></p>
+<p>注意访问此网站可能会出现</p>
+<p><img src="https://pic.downk.cc/item/5e71c7b5e83c3a1e3abf1b7e.png" alt=""></p>
+<p>解决办法就是多访问几下就行了</p>
+<h1 id="安装-xampp"><a href="#安装-xampp" class="headerlink" title="安装 xampp"></a>安装 xampp</h1><ol>
+<li>通过 FileZilla 来连接 云主机，然后上传 xampp 和 wordpress </li>
+<li>通过 SmarTTY 来远程链接 云主机，然后通过以下命令来执行安装 xampp<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">先运行   chmod -R 755 xampp-linux-x64-7.2.12-0-installer.run</span><br><span class="line">后运行   .&#x2F;xampp-linux-x64-7.2.12-0-installer.run</span><br><span class="line">注意版本号请根据自己下载的 xampp 的版本号对应，切不可直接复制</span><br></pre></td></tr></table></figure>
+<img src="https://pic.downk.cc/item/5e71c9e4e83c3a1e3ac0f43a.png" alt=""></li>
+</ol>
+<p><img src="https://pic.downk.cc/item/5e71cb1fe83c3a1e3ac228ac.png" alt=""></p>
+<p>注意这里默认安装的路径是 /opt/lampp</p>
+<ol start="3">
+<li>手动启动 xampp 服务</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;home&#x2F;ProgrammingToolsAndEnvironments&#x2F;lampp&#x2F;lampp start</span><br><span class="line">根据自己的实际目录去运行</span><br><span class="line"></span><br><span class="line">网上复制的一些命令</span><br><span class="line">linux启动XAMPP命令：</span><br><span class="line">启动 XAMPP&#x2F;opt&#x2F;lampp&#x2F;.&#x2F;lampp start</span><br><span class="line">停止 XAMPP&#x2F;opt&#x2F;lampp&#x2F;.&#x2F;lampp stop</span><br><span class="line">重启 XAMPP&#x2F;opt&#x2F;lampp&#x2F;.&#x2F;lampp restart</span><br><span class="line">安全设置&#x2F;opt&#x2F;lampp&#x2F;.&#x2F;lampp security</span><br><span class="line">卸载 XAMPPrm -rf &#x2F;opt&#x2F;lampp</span><br></pre></td></tr></table></figure>
+
+<p>启动成功截图如下：</p>
+<p><img src="https://pic.downk.cc/item/5e71d358e83c3a1e3aca1cfb.png" alt=""></p>
+<p>然后通过你的 云主机 的公网 ip 地址进行访问，注意在访问前确认配置了云主机 80 端口的安全组规则</p>
+<p><img src="https://pic.downk.cc/item/5e71cb1fe83c3a1e3ac228ae.png" alt=""></p>
+<ol start="4">
+<li>设置各个环境的密码<br>使用命令：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo &#x2F;opt&#x2F;lampp&#x2F;lampp security</span><br></pre></td></tr></table></figure>
+命令使用成功后如下：</li>
+</ol>
+<p><img src="https://pic.downk.cc/item/5e71d358e83c3a1e3aca1cff.png" alt=""></p>
+<p>注意输入密码是不会有提示的，所以直接输入就行</p>
+<p>1、输入xampp控制面板的密码（用户名是xampp）；<br>2、输入phpmyadmin的密码（用户名是pma）<br>3、输入mysql的密码（用户名是root）<br>4、输入ftp密码（用户名是daemon，默认端口21）</p>
+<ol start="5">
+<li>访问 phpmyadmin</li>
+</ol>
+<p>这是管理mysql数据库的客户端工具，可以在浏览器访问。在访问phpmyadmin的时候，发现403错误。这个是由于服务器设置了xampp不允许远程访问</p>
+<p><img src="https://pic.downk.cc/item/5e71c7b5e83c3a1e3abf1b80.png" alt=""></p>
+<p>找到httpd-xampp.conf配置文件：用命令 cd /opt/lampp/etc/extra进入目录，ls列出文件，找到httpd-xampp.conf</p>
+<p><img src="https://pic.downk.cc/item/5e71c8c6e83c3a1e3abfd7f5.png" alt=""></p>
+<p>然后：<br>通过命令：vim httpd-xampp.conf 对配置文件进行编辑</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">AllowOverride AuthConfig</span><br><span class="line">Require all granted</span><br><span class="line">ErrorDocument 403 &#x2F;error&#x2F;XAMPP_FORBIDDEN.html.var</span><br></pre></td></tr></table></figure>
+
+<p>也就是将 Require local 改成 Require all granted 。保存文件，使用命令 [./lampp restart] 重启xampp即可。访问phpmyadmin出现如下界面，就表示问题解决，安装xampp成功。</p>
+<p><img src="https://pic.downk.cc/item/5e71c7b5e83c3a1e3abf1b83.png" alt=""></p>
+<p>然后输入用户名 和密码进行登录就行<br><img src="https://pic.downk.cc/item/5e71c7b5e83c3a1e3abf1b83.png" alt=""></p>
+<p>登陆后的状态<br><img src="https://pic.downk.cc/item/5e71c9e4e83c3a1e3ac0f433.png" alt=""></p>
+<p>感觉这个和 phpStudy 一样的内容，都差不多，哈哈</p>
+<h1 id="安装WordPress"><a href="#安装WordPress" class="headerlink" title="安装WordPress"></a>安装WordPress</h1><ol>
+<li>先把wordpress-4.9.8.tar.gz文件上传到htdocs目录下。利用 FileZilla 进行上传操作。并对文件进行解压操作</li>
+</ol>
+<p>解压所需命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvzf wordpress-4.9.8.tar.gz</span><br></pre></td></tr></table></figure>
+<p>注意我在一开始上传的时候是上传到了/home/ProgrammingToolsAndEnvironments/ 目录下，所以我这里先移动 wordpress 文件压缩包到 /opt/lampp/htdocs 目录下，具体操作看截图</p>
+<p><img src="https://pic.downk.cc/item/5e71cb1fe83c3a1e3ac228b0.png" alt=""></p>
+<p>这时候解压 wordpress 压缩包，解压后：</p>
+<p><img src="https://pic.downk.cc/item/5e71caaee83c3a1e3ac1c026.png" alt=""></p>
+<ol start="2">
+<li>验证mysql登录是否成功</li>
+</ol>
+<p>在阿里云服务器中设置好安全组规则，把数据库端口3306端口放行。否则，数据库端口没有放行，就没办法远程访问和操作mysql数据库了。</p>
+<p><img src="https://pic.downk.cc/item/5e71c8c6e83c3a1e3abfd7fb.png" alt=""></p>
+<ol start="3">
+<li>利用phpmyadmin建立数据库 aliyun (数据库名自己取)。这个数据库在安装 wordpress 是必须需要的。</li>
+</ol>
+<p>注意我这里 使用的是用户 pma 登录的 phpmyadmin 所以会提示没有权限创建数据库</p>
+<p><img src="https://pic.downk.cc/item/5e71c9e4e83c3a1e3ac0f435.png" alt=""></p>
+<p>所以点击左上角第二个图标来退出登录，然后使用 root 来登录，密码是 和 pma 一样的密码</p>
+<p>然后创建数据库：<br><img src="https://pic.downk.cc/item/5e71c8c6e83c3a1e3abfd7f9.png" alt=""></p>
+<ol start="4">
+<li>浏览器安装WordPress。（这一步必须保证 mysq l数据库是安装成功并且建立好了数据库，因为在安装 wordpress 的时候需要填写已经创建好的数据库名字）</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200318172112.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200318172314.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Snipaste_2020-03-18_17-27-07.png" alt=""></p>
+<p>我在安装的时候出现了问题<br><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200318181613.png" alt=""></p>
+<p>它告诉我手动复制下面的文件，然后创建 wp-config.php 文件，那我就按照它说的办吧，因为我上网找了下其他解决办法，有说重启下服务器的，也有说是路径问题，但是我不想按照那些来修改，复制后就可以了，不过在正常模式下复制会出现缺少字符的问题，这篇文章有介绍：<br><a href="https://segmentfault.com/q/1010000013970800" target="_blank" rel="noopener">正常模式下粘贴文本到vim中出现缺少字符的情况</a></p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200318190220.png" alt=""></p>
+<p>然后登录就可以了，大公告成！</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200318190559.png" alt=""></p>
+<p><a href="https://www.bilibili.com/video/av40307690" target="_blank" rel="noopener">关于 WordPress 如何使用，我建议你看下这个</a></p>
 
       
 
@@ -204,7 +265,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">xampp</a>
         		</li>
       		
 		</ul>
@@ -214,953 +275,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/LeetCode-0035-SearchInsertPosition/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-LeetCode-0026-RemoveDuplicatesFromSortedArray" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/LeetCode-0026-RemoveDuplicatesFromSortedArray/">LeetCode_0026_RemoveDuplicatesFromSortedArray</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/17/LeetCode-0026-RemoveDuplicatesFromSortedArray/" class="archive-article-date">
-  	<time datetime="2020-04-17T04:24:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这道题也是很简单的，不算复杂，因为我做的都是简单的题型，都没人来解答的，哈哈，估计都看不上吧！这道题思想跟==LeetCode_0038_CountandSay==思想差不多的，就不过多解释了。</p>
-<h1 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h1><p>给定一个已排序的数组号，删除重复项，使每个元素只出现一次，并返回新的长度。<br><br>不要为另一个数组分配额外的空间，您必须使用O(1)额外内存修改输入数组。<br></p>
-<p><strong>Example 1:</strong><br></p>
-<blockquote>
-<p>给定nums = [1,1,2]，<br><br>函数应该返回length = 2, nums的前两个元素分别为1和2。<br><br>在返回长度之外留下什么并不重要。<br></p>
-</blockquote>
-<p><strong>Example 2:</strong><br></p>
-<blockquote>
-<p>给定nums = [0,0,1,1,1,2,2,3,3,4]，<br><br>函数应该返回length = 5,<br> nums的前五个元素分别修改为0、1、2、3和4。<br><br>在返回长度之外设置什么值并不重要。<br></p>
-</blockquote>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> javaLeetCode.primary;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RemoveDuplicatesFromSortedArray_26</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> []nums = &#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>&#125;;</span><br><span class="line">		System.out.println(removeDuplicates(nums));</span><br><span class="line">	&#125;<span class="comment">//end main()</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * */</span></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * Test Data:</span></span><br><span class="line"><span class="comment">	 * [1,1,2]--2</span></span><br><span class="line"><span class="comment">	 * [0,0,1,1,1,2,2,3,3,4]--5</span></span><br><span class="line"><span class="comment">	 * */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">       </span><br><span class="line">	<span class="keyword">if</span>(nums==<span class="keyword">null</span>||nums.length==<span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> j=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(i&lt;nums.length)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(nums[j]!=nums[i])</span><br><span class="line">			nums[++j]=nums[i++];</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			i++;</span><br><span class="line">	&#125;<span class="comment">//end while</span></span><br><span class="line">	<span class="keyword">return</span> j+<span class="number">1</span>;</span><br><span class="line">    &#125;<span class="comment">//end removeDuplicates()</span></span><br><span class="line"></span><br><span class="line">&#125;<span class="comment">//end RemoveDuplicatesFromSortedArray_26</span></span><br></pre></td></tr></table></figure>
-
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/LeetCode-0026-RemoveDuplicatesFromSortedArray/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-LeetCode-0028-ImplementStrStr" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/LeetCode-0028-ImplementStrStr/">LeetCode_0028_ImplementStrStr</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/17/LeetCode-0028-ImplementStrStr/" class="archive-article-date">
-  	<time datetime="2020-04-17T04:23:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这道题是关于自己实现类似于java中的indexOf()方法的，使用的思想也是很正常的思想，因为自己也不会其他的思想，哎~然后上面也没有其他解答。关于这个思想，其实在数据结构上面也有，只不过那个使用C语言实现的，不过思想都是一样的。我简单说一下，这里假设一下：hayStack作为源字符串，needle作为被查询的字符串。即假设hayStack=”abcbccd”,然后needle=”cc”,然后要查找的话，需要判断的有如下：</p>
-<pre><code>1.needle是否为空，即needle==&quot;&quot;,或者needle是否存在,即needle==null。
-2.最开始的时候needle的长度是否小于hayStack的长度
-3.开始进行判断，先在hayStack中找到与needle第一个字符相同的字符，这里第一次找到为位置2,然后从这个位置开始，进行如下判断：
-    - 在hayStack中位置2以后的剩余字符串长度是否大于needle的长度，如果不大于，则返回-1，程序退出
-    - 如果剩余长度大于的话，则继续从位置2往后继续比对。大致思路就是这样。</code></pre><h1 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h1><p><strong>==实现strStr==</strong> ()<br><br>返回hayStack中needle的第一次出现的索引，如果needle不是hayStack的一部分，返回-1。<br></p>
-<p><strong>Example 1:</strong><br><br></p>
-<blockquote>
-<p>input:haystack = “hello”， needle = “ll”<br><br>output:2<br></p>
-</blockquote>
-<p><strong>Example 2:</strong><br></p>
-<blockquote>
-<p>input:haystack = “aaaaa”， needle = “bba”<br><br>output:1<br></p>
-</blockquote>
-<p><strong>澄清:</strong><br><br>当指针是空字符串时，我们应该返回什么?这是一个非常适合在面试中问的问题。<br>对于这个问题，当指针为空字符串时，我们将返回0。这与C的strstr()和Java的indexOf()一致。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">package javaLeetCode.primary;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class ImplementStrStr_28 &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		@SuppressWarnings(&quot;resource&quot;)</span><br><span class="line">		Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">		System.out.println(&quot;Please input a string(hayStack):&quot;);</span><br><span class="line">		String hayStack &#x3D; input.next();</span><br><span class="line">		System.out.println(&quot;Please input a string(needle):&quot;);</span><br><span class="line">		String needle &#x3D; input.next();</span><br><span class="line">		System.out.println(strStr_1(hayStack, needle));</span><br><span class="line">	&#125;&#x2F;&#x2F; end main()</span><br><span class="line"></span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * 1. Find the same character in &quot;haystack&quot; as the first &quot;needle&quot; character.</span><br><span class="line">	 * 2. Start with this character and move back in the &quot;haystack&quot; one by one against the characters in the &quot;needle&quot;.</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 * Input: haystack &#x3D; &quot;hello&quot;, needle &#x3D; &quot;ll&quot;</span><br><span class="line">	 * Output: 2</span><br><span class="line">	 * Input: haystack &#x3D; &quot;helollo&quot;, needle &#x3D; &quot;ll&quot;</span><br><span class="line">	 * Output: 4</span><br><span class="line">	 * Input: haystack &#x3D; &quot;aaaaa&quot;, needle &#x3D; &quot;bba&quot;</span><br><span class="line">	 *	Output: -1</span><br><span class="line">	 *Input: haystack &#x3D; &quot;a&quot;, needle &#x3D; &quot;&quot;</span><br><span class="line">	 * Output: 0</span><br><span class="line">	 * Input: haystack &#x3D; &quot;abcd&quot;, needle &#x3D; &quot;b&quot;</span><br><span class="line">	 * Output: 0</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	public static int strStr_1(String hayStack, String needle) &#123;</span><br><span class="line">		int i &#x3D; 0;</span><br><span class="line">		boolean isInclude &#x3D; false;</span><br><span class="line">		&#x2F;&#x2F; Judge &quot;needle&quot; is valid.</span><br><span class="line">		if (needle.length()&#x3D;&#x3D;0 || needle &#x3D;&#x3D; null) &#123;</span><br><span class="line">			return 0;</span><br><span class="line">		&#125; &#x2F;&#x2F; end if</span><br><span class="line">		if (needle.length() &gt; hayStack.length()) &#123;</span><br><span class="line">			return -1;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			for (i &#x3D; 0; i &lt; hayStack.length(); i++) &#123;</span><br><span class="line">				if (hayStack.charAt(i) &#x3D;&#x3D; needle.charAt(0)&amp;&amp;(hayStack.length()-i&gt;&#x3D;needle.length())) &#123;</span><br><span class="line">					int k &#x3D; i;</span><br><span class="line">					isInclude &#x3D; true;</span><br><span class="line">					for (int j &#x3D; 1; j &lt; needle.length(); j++) &#123;</span><br><span class="line">						if (needle.charAt(j) &#x3D;&#x3D; hayStack.charAt(++k)) &#123;</span><br><span class="line">							isInclude &#x3D; true;</span><br><span class="line">						&#125; else &#123;</span><br><span class="line">							isInclude &#x3D; false;</span><br><span class="line">							break;</span><br><span class="line">						&#125; &#x2F;&#x2F; end if</span><br><span class="line">					&#125; &#x2F;&#x2F; end for</span><br><span class="line">				&#125; else &#123;</span><br><span class="line">					continue;</span><br><span class="line">				&#125;&#x2F;&#x2F;end if</span><br><span class="line">				if (isInclude &#x3D;&#x3D; true) &#123;</span><br><span class="line">					break;</span><br><span class="line">				&#125; &#x2F;&#x2F; end if</span><br><span class="line">			&#125; &#x2F;&#x2F; end for</span><br><span class="line">		&#125; &#x2F;&#x2F; end if</span><br><span class="line">		return i &lt; hayStack.length() ? i : -1;</span><br><span class="line">	&#125;&#x2F;&#x2F; end strStr()</span><br><span class="line">	</span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Use the method of  string class.</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	public static int strStr_2(String hayStack, String needle) &#123;</span><br><span class="line">		return hayStack.indexOf(needle);</span><br><span class="line">	&#125;&#x2F;&#x2F; end strStr()</span><br><span class="line">&#125;&#x2F;&#x2F;end ImplementStrStr_28</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/LeetCode-0028-ImplementStrStr/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-LeetCode-0027-RemoveElement" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/LeetCode-0027-RemoveElement/">LeetCode_0027_RemoveElement</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/17/LeetCode-0027-RemoveElement/" class="archive-article-date">
-  	<time datetime="2020-04-17T04:22:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这道题还是很简单的，就是使用两个标记，然后进行判断什么的。不过同一种思想的不同实现方式是很有趣的。可以借鉴下。</p>
-<h1 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h1><p>给定数组号和值val，删除该值的所有实例并返回新的长度。<br>不要为另一个数组分配额外的空间，您必须使用O(1)额外内存修改输入数组。<br>元素的顺序可以改变。在新的长度之外留下什么并不重要。</p>
-<p><strong>Example 1:</strong></p>
-<blockquote>
-<p>给定nums = [3,2,2,3]， val = 3，<br>函数应该返回length = 2, nums的前两个元素为2。<br>在返回长度之外留下什么并不重要。</p>
-</blockquote>
-<p><strong>Example 2:</strong></p>
-<blockquote>
-<p>给定nums = [0,1,2,2,3,0,4,2]， val = 2，<br>函数应该返回length = 5, nums的前五个元素包含0、1、3、0和4。</p>
-</blockquote>
-<p><strong>Note:</strong></p>
-<ul>
-<li>注意，这五个元素的顺序可以是任意的。</li>
-<li>在返回长度之外设置什么值并不重要。</li>
-</ul>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">package javaLeetCode.primary;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class RemoveElement_27 &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		int[] nums&#x3D; &#123;0,1,2,2,3,0,4,2&#125;;</span><br><span class="line">		System.out.println(&quot;Please input a variable&quot;);</span><br><span class="line">		@SuppressWarnings(&quot;resource&quot;)</span><br><span class="line">		Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">		int val &#x3D; input.nextInt();</span><br><span class="line">		System.out.println(removeElement_2(nums,val));</span><br><span class="line">	&#125;&#x2F;&#x2F; end main()</span><br><span class="line"></span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * </span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 * Test Data:</span><br><span class="line">	 * [3,2,2,3]--2--2</span><br><span class="line">	 * [0,1,2,2,3,0,4,2]--2--5</span><br><span class="line">	 * </span><br><span class="line">	 *&#x2F;</span><br><span class="line">	public static int removeElement_1(int[] nums, int val) &#123;</span><br><span class="line">		int j&#x3D;0;</span><br><span class="line">		int i&#x3D;0;</span><br><span class="line">		while(i&lt;nums.length)</span><br><span class="line">		&#123;</span><br><span class="line">			if(nums[i]!&#x3D;val)</span><br><span class="line">				nums[j++]&#x3D;nums[i++];</span><br><span class="line">			else</span><br><span class="line">				i++;</span><br><span class="line">		&#125;&#x2F;&#x2F;end while</span><br><span class="line">&#x2F;&#x2F;		for(i&#x3D;0;i&lt;j;i++) &#123;</span><br><span class="line">&#x2F;&#x2F;			System.out.print(nums[i]);</span><br><span class="line">&#x2F;&#x2F;		&#125;&#x2F;&#x2F;end for</span><br><span class="line">&#x2F;&#x2F;		System.out.println();</span><br><span class="line">		return j;</span><br><span class="line">	&#125;&#x2F;&#x2F; end removeElement()</span><br><span class="line">	</span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Answer online.</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	public static int removeElement_2(int[] nums, int val) &#123;</span><br><span class="line">	    int i &#x3D; 0;</span><br><span class="line">	    for (int j &#x3D; 0; j &lt; nums.length; j++) &#123;</span><br><span class="line">	        if (nums[j] !&#x3D; val) &#123;</span><br><span class="line">	            nums[i] &#x3D; nums[j];</span><br><span class="line">	            i++;</span><br><span class="line">	        &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">	    return i;</span><br><span class="line">	&#125;&#x2F;&#x2F;end removeElement</span><br><span class="line">	</span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Answer online.</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	public static int removeElement_3(int[] nums, int val) &#123;</span><br><span class="line">	    int i &#x3D; 0;</span><br><span class="line">	    int n &#x3D; nums.length;</span><br><span class="line">	    while (i &lt; n) &#123;</span><br><span class="line">	        if (nums[i] &#x3D;&#x3D; val) &#123;</span><br><span class="line">	            nums[i] &#x3D; nums[n - 1];</span><br><span class="line">	            &#x2F;&#x2F; reduce array size by one</span><br><span class="line">	            n--;</span><br><span class="line">	        &#125; else &#123;</span><br><span class="line">	            i++;</span><br><span class="line">	        &#125;&#x2F;&#x2F;end if</span><br><span class="line">	    &#125;&#x2F;&#x2F;end while</span><br><span class="line">	    return n;</span><br><span class="line">	&#125;&#x2F;&#x2F;end removeElement()</span><br><span class="line">&#125;&#x2F;&#x2F; end RemoveElement_27</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/LeetCode-0027-RemoveElement/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-LeetCode-0020-ValidParentheses" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/LeetCode-0020-ValidParentheses/">LeetCode_0020_ValidParentheses</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/17/LeetCode-0020-ValidParentheses/" class="archive-article-date">
-  	<time datetime="2020-04-17T04:22:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这道题呢其实很简单，就是思维上面想着也是挺简单的，但是主要是一些细节上面的考虑。我在写的时候就是有很多细节没考虑，然后都是大方面是通过的，但是碰到一些细节的话，就不过了。所以细节是很重要的。比如我在写的时候没考虑左括号多余的情况，然后还有右括号的多余的情况，我只是想着它能匹配的问题，所以代码写得很不好看，很多逻辑都是独立出来的，然后你会看到很多的if…else…，因为我都是后面添加那些逻辑进去，所以呢，所以呢，细节很重要，在写代码之前一定要先考虑好一些特定的情况。嗯。<br>还需要注意一点的是，那个判断空字符的那里，当我们输入在控制台输入””的时候，其实这是两个字符，分别是左引号和右引号，所以，在判断的时候需要使用长度来判断，如果是空字符，则长度一定等于0，否则就不是空字符。</p>
-<h1 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h1><ul>
-<li>给定一个只包含字符’(‘，’)’，’{‘，’}’，’[‘和’]’的字符串，判断输入字符串是否有效。</li>
-<li>输入字符串在下列情况下有效:<ul>
-<li>开括号必须由相同类型的括号关闭。</li>
-<li>开括号必须按正确的顺序关闭。</li>
-</ul>
-</li>
-<li>注意，空字符串也被认为是有效的。<br></li>
-</ul>
-<hr>
-<p><strong>Example 1:</strong><br></p>
-<blockquote>
-<p>Input: “()”<br><br> Output: true<br></p>
-</blockquote>
-<p><strong>Example 2:</strong><br></p>
-<blockquote>
-<p>Input: “()[]{}”<br><br>Output: true<br></p>
-</blockquote>
-<p><strong>Example 3:</strong><br></p>
-<blockquote>
-<p>Input: “(]”<br><br>Output: false<br></p>
-</blockquote>
-<p><strong>Example 4:</strong><br></p>
-<blockquote>
-<p>Input: “([)]”<br><br>Output: false<br></p>
-</blockquote>
-<p><strong>Example 5:</strong><br></p>
-<blockquote>
-<p>Input: “{[]}”<br><br>Output: true<br></p>
-</blockquote>
-<hr>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">package javaLeetCode.primary;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line">import java.util.Stack;</span><br><span class="line"></span><br><span class="line">public class ValidParentheses_20 &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		@SuppressWarnings(&quot;resource&quot;)</span><br><span class="line">		Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">		System.out.println(&quot;Please input a string:&quot;);</span><br><span class="line">		String s &#x3D; input.next();</span><br><span class="line">		System.out.println(isValid_1(s));</span><br><span class="line">	&#125;&#x2F;&#x2F;end main</span><br><span class="line">	</span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Use Stack.</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 * Test Data:</span><br><span class="line">	 * ()--true</span><br><span class="line">	 * ()[]&#123;&#125;--true</span><br><span class="line">	 * &#123;[]&#125;--true</span><br><span class="line">	 * ((()))([&#123;&#125;])--true</span><br><span class="line">	 * &#123;&#123;(&#125;&#125;)[(])--false</span><br><span class="line">	 * (]-- false</span><br><span class="line">	 * ([)]--false</span><br><span class="line">	 * [])--false</span><br><span class="line">	 * [--false</span><br><span class="line">	 * ([]--false</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">public static boolean isValid_1(String s) &#123;</span><br><span class="line">	boolean isMatch &#x3D; false;</span><br><span class="line">	&#x2F;&#x2F;There should be a procedure for handling strings.</span><br><span class="line">	if(s&#x3D;&#x3D;null)</span><br><span class="line">		return false;</span><br><span class="line">	if(s .length()!&#x3D; 0) &#123;</span><br><span class="line">		char []cha &#x3D; s.toCharArray();</span><br><span class="line">		Stack &lt;Character&gt;charStack &#x3D; new Stack&lt;Character&gt;();</span><br><span class="line">		if(charStack.isEmpty()) &#123;</span><br><span class="line">			charStack.push(cha[0]);</span><br><span class="line">			for(int i&#x3D;1;i&lt;cha.length;i++) &#123;</span><br><span class="line">				if(cha[i]&#x3D;&#x3D;&#39;(&#39;||cha[i]&#x3D;&#x3D;&#39;[&#39;||cha[i]&#x3D;&#x3D;&#39;&#123;&#39;) &#123;</span><br><span class="line">					charStack.push(cha[i]);</span><br><span class="line">				&#125;else if((!charStack.isEmpty())&amp;&amp;(cha[i]&#x3D;&#x3D;&#39;)&#39;&amp;&amp;charStack.peek()&#x3D;&#x3D;&#39;(&#39;||cha[i]&#x3D;&#x3D;&#39;]&#39;&amp;&amp;charStack.peek()&#x3D;&#x3D;&#39;[&#39;||cha[i]&#x3D;&#x3D;&#39;&#125;&#39;&amp;&amp;charStack.peek()&#x3D;&#x3D;&#39;&#123;&#39;))&#123;</span><br><span class="line">						charStack.pop();</span><br><span class="line">						isMatch &#x3D; true;</span><br><span class="line">				&#125;else &#123;</span><br><span class="line">					isMatch &#x3D; false;</span><br><span class="line">					break;</span><br><span class="line">				&#125;&#x2F;&#x2F;end if</span><br><span class="line">			&#125;&#x2F;&#x2F;end for</span><br><span class="line">		&#125;&#x2F;&#x2F;end if</span><br><span class="line">		if(!charStack.isEmpty()) &#123;</span><br><span class="line">			isMatch &#x3D; false;</span><br><span class="line">		&#125;&#x2F;&#x2F;end if</span><br><span class="line">	&#125;else &#123;</span><br><span class="line">		isMatch &#x3D; true;</span><br><span class="line">	&#125;&#x2F;&#x2F;end if</span><br><span class="line">	return isMatch;</span><br><span class="line">    &#125;&#x2F;&#x2F;end isValid()</span><br><span class="line">&#125;&#x2F;&#x2F;end ValidParentheses_20</span><br></pre></td></tr></table></figure>
-<hr>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/LeetCode-0020-ValidParentheses/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-LeetCode-0012-IntegerToRoman" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/LeetCode-0012-IntegerToRoman/">LeetCode_0012_IntegerToRoman</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/17/LeetCode-0012-IntegerToRoman/" class="archive-article-date">
-  	<time datetime="2020-04-17T04:21:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这道题是和RomanToInteger相似的，可以使用枚举也可以使用解析法。熟悉了那道题，这道题就简单了。</p>
-<h1 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h1><ul>
-<li>不做过多的解释<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line">package javaLeetCode.primary;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class IntegerToRoman_12 &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		System.out.println(&quot;Please input a  integer:&quot;);</span><br><span class="line">		@SuppressWarnings(&quot;resource&quot;)</span><br><span class="line">		Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">		int num &#x3D; input.nextInt();</span><br><span class="line">		System.out.println(intToRoman_2(num));</span><br><span class="line">	&#125;&#x2F;&#x2F; end main()</span><br><span class="line">	</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 * Test Data: </span><br><span class="line">	 * III--3 </span><br><span class="line">	 * IV--4 </span><br><span class="line">	 * IX--9 </span><br><span class="line">	 * LVIII--58 </span><br><span class="line">	 * MCMXCIV--1994</span><br><span class="line">	 * MCCCXIV--1314</span><br><span class="line">	 * MMMIX--3009</span><br><span class="line">	 * MMMCCXLIX--3249</span><br><span class="line">	 *&#x2F;</span><br><span class="line">public static String intToRoman_1(int num) &#123;</span><br><span class="line">        String []roman &#x3D; &#123;&quot;M&quot;,&quot;CM&quot;,&quot;D&quot;,&quot;CD&quot;,&quot;C&quot;,&quot;XC&quot;,&quot;L&quot;,&quot;XL&quot;,&quot;X&quot;,&quot;IX&quot;,&quot;V&quot;,&quot;IV&quot;,&quot;III&quot;,&quot;II&quot;,&quot;I&quot;&#125;;</span><br><span class="line">        int []integer &#x3D; &#123;1000,900,500,400,100,90,50,40,10,9,5,4,3,2,1&#125;;</span><br><span class="line">        String str&#x3D;&quot;&quot;;</span><br><span class="line">        for(;num&gt;0;) &#123;</span><br><span class="line">        	for(int i&#x3D;0;i&lt;15;i++) &#123;</span><br><span class="line">        		if(num&gt;&#x3D;integer[i]) &#123;</span><br><span class="line">        			num -&#x3D; integer[i];</span><br><span class="line">        			str +&#x3D; roman[i];</span><br><span class="line">        			break;</span><br><span class="line">        		&#125;else &#123;</span><br><span class="line">        			continue;</span><br><span class="line">        		&#125;&#x2F;&#x2F;end if</span><br><span class="line">        	&#125;&#x2F;&#x2F;end for</span><br><span class="line">        &#125;&#x2F;&#x2F;end for</span><br><span class="line">	return str;</span><br><span class="line">    &#125;&#x2F;&#x2F;end intToRoman()</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * Use the simplest method.</span><br><span class="line"> * *&#x2F;</span><br><span class="line">public static String intToRoman_2(int num) &#123;</span><br><span class="line">	</span><br><span class="line">    String str&#x3D;&quot;&quot;;</span><br><span class="line">    int a &#x3D; num&#x2F;1000;</span><br><span class="line">    int b &#x3D; num%1000&#x2F;100;</span><br><span class="line">    int c &#x3D; num%100&#x2F;10;</span><br><span class="line">    int d &#x3D; num%10;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;Enumerate each possible value</span><br><span class="line">    if(a&#x3D;&#x3D;0) &#123;str+&#x3D;&quot;&quot;;&#125;</span><br><span class="line">    if(a&#x3D;&#x3D;1) &#123;str+&#x3D;&quot;M&quot;;&#125;</span><br><span class="line">    if(a&#x3D;&#x3D;2) &#123;str+&#x3D;&quot;MM&quot;;&#125;</span><br><span class="line">    if(a&#x3D;&#x3D;3) &#123;str+&#x3D;&quot;MMM&quot;;&#125;</span><br><span class="line">    </span><br><span class="line">    if(b&#x3D;&#x3D;0) &#123;str+&#x3D;&quot;&quot;;&#125;</span><br><span class="line">    if(b&#x3D;&#x3D;1) &#123;str+&#x3D;&quot;C&quot;;&#125;</span><br><span class="line">    if(b&#x3D;&#x3D;2) &#123;str+&#x3D;&quot;CC&quot;;&#125;</span><br><span class="line">    if(b&#x3D;&#x3D;3) &#123;str+&#x3D;&quot;CCC&quot;;&#125;</span><br><span class="line">    if(b&#x3D;&#x3D;4) &#123;str+&#x3D;&quot;CD&quot;;&#125;</span><br><span class="line">    if(b&#x3D;&#x3D;5) &#123;str+&#x3D;&quot;D&quot;;&#125;</span><br><span class="line">    if(b&#x3D;&#x3D;6) &#123;str+&#x3D;&quot;DC&quot;;&#125;</span><br><span class="line">    if(b&#x3D;&#x3D;7) &#123;str+&#x3D;&quot;DCC&quot;;&#125;</span><br><span class="line">    if(b&#x3D;&#x3D;8) &#123;str+&#x3D;&quot;DCCC&quot;;&#125;</span><br><span class="line">    if(b&#x3D;&#x3D;9) &#123;str+&#x3D;&quot;CM&quot;;&#125;</span><br><span class="line">    </span><br><span class="line">    if(c&#x3D;&#x3D;0) &#123;str+&#x3D;&quot;&quot;;&#125;</span><br><span class="line">    if(c&#x3D;&#x3D;1) &#123;str+&#x3D;&quot;X&quot;;&#125;</span><br><span class="line">    if(c&#x3D;&#x3D;2) &#123;str+&#x3D;&quot;XX&quot;;&#125;</span><br><span class="line">    if(c&#x3D;&#x3D;3) &#123;str+&#x3D;&quot;XXX&quot;;&#125;</span><br><span class="line">    if(c&#x3D;&#x3D;4) &#123;str+&#x3D;&quot;XL&quot;;&#125;</span><br><span class="line">    if(c&#x3D;&#x3D;5) &#123;str+&#x3D;&quot;L&quot;;&#125;</span><br><span class="line">    if(c&#x3D;&#x3D;6) &#123;str+&#x3D;&quot;LX&quot;;&#125;</span><br><span class="line">    if(c&#x3D;&#x3D;7) &#123;str+&#x3D;&quot;LXX&quot;;&#125;</span><br><span class="line">    if(c&#x3D;&#x3D;8) &#123;str+&#x3D;&quot;LXXX&quot;;&#125;</span><br><span class="line">    if(c&#x3D;&#x3D;9) &#123;str+&#x3D;&quot;XC&quot;;&#125;</span><br><span class="line">    </span><br><span class="line">    if(d&#x3D;&#x3D;0) &#123;str+&#x3D;&quot;&quot;;&#125;</span><br><span class="line">    if(d&#x3D;&#x3D;1) &#123;str+&#x3D;&quot;I&quot;;&#125;</span><br><span class="line">    if(d&#x3D;&#x3D;2) &#123;str+&#x3D;&quot;II&quot;;&#125;</span><br><span class="line">    if(d&#x3D;&#x3D;3) &#123;str+&#x3D;&quot;III&quot;;&#125;</span><br><span class="line">    if(d&#x3D;&#x3D;4) &#123;str+&#x3D;&quot;IV&quot;;&#125;</span><br><span class="line">    if(d&#x3D;&#x3D;5) &#123;str+&#x3D;&quot;V&quot;;&#125;</span><br><span class="line">    if(d&#x3D;&#x3D;6) &#123;str+&#x3D;&quot;VI&quot;;&#125;</span><br><span class="line">    if(d&#x3D;&#x3D;7) &#123;str+&#x3D;&quot;VII&quot;;&#125;</span><br><span class="line">    if(d&#x3D;&#x3D;8) &#123;str+&#x3D;&quot;VIII&quot;;&#125;</span><br><span class="line">    if(d&#x3D;&#x3D;9) &#123;str+&#x3D;&quot;IX&quot;;&#125;</span><br><span class="line">    </span><br><span class="line">    return str;</span><br><span class="line">&#125;&#x2F;&#x2F;end intToRoman()</span><br><span class="line">&#125;&#x2F;&#x2F;end IntegerToRoman_12</span><br></pre></td></tr></table></figure>
-<hr>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/LeetCode-0012-IntegerToRoman/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-LeetCode-0013-RomanToInteger" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/LeetCode-0013-RomanToInteger/">LeetCode_0013_RomanToInteger</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/17/LeetCode-0013-RomanToInteger/" class="archive-article-date">
-  	<time datetime="2020-04-17T04:20:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>罗马数字转整型数，这个问题有很多写法，不过就我认为的基本思考就是使用枚举或者是动态解析吧！我感觉这两种方式就好像解释型语言和编译型语言的思想一样。只是有这种感觉。哈哈！</p>
-<h1 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h1><ul>
-<li>罗马数字由七种不同的符号表示:I、V、X、L、C、D和M。</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Symbol</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>I</td>
-<td>1</td>
-</tr>
-<tr>
-<td>V</td>
-<td>5</td>
-</tr>
-<tr>
-<td>X</td>
-<td>10</td>
-</tr>
-<tr>
-<td>L</td>
-<td>50</td>
-</tr>
-<tr>
-<td>C</td>
-<td>100</td>
-</tr>
-<tr>
-<td>D</td>
-<td>500</td>
-</tr>
-<tr>
-<td>M</td>
-<td>1000</td>
-</tr>
-<tr>
-<td>例如，2用罗马数字写成II，两个1相加。12写成，XII，就是X + II。27被写成XXVII，也就是XX + V + II。罗马数字通常从左到右由大到小书写。然而，4的数字不是IIII。4写成了4，因为1在5之前，所以减4。同样的原理也适用于数字9，也就是9。使用减法有六种情况:I可以放在V(5)和X(10)前面，得到4和9。X可以放在L(50)和C(100)之前，得到40和90。C可以放在D(500)和M(1000)之前，得到400和900。给定一个罗马数字，把它转换成整数。输入保证在1到3999之间。<br></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Example 1:</strong><br></td>
-<td></td>
-</tr>
-<tr>
-<td>Input: “III”<br></td>
-<td></td>
-</tr>
-<tr>
-<td>Output: 3<br><br></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Example 2:</strong><br></td>
-<td></td>
-</tr>
-<tr>
-<td>Input: “IV”<br></td>
-<td></td>
-</tr>
-<tr>
-<td>Output: 4<br><br></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Example 3:</strong><br></td>
-<td></td>
-</tr>
-<tr>
-<td>Input: “IX”<br></td>
-<td></td>
-</tr>
-<tr>
-<td>Output: 9<br><br></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Example 4:</strong><br></td>
-<td></td>
-</tr>
-<tr>
-<td>Input: “LVIII”<br></td>
-<td></td>
-</tr>
-<tr>
-<td>Output: 58<br></td>
-<td></td>
-</tr>
-<tr>
-<td>Explanation: L = 50, V= 5, III = 3.<br><br></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Example 5:</strong><br></td>
-<td></td>
-</tr>
-<tr>
-<td>Input: “MCMXCIV”<br></td>
-<td></td>
-</tr>
-<tr>
-<td>Output: 1994<br></td>
-<td></td>
-</tr>
-<tr>
-<td>Explanation: M = 1000, CM = 900, XC = 90 and IV = 4<br></td>
-<td></td>
-</tr>
-<tr>
-<td>—</td>
-<td></td>
-</tr>
-<tr>
-<td># 代码</td>
-<td></td>
-</tr>
-<tr>
-<td>- 第一个方法和第二个方法类似，都是通过边“解释”边累加</td>
-<td></td>
-</tr>
-<tr>
-<td>- 不同的是第一个方法使用了Map来代替两个数组，而第二个方法是通过栈来存储中间值</td>
-<td></td>
-</tr>
-<tr>
-<td>- 第三个方法就是纯枚举了，思路很简单的。</td>
-<td></td>
-</tr>
-<tr>
-<td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line">package javaLeetCode.primary;</span><br><span class="line"></span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Map;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">import java.util.Stack;</span><br><span class="line"></span><br><span class="line">public class RomanToInteger_13 &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		System.out.println(&quot;Please input a roman numeral:&quot;);</span><br><span class="line">		@SuppressWarnings(&quot;resource&quot;)</span><br><span class="line">		Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">		String s &#x3D; input.next();</span><br><span class="line">		System.out.println(romanToInt_3(s));</span><br><span class="line">	&#125;&#x2F;&#x2F; end main()</span><br><span class="line"></span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Conventional thinking.</span><br><span class="line">	 * Scan from head to tail and use Map or Array.</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 * Test Data: </span><br><span class="line">	 * III--3 </span><br><span class="line">	 * IV--4 </span><br><span class="line">	 * IX--9 </span><br><span class="line">	 * LVIII--58 </span><br><span class="line">	 * MCMXCIV--1994</span><br><span class="line">	 * MCCCXIV--1314</span><br><span class="line">	 * MMMIX--3009</span><br><span class="line">	 * MMMCCXLIX--3249</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	public static int romanToInt_1(String s) &#123;</span><br><span class="line">		char[] str &#x3D; s.toCharArray();</span><br><span class="line">		Map&lt;Character, Integer&gt; map &#x3D; new HashMap&lt;Character, Integer&gt;();</span><br><span class="line">		map.put(&#39;I&#39;, 1);</span><br><span class="line">		map.put(&#39;V&#39;, 5);</span><br><span class="line">		map.put(&#39;X&#39;, 10);</span><br><span class="line">		map.put(&#39;L&#39;, 50);</span><br><span class="line">		map.put(&#39;C&#39;, 100);</span><br><span class="line">		map.put(&#39;D&#39;, 500);</span><br><span class="line">		map.put(&#39;M&#39;, 1000);</span><br><span class="line"></span><br><span class="line">		int num &#x3D; 0;</span><br><span class="line">		for (int i &#x3D; 0; i &lt; s.length() - 1; i++) &#123;</span><br><span class="line">			if (map.get(str[i]) &gt;&#x3D; map.get(str[i + 1])) &#123;</span><br><span class="line">				num +&#x3D; map.get(str[i]);</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				num -&#x3D; map.get(str[i]);</span><br><span class="line">			&#125; &#x2F;&#x2F; end if</span><br><span class="line">		&#125; &#x2F;&#x2F; end for</span><br><span class="line">		num +&#x3D; map.get(str[str.length - 1]);</span><br><span class="line">		return num;</span><br><span class="line">	&#125;&#x2F;&#x2F; end romanToInt()</span><br><span class="line">	</span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Conventional thinking.</span><br><span class="line">	 * Scan from head to tail and use Stack to reserve the total.</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	public static int romanToInt_2(String s) &#123;</span><br><span class="line">		char[] str &#x3D; s.toCharArray();</span><br><span class="line">		Stack &lt;Integer&gt;romanStack &#x3D; new Stack&lt;Integer&gt;();</span><br><span class="line">		Map&lt;Character, Integer&gt; map &#x3D; new HashMap&lt;Character, Integer&gt;();</span><br><span class="line">		map.put(&#39;I&#39;, 1);</span><br><span class="line">		map.put(&#39;V&#39;, 5);</span><br><span class="line">		map.put(&#39;X&#39;, 10);</span><br><span class="line">		map.put(&#39;L&#39;, 50);</span><br><span class="line">		map.put(&#39;C&#39;, 100);</span><br><span class="line">		map.put(&#39;D&#39;, 500);</span><br><span class="line">		map.put(&#39;M&#39;, 1000);</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">		int num &#x3D; 0;</span><br><span class="line">		romanStack.push(map.get(str[0]));</span><br><span class="line">		for (int i &#x3D; 1; i &lt; s.length() ; i++) &#123;</span><br><span class="line">			if (map.get(str[i]) &lt;&#x3D; map.get(str[i - 1])) &#123;</span><br><span class="line">				romanStack.push(map.get(str[i]));</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				romanStack.push(map.get(str[i])-romanStack.pop());</span><br><span class="line">			&#125; &#x2F;&#x2F; end if</span><br><span class="line">		&#125; &#x2F;&#x2F; end for</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;Don&#39;t write &quot;for(int I &#x3D;0;I &lt; romanStack. The size ();I++) &quot;, </span><br><span class="line">		&#x2F;&#x2F;because the stack size is fetched every time the loop occurs</span><br><span class="line">		int length &#x3D; romanStack.size();</span><br><span class="line">		for(int i&#x3D;0;i&lt;length;i++) &#123;</span><br><span class="line">			num +&#x3D; romanStack.pop();</span><br><span class="line">		&#125;&#x2F;&#x2F;end for</span><br><span class="line">		return num;</span><br><span class="line">	&#125;&#x2F;&#x2F; end romanToInt()</span><br><span class="line">	</span><br><span class="line">	public static int romanToInt_3(String s) &#123;</span><br><span class="line">		int num &#x3D; 0;</span><br><span class="line">		for(int i&#x3D;0;i&lt;s.length();i++) &#123;</span><br><span class="line">			char c &#x3D; s.charAt(i);</span><br><span class="line">			if(c&#x3D;&#x3D;&#39;I&#39;) &#123;num +&#x3D; 1;&#125;</span><br><span class="line">			if(c&#x3D;&#x3D;&#39;V&#39;) &#123;num +&#x3D; 5;&#125;</span><br><span class="line">			if(c&#x3D;&#x3D;&#39;X&#39;) &#123;num +&#x3D; 10;&#125;</span><br><span class="line">			if(c&#x3D;&#x3D;&#39;L&#39;) &#123;num +&#x3D; 50;&#125;</span><br><span class="line">			if(c&#x3D;&#x3D;&#39;C&#39;) &#123;num +&#x3D; 100;&#125;</span><br><span class="line">			if(c&#x3D;&#x3D;&#39;D&#39;) &#123;num +&#x3D; 500;&#125;</span><br><span class="line">			if(c&#x3D;&#x3D;&#39;M&#39;) &#123;num +&#x3D; 1000;&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;&#x2F;&#x2F;end for</span><br><span class="line">		</span><br><span class="line">		if(s.contains(&quot;IV&quot;)) &#123;num -&#x3D; 2;&#125;</span><br><span class="line">		if(s.contains(&quot;IX&quot;)) &#123;num -&#x3D; 2;&#125;</span><br><span class="line">		if(s.contains(&quot;XL&quot;)) &#123;num -&#x3D; 20;&#125;</span><br><span class="line">		if(s.contains(&quot;XC&quot;)) &#123;num -&#x3D; 20;&#125;</span><br><span class="line">		if(s.contains(&quot;CD&quot;)) &#123;num -&#x3D; 200;&#125;</span><br><span class="line">		if(s.contains(&quot;CM&quot;)) &#123;num -&#x3D; 200;&#125;</span><br><span class="line">		</span><br><span class="line">		return num;</span><br><span class="line">	&#125;&#x2F;&#x2F; end romanToInt()</span><br><span class="line">&#125;&#x2F;&#x2F; end RomanToInteger_13</span><br></pre></td></tr></table></figure></td>
-<td></td>
-</tr>
-<tr>
-<td>—</td>
-<td></td>
-</tr>
-</tbody></table>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/LeetCode-0013-RomanToInteger/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-LeetCode-0009-PalindromeNumber" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/LeetCode-0009-PalindromeNumber/">LeetCode_0009_PalindromeNumber</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/17/LeetCode-0009-PalindromeNumber/" class="archive-article-date">
-  	<time datetime="2020-04-17T04:19:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这道题是关于回文数的，解法有很多，只能说多看别人的解法，然后增长见识吧，我也只能刷刷简单题了，慢慢来吧！</p>
-<h1 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h1><p>判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。</p>
-<p><strong>示例 1:</strong></p>
-<p><strong>输入:</strong> 121</p>
-<p><strong>输出:</strong> true</p>
-<p><strong>示例 2:</strong></p>
-<p><strong>输入:</strong>-121</p>
-<p><strong>输出:</strong> false</p>
-<p><strong>解释:</strong></p>
-<pre><code>- 从左向右读, 为 -121 。 
-
-- 从右向左读, 为 121- 。
-
-- 因此它不是一个回文数。</code></pre><p><strong>示例 3:</strong></p>
-<p><strong>输入:</strong> 10</p>
-<p><strong>输出:</strong> false</p>
-<p><strong>解释:</strong> </p>
-<p>从右向左读, 为 01 。因此它不是一个回文数。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line">package javaLeetCode_primary;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line">import java.util.Stack;</span><br><span class="line"></span><br><span class="line">public class PalindromeNumber_9 &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">		@SuppressWarnings(&quot;resource&quot;)</span><br><span class="line">		Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">		System.out.println(&quot;Please input the integer:&quot;);			</span><br><span class="line">		int x&#x3D;input.nextInt();</span><br><span class="line">		System.out.println(isPalindrome_3(x));</span><br><span class="line">	&#125;&#x2F;&#x2F; end main()</span><br><span class="line"></span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Data is stored on a stack.</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 * Test data:</span><br><span class="line">	 * 121</span><br><span class="line">	 * 1221</span><br><span class="line">	 * -121</span><br><span class="line">	 * 10</span><br><span class="line">	 * 1221</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	public static boolean isPalindrome_1(int x) &#123;</span><br><span class="line">		</span><br><span class="line">		String str &#x3D; Integer.toString(x);</span><br><span class="line">		char[] cha &#x3D; str.toCharArray();</span><br><span class="line">		Stack &lt;Character&gt;stack &#x3D; new Stack&lt;Character&gt;();</span><br><span class="line">		boolean isPalindrome &#x3D; true;</span><br><span class="line">		</span><br><span class="line">		for(int i&#x3D;0;i&lt;str.length()&#x2F;2;i++) &#123;</span><br><span class="line">			stack.push(cha[i]);</span><br><span class="line">		&#125;&#x2F;&#x2F;end for</span><br><span class="line">		</span><br><span class="line">		int temp&#x3D;0;</span><br><span class="line">		if(str.length()%2&#x3D;&#x3D;0) &#123;</span><br><span class="line">			temp&#x3D; str.length()&#x2F;2;			</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			temp &#x3D; str.length()&#x2F;2+1;</span><br><span class="line">		&#125;&#x2F;&#x2F;end if</span><br><span class="line">		</span><br><span class="line">		for(int i&#x3D;temp;i&lt;str.length();i++) &#123;</span><br><span class="line">			</span><br><span class="line">			if(stack.pop()&#x3D;&#x3D;cha[i]) &#123;</span><br><span class="line">				isPalindrome &#x3D; true;</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">				isPalindrome &#x3D; false;</span><br><span class="line">				break;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;&#x2F;&#x2F;end for</span><br><span class="line">		</span><br><span class="line">		return isPalindrome;</span><br><span class="line">	&#125;&#x2F;&#x2F; end isPalindrome()</span><br><span class="line">	</span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Use the Conventional thinking.</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">public static boolean isPalindrome_2(int x) &#123;</span><br><span class="line">		</span><br><span class="line">		String str &#x3D; Integer.toString(x);</span><br><span class="line">		char[] cha &#x3D; str.toCharArray();</span><br><span class="line">		boolean isPalindrome &#x3D; true;</span><br><span class="line">		</span><br><span class="line">		int temp &#x3D; str.length();</span><br><span class="line">		for(int i&#x3D;0;i&lt;temp&#x2F;2;i++) &#123;</span><br><span class="line">			if(cha[i]&#x3D;&#x3D;cha[temp-i-1]) &#123;</span><br><span class="line">				isPalindrome &#x3D; true;</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">				isPalindrome &#x3D; false;</span><br><span class="line">				break;</span><br><span class="line">			&#125;&#x2F;&#x2F;end if</span><br><span class="line">		&#125;&#x2F;&#x2F;end for</span><br><span class="line">		</span><br><span class="line">		return isPalindrome;</span><br><span class="line">	&#125;&#x2F;&#x2F; end isPalindrome()</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * Answer online </span><br><span class="line"> * Use the MathMetical method.</span><br><span class="line"> * *&#x2F;</span><br><span class="line">public static boolean isPalindrome_3(int x) &#123;</span><br><span class="line">	</span><br><span class="line">	boolean isPalindrome &#x3D; false;</span><br><span class="line">	int temp &#x3D; 0;</span><br><span class="line">	</span><br><span class="line">	if(x &lt; 0 || (x % 10 &#x3D;&#x3D; 0 &amp;&amp; x !&#x3D; 0)) &#123;</span><br><span class="line">        return isPalindrome;</span><br><span class="line">    &#125;&#x2F;&#x2F;end if</span><br><span class="line">	</span><br><span class="line">	while(temp&lt;x) &#123;</span><br><span class="line">		temp &#x3D; (temp*10)+ (x%10);</span><br><span class="line">		x &#x2F;&#x3D; 10;</span><br><span class="line">	&#125;&#x2F;&#x2F;end while()</span><br><span class="line">	</span><br><span class="line">	if(temp&#x2F;10&#x3D;&#x3D;x||temp &#x3D;&#x3D; x)</span><br><span class="line">		isPalindrome &#x3D; true;</span><br><span class="line">	</span><br><span class="line">	return isPalindrome;</span><br><span class="line">&#125;&#x2F;&#x2F; end isPalindrome()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>–<del>~</del></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/LeetCode-0009-PalindromeNumber/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-LeetCode-0014-LongestCommonPrefix" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/LeetCode-0014-LongestCommonPrefix/">LeetCode_0014_LongestCommonPrefix</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/17/LeetCode-0014-LongestCommonPrefix/" class="archive-article-date">
-  	<time datetime="2020-04-17T04:18:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这道题是关于求解字符串包含问题的。可以使用String类里面的一些现有的方法去解，也可以手动的去按着正常思路去解就行了。我都能做出来，你肯定也能（嬉皮）<br></p>
-<h1 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h1><p>编写一个函数来查找字符串数组中最长的公共前缀字符串。<br>如果没有公共前缀，返回一个空字符串“”。<br><br><strong><em>Example 1:</em></strong><br><br><strong>Input:</strong>[“flower”,”flow”,”flight”]<br><br><strong>Output:</strong> “fl”<br><br><strong><em>Example 2:</em></strong><br><br><strong>Input:</strong> [“dog”,”racecar”,”car”]<br><br><strong>Output:</strong> “”<br><br><strong>Explanation:</strong> 输入字符串之间没有公共前缀。<br><br><strong>Note:</strong><br><br>所有给定的输入都是小写字母a-z。<br></p>
-<hr>
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><ul>
-<li>首先第一个方法和第二个方法是我自己写的，然后第三和第四方法是网上别人写的</li>
-<li>第一个方法的思路就是<ul>
-<li>1.先找到最短的字符串str</li>
-<li>2.然后利用循环在字符串数组中去匹配每一个字符串元素中是否有str，如果找到都有的话，那么就返回此时匹配的字符串str，如果没有则将str进行从0~str.length()-1取字符串即==str=str.subString(0,str.length()-1)==,此时继续进行如上操作。</li>
-<li>那么循环停止的条件是什么呢，那就是当str都没有长度的时候，即str=””的时候，注意：在<code>str=str.subString(0,str.length()-1)</code>的时候，实际上是生成的新的字符串，然后<code>str=&quot;&quot;</code>是说明，str所指向的内存空间中的值为空，但是是有空间的，注意区别str=null，这个表示str根本就没有指向一个内存空间（我不知道这样的理解是不是对的，但是你可以想象成，前者是指向了一片开辟出的内存空间，但是其中的值是空的，然后后者是没有开辟出空间）。</li>
-</ul>
-</li>
-<li>第二个方法的话<ul>
-<li>1.先找到最短的字符串的长度</li>
-<li>2.利用循环将字符串数组每一个元素从头到尾扫描，然后比对每一个字符，如果相等的话那么就利用str将它们连接起来。</li>
-<li>3.结束条件是达到字符串数组最短元素的长度后就退出。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br></pre></td><td class="code"><pre><span class="line">package javaLeetCode.primary;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * Write a function to find the longest common prefix string amongst an array of strings.</span><br><span class="line"> *	If there is no common prefix, return an empty string &quot;&quot;.</span><br><span class="line"> * *&#x2F;</span><br><span class="line">public class LongestCommonPrefix_14 &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		String[] strs &#x3D; new String[]&#123;&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;&#125;;</span><br><span class="line">		System.out.println(longestCommonPrefix_1(strs));</span><br><span class="line">	&#125;&#x2F;&#x2F;end main()</span><br><span class="line"></span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Make full use of the methods of the String class.&lt;br&gt;</span><br><span class="line">	 * 1. Find the shortest  string.&lt;br&gt;</span><br><span class="line">	 * 2. Compare it to each element of the string array from beginning to end.&lt;br&gt;</span><br><span class="line">	 * 3. If it does not match any of the elements in the string array, it is clipped off the last character and out of the for loop.&lt;br&gt;</span><br><span class="line">	 * 4. When its length is zero, break out of the while loop.</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 * Test Data:</span><br><span class="line">	 * [&quot;dog&quot;,&quot;racecar&quot;,&quot;car&quot;]</span><br><span class="line">	 * [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]</span><br><span class="line">	 * [&quot;ca&quot;,&quot;a&quot;]</span><br><span class="line">	 * [&quot;a&quot;]</span><br><span class="line">	 * [&quot;aca&quot;,&quot;cba&quot;]</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">public static String longestCommonPrefix_1(String[] strs) &#123;</span><br><span class="line">	</span><br><span class="line">	if (strs &#x3D;&#x3D; null || strs.length &#x3D;&#x3D; 0)</span><br><span class="line">        return &quot;&quot;;</span><br><span class="line">	&#x2F;&#x2F; Find the shortest  string.</span><br><span class="line">	String minString &#x3D; strs[0];</span><br><span class="line">	for(int i&#x3D;1;i&lt;strs.length;i++) &#123;</span><br><span class="line">		if(minString.length()&gt;strs[i].length()) &#123;</span><br><span class="line">			minString &#x3D; strs[i];</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			continue;</span><br><span class="line">		&#125;&#x2F;&#x2F;end if</span><br><span class="line">	&#125;&#x2F;&#x2F;end for</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;Find whether  other strings include the minString.</span><br><span class="line">	boolean isInclude &#x3D; true;</span><br><span class="line">		while(minString!&#x3D;null) &#123;</span><br><span class="line">			for(int i&#x3D;0;i&lt;strs.length;i++) &#123;</span><br><span class="line">				if(strs[i].startsWith(minString)) &#123;</span><br><span class="line">					isInclude &#x3D; true;</span><br><span class="line">				&#125;else &#123;</span><br><span class="line">					minString&#x3D;minString.substring(0, minString.length()-1);</span><br><span class="line">					isInclude &#x3D; false;</span><br><span class="line">					break;</span><br><span class="line">				&#125;&#x2F;&#x2F;end if</span><br><span class="line">			&#125;&#x2F;&#x2F;end for</span><br><span class="line">			if(isInclude &#x3D;&#x3D; true) </span><br><span class="line">				break;</span><br><span class="line">			else ;</span><br><span class="line">		&#125;&#x2F;&#x2F;end while</span><br><span class="line">		</span><br><span class="line">	return minString;</span><br><span class="line">        </span><br><span class="line">    &#125;&#x2F;&#x2F;end longestCommonPrefix()</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * Use the simply method.</span><br><span class="line"> * 1. Find the shortest  string.&lt;br&gt;</span><br><span class="line"> * 2. Using two for loops, the outer loop&#39;s control condition is the length of the shortest string, </span><br><span class="line"> * and the memory loop&#39;s control condition is each element of the string array&lt;br&gt;</span><br><span class="line"> * *&#x2F;</span><br><span class="line">public static String longestCommonPrefix_2(String[] strs) &#123;</span><br><span class="line">	</span><br><span class="line">	if (strs &#x3D;&#x3D; null || strs.length &#x3D;&#x3D; 0)</span><br><span class="line">        return &quot;&quot;;</span><br><span class="line">	&#x2F;&#x2F; Find the shortest  string.</span><br><span class="line">	String minString &#x3D; strs[0];</span><br><span class="line">	for(int i&#x3D;1;i&lt;strs.length;i++) &#123;</span><br><span class="line">		if(minString.length()&gt;strs[i].length()) &#123;</span><br><span class="line">			minString &#x3D; strs[i];</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			continue;</span><br><span class="line">		&#125;&#x2F;&#x2F;end if</span><br><span class="line">	&#125;&#x2F;&#x2F;end for</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;Find whether  other strings include the minString.</span><br><span class="line">	boolean isInclude &#x3D; true;</span><br><span class="line">	StringBuilder str &#x3D; new StringBuilder();</span><br><span class="line">	for (int j &#x3D; 0; j &lt; minString.length(); j++) &#123;</span><br><span class="line">		for (int i &#x3D; 0; i &lt; strs.length-1; i++) &#123;</span><br><span class="line">			if (strs[i].charAt(j) &#x3D;&#x3D; strs[i + 1].charAt(j)) &#123;</span><br><span class="line">				isInclude &#x3D; true;</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				isInclude &#x3D; false;</span><br><span class="line">				break;</span><br><span class="line">			&#125;&#x2F;&#x2F;end if</span><br><span class="line">		&#125;&#x2F;&#x2F; end for</span><br><span class="line">		if(isInclude&#x3D;&#x3D;true)&#123;</span><br><span class="line">			str.append(minString.charAt(j));</span><br><span class="line">		&#125;else if(isInclude &#x3D;&#x3D; false&amp;&amp;j&#x3D;&#x3D;0) &#123;</span><br><span class="line">			break;</span><br><span class="line">		&#125;&#x2F;&#x2F;end if</span><br><span class="line">	&#125;&#x2F;&#x2F; end for</span><br><span class="line">	</span><br><span class="line">	return String.valueOf(str);</span><br><span class="line">        </span><br><span class="line">    &#125;&#x2F;&#x2F;end longestCommonPrefix()</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * Answer online.</span><br><span class="line"> * Horizontal scanning</span><br><span class="line"> * *&#x2F;</span><br><span class="line">public String longestCommonPrefix_3(String[] strs) &#123;</span><br><span class="line">    if (strs.length &#x3D;&#x3D; 0) return &quot;&quot;;</span><br><span class="line">    String prefix &#x3D; strs[0];</span><br><span class="line">    for (int i &#x3D; 1; i &lt; strs.length; i++)</span><br><span class="line">        while (strs[i].indexOf(prefix) !&#x3D; 0) &#123;</span><br><span class="line">            prefix &#x3D; prefix.substring(0, prefix.length() - 1);</span><br><span class="line">            if (prefix.isEmpty()) return &quot;&quot;;</span><br><span class="line">        &#125;        </span><br><span class="line">    return prefix;</span><br><span class="line">&#125;&#x2F;&#x2F;end longestCommonPrefix()</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * Answer online.</span><br><span class="line"> * Binary search</span><br><span class="line"> * *&#x2F;</span><br><span class="line">public static String longestCommonPrefix_4(String[] strs) &#123;</span><br><span class="line">    if (strs &#x3D;&#x3D; null || strs.length &#x3D;&#x3D; 0)</span><br><span class="line">        return &quot;&quot;;</span><br><span class="line">    int minLen &#x3D; Integer.MAX_VALUE;</span><br><span class="line">    for (String str : strs)</span><br><span class="line">        minLen &#x3D; Math.min(minLen, str.length());</span><br><span class="line">    int low &#x3D; 1;</span><br><span class="line">    int high &#x3D; minLen;</span><br><span class="line">    while (low &lt;&#x3D; high) &#123;</span><br><span class="line">        int middle &#x3D; (low + high) &#x2F; 2;</span><br><span class="line">        if (isCommonPrefix(strs, middle))</span><br><span class="line">            low &#x3D; middle + 1;</span><br><span class="line">        else</span><br><span class="line">            high &#x3D; middle - 1;</span><br><span class="line">    &#125;</span><br><span class="line">    return strs[0].substring(0, (low + high) &#x2F; 2);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;**aiding method *&#x2F;</span><br><span class="line">private static boolean isCommonPrefix(String[] strs, int len)&#123;</span><br><span class="line">    String str1 &#x3D; strs[0].substring(0,len);</span><br><span class="line">    for (int i &#x3D; 1; i &lt; strs.length; i++)</span><br><span class="line">        if (!strs[i].startsWith(str1))</span><br><span class="line">            return false;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line">&#125;&#x2F;&#x2F;end LongestCommonPrefix_14</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p>嗯，别人的思路，你们看下吧，因为我其实很不习惯去阅读别人的代码，但是这却是很重要的一个入门的技巧和方法。留给你们去分析吧！</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/LeetCode-0014-LongestCommonPrefix/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-LeetCode-0007-ReverseInteger" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/LeetCode-0007-ReverseInteger/">LeetCode_0007_ReverseInteger</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/17/LeetCode-0007-ReverseInteger/" class="archive-article-date">
-  	<time datetime="2020-04-17T04:17:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>嗯，今天看了下另一道简单的题，其实吧，我觉得上面说简单的，其实都不简单，哎，看别人写得多么简洁！</p>
-<ul>
-<li>第一个方法是我写的</li>
-<li>第二个方法是别人写的。<h1 id="原题："><a href="#原题：" class="headerlink" title="原题："></a>原题：</h1></li>
-</ul>
-<hr>
-<p>给定一个 32 位有符号整数，将整数中的数字进行反转。  </p>
-<p>示例 1:  </p>
-<p>输入: 123  </p>
-<p>输出: 321 </p>
-<p> 示例 2:</p>
-<p>输入: -123</p>
-<p>输出: -321<br>示例 3:</p>
-<p>输入: 120</p>
-<p>输出: 21<br>注意:</p>
-<ul>
-<li>假设我们的环境只能存储 32 位有符号整数，其数值范围是 [−231,  231 − 1]。根据这个假设，如果反转后的整数溢出，则返回 0。</li>
-</ul>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line">package javaLeetCode_primary;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * Given a 32-bit signed integer, reverse digits of an integer. &lt;b&gt;Example 1:</span><br><span class="line"> * &lt;li&gt;Input: 123</span><br><span class="line"> * &lt;li&gt;Output: 321 Example 2:</span><br><span class="line"> * &lt;li&gt;Input: -123</span><br><span class="line"> * &lt;li&gt;Output: -32  Example 3:</span><br><span class="line"> * &lt;li&gt;Input: 120</span><br><span class="line"> * &lt;li&gt;Output: 21</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;*</span><br><span class="line"> * Test data: </span><br><span class="line"> *1534236469-&gt;0</span><br><span class="line"> *999999991-&gt;199999999</span><br><span class="line"> *2147483647-&gt;0</span><br><span class="line"> *2147483642 -&gt;0</span><br><span class="line"> *1000000000-&gt;1</span><br><span class="line"> *-2147483648-&gt;0</span><br><span class="line"> *-214748364-&gt;-463847412</span><br><span class="line"> *901000-&gt; 109</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class ReverseInteger_7 &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">		@SuppressWarnings(&quot;resource&quot;)</span><br><span class="line">		Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">		System.out.println(&quot;Please input a integer:&quot;);</span><br><span class="line">		int x &#x3D; input.nextInt();</span><br><span class="line">		System.out.println(reverse_2(x));</span><br><span class="line">	&#125;&#x2F;&#x2F; end main</span><br><span class="line"></span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Use simple  methods to solve problems.</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	public static int reverse_1(int x) &#123;</span><br><span class="line"></span><br><span class="line">		int[] arr &#x3D; new int[10];&#x2F;&#x2F; Stores the number of bits of a parameter</span><br><span class="line">		int countDigit &#x3D; 0;&#x2F;&#x2F; Calculate the length of the number</span><br><span class="line">		int cf &#x3D; 0;&#x2F;&#x2F; Leave the parameter state</span><br><span class="line">		int i &#x3D; 0;</span><br><span class="line">		&#x2F;&#x2F; The element that initializes array is 0.</span><br><span class="line">		for (i &#x3D; 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">			arr[i] &#x3D; 0;</span><br><span class="line">		&#125; &#x2F;&#x2F; end for</span><br><span class="line">		</span><br><span class="line">		if (x &lt; 0) &#123;</span><br><span class="line">			cf &#x3D; 1;</span><br><span class="line">			x *&#x3D; -1;</span><br><span class="line">		&#125; &#x2F;&#x2F; end if</span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F;Get the the digit of parameter and reverse&#x2F;invert  it.</span><br><span class="line">		i &#x3D; 0;</span><br><span class="line">		while (x &gt; 0) &#123;</span><br><span class="line">			countDigit++;</span><br><span class="line">			arr[i] &#x3D; x % 10;</span><br><span class="line">			x &#x2F;&#x3D; 10;</span><br><span class="line">			i++;</span><br><span class="line">		&#125; &#x2F;&#x2F; end while</span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F; Print the integer</span><br><span class="line">		i &#x3D; 0;</span><br><span class="line">		long  y &#x3D; 0;</span><br><span class="line">		for (; i &lt; countDigit; i++) &#123;</span><br><span class="line">			y &#x3D; y * 10 + arr[i];</span><br><span class="line">		&#125; &#x2F;&#x2F; end for</span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F;Judge whether  the integer is valid.</span><br><span class="line">		if(y&gt;2147483647) &#123;</span><br><span class="line">			x &#x3D; 0;</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			x &#x3D; (int)y;</span><br><span class="line">		&#125;&#x2F;&#x2F;end if</span><br><span class="line">		</span><br><span class="line">		if (cf &#x3D;&#x3D; 1) &#123;</span><br><span class="line">			x *&#x3D; -1;</span><br><span class="line">		&#125; &#x2F;&#x2F; end if</span><br><span class="line"></span><br><span class="line">		return x;</span><br><span class="line"></span><br><span class="line">	&#125;&#x2F;&#x2F; end reverse()</span><br><span class="line">	</span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Answer online</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	public static int reverse_2(int x) &#123;</span><br><span class="line">        int rev &#x3D; 0;</span><br><span class="line">        while (x !&#x3D; 0) &#123;</span><br><span class="line">            int pop &#x3D; x % 10;</span><br><span class="line">            x &#x2F;&#x3D; 10;</span><br><span class="line">            if (rev &gt; Integer.MAX_VALUE&#x2F;10 || (rev &#x3D;&#x3D; Integer.MAX_VALUE &#x2F; 10 &amp;&amp; pop &gt; 7)) return 0;</span><br><span class="line">            if (rev &lt; Integer.MIN_VALUE&#x2F;10 || (rev &#x3D;&#x3D; Integer.MIN_VALUE &#x2F; 10 &amp;&amp; pop &lt; -8)) return 0;</span><br><span class="line">            rev &#x3D; rev * 10 + pop;</span><br><span class="line">        &#125;</span><br><span class="line">        return rev;</span><br><span class="line">    &#125;&#x2F;&#x2F;end reverse()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>说实话，我看不懂别人写的代码。哎~ qwq。</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/LeetCode-0007-ReverseInteger/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/17/Linux%E5%AE%89%E8%A3%85xampp%E6%9D%A5%E6%90%AD%E5%BB%BAWordPress%E7%BD%91%E7%AB%99-%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B/">展开全文 >></a>
         </p>
       
 
@@ -1192,7 +307,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1204,7 +319,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 John Doe
+    		&copy; 2020 Summer Lv
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
