@@ -152,54 +152,158 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-centos-7-x-版本安装-docker-并在其中安装-mysql-和-redis-镜像" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-阿里云主机安装-tomcat" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/centos-7-x-%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85-docker-%E5%B9%B6%E5%9C%A8%E5%85%B6%E4%B8%AD%E5%AE%89%E8%A3%85-mysql-%E5%92%8C-redis-%E9%95%9C%E5%83%8F/">centos 7.x 版本安装 docker 并在其中安装 mysql 和 redis 镜像</a>
+      <a class="article-title" href="/2020/04/17/%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85-tomcat/">阿里云主机安装 tomcat</a>
     </h1>
   
 
         
-        <a href="/2020/04/17/centos-7-x-%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85-docker-%E5%B9%B6%E5%9C%A8%E5%85%B6%E4%B8%AD%E5%AE%89%E8%A3%85-mysql-%E5%92%8C-redis-%E9%95%9C%E5%83%8F/" class="archive-article-date">
-  	<time datetime="2020-04-17T04:28:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+        <a href="/2020/04/17/%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85-tomcat/" class="archive-article-date">
+  	<time datetime="2020-04-17T04:32:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我主要是看了这篇博文：</p>
-<p><a href="https://yq.aliyun.com/articles/336442" target="_blank" rel="noopener">阿里云CentOS 7上安装配置Docker</a></p>
-<p><a href="https://www.jianshu.com/p/5fbb02d886d4" target="_blank" rel="noopener">使用docker安装mysql和redis</a></p>
-<p><a href="https://www.bilibili.com/video/BV1MJ411e7y7?p=9" target="_blank" rel="noopener">springboot 项目学习</a></p>
-<p><a href="https://blog.csdn.net/u010246789/article/details/53958662" target="_blank" rel="noopener">docker 一些命令</a></p>
-<p><strong>如果有不懂的请转到列出的博文</strong></p>
-<h1 id="检查-centos-内核版本"><a href="#检查-centos-内核版本" class="headerlink" title="检查 centos 内核版本"></a>检查 centos 内核版本</h1><p>这一步检查 centos 内核版本主要是 </p>
-<blockquote>
-<p>RedHat/CentOS必须要6.6版本以上，或者7.x才能安装docker，建议在RedHat/CentOS 7上使用docker，因为RedHat/CentOS 7的内核升级到了kernel 3.10，对lxc容器支持更好。</p>
-</blockquote>
-<p>里面的一些步骤我没有完全照做，主要用了以下命令：<br>检查 centos 内核版本：<code>cat /proc/version</code></p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410175036.png" alt=""></p>
-<h1 id="安装-docker"><a href="#安装-docker" class="headerlink" title="安装 docker"></a>安装 docker</h1><p>命令：<code>yum  install docker -y</code></p>
-<p>由于我已经安装了，所以就不再执行下命令了</p>
-<p>安装完后可以查看 docker 的版本： <code>docker -v</code><br><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410175644.png" alt=""></p>
-<p>docker 一些命令：<br><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410185252.png" alt=""></p>
-<h1 id="安装并启动-mysql"><a href="#安装并启动-mysql" class="headerlink" title="安装并启动 mysql"></a>安装并启动 mysql</h1><p>可以使用 <code>docker search mysql</code><br>查看 mysql 目前有哪些版本可以安装<br><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410175938.png" alt=""></p>
-<p>这里默认安装最新版本镜像：<code>docker pull mysql</code></p>
-<p>查看是否安装成功：<code>docker images</code><br><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410180249.png" alt=""></p>
-<p>安装成功后启动 mysql 容器（MySQL 镜像实例）：<code>docker run --name 镜像名 -p 外部访问端口:docker内mysql容器运行端口 -e MYSQL_ROOT_PASSWORD=mysql123 -d 镜像名:版本号</code></p>
-<p><a href="https://blog.csdn.net/qq_33997121/article/details/83689068" target="_blank" rel="noopener">关于这里启动参数没明白的可以看这篇博文</a></p>
-<p>如果还不明白的可以自己搜索下也可以参考 本文中前言中的第三条链接，是视频讲解</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410181258.png" alt=""></p>
-<p>对了，因为是使用的远程服务器，所以还得去远程服务器配置安全组规则开启外部的端口的访问权限，比如开启 5555 端口啥的，这样才能通过服务器公网 ip 地址+ 端口 去访问到 docker 容器中的 mysql 服务</p>
-<h1 id="安装并启动-redis"><a href="#安装并启动-redis" class="headerlink" title="安装并启动 redis"></a>安装并启动 redis</h1><p>使用下载命令：<code>docker pull redis</code><br>使用启动命令：<code>docker run --name redis -p 外部访问端口:6379 -v docker/redis/data:/data -d redis redis-server --appendonly yes</code></p>
-<p>同样记得开启外部访问端口的安全组规则配置</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410183837.png" alt=""></p>
-
+        <h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><ol>
+<li>SmarTTY：用于远程连接 阿里云主机，注意通过分配的公网 ip 进行连接，便于远程操作</li>
+<li>FileZilla：用于往 阿里云主机 传输文件的工具，很方便，可以让你在 Windows 系统上下载完文件后，然后拖动到 云主机 的文件夹中</li>
+</ol>
+<h1 id="购买服务器"><a href="#购买服务器" class="headerlink" title="购买服务器"></a>购买服务器</h1><p>可以按需购买阿里云的学生服务器</p>
+<h1 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h1><p>通过 FileZilla 上传：到 /home/pan 文件夹下<br>命令使用：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cd /home</td>
+<td>切换到跟目录的 home 目录下</td>
+</tr>
+<tr>
+<td>mkdir pan</td>
+<td>创建一个 文件夹 pan</td>
+</tr>
+<tr>
+<td>然后通过 FileZilla 选中 Windows 上的文件，然后上传到 pan 目录下</td>
+<td></td>
+</tr>
+<tr>
+<td>apache-tomcat-8.5.51.tar.gz</td>
+<td></td>
+</tr>
+<tr>
+<td>jdk-11.0.6_linux-x64_bin.tar.gz</td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="配置阿里云的安全组规则"><a href="#配置阿里云的安全组规则" class="headerlink" title="配置阿里云的安全组规则"></a>配置阿里云的安全组规则</h1><p>添加 80 端口访问</p>
+<h1 id="解压上传的文件"><a href="#解压上传的文件" class="headerlink" title="解压上传的文件"></a>解压上传的文件</h1><p>命令使用：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>tar -zxvf jdk-11.0.6_linux-x64_bin.tar.gz</td>
+<td>解压 jdk 压缩包</td>
+</tr>
+<tr>
+<td>ls</td>
+<td>列出当前文件夹里面的文件</td>
+</tr>
+<tr>
+<td>mv <strong>jdk-11.0.6/</strong> /usr/local</td>
+<td>将jdk-11.0.6_linux-x64_bin.tar.gz 压缩包移动到 /usr/local 目录下 【注意】执行命令后没反应，没反应就是最好的结果 可以通过 ls 命令查看当前文件夹有多少文件，发现 没有 了 jdk-11.0.6 说明已经移动了</td>
+</tr>
+<tr>
+<td>rm jdk-11.0.6_linux-x64_bin.tar.gz</td>
+<td>删除当前目录下的 jdk</td>
+</tr>
+<tr>
+<td>tar -zxvf apache-tomcat-8.5.51.tar.gz</td>
+<td>解压 tomcat 压缩包</td>
+</tr>
+<tr>
+<td>rm apache-tomcat-8.5.51.tar.gz</td>
+<td>删除它</td>
+</tr>
+<tr>
+<td>mv apache-tomcat-8.5.51/ tomcat</td>
+<td>重命名为 tomcat</td>
+</tr>
+</tbody></table>
+<h1 id="配置-java-环境变量"><a href="#配置-java-环境变量" class="headerlink" title="配置 java 环境变量"></a>配置 java 环境变量</h1><p>命令使用：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>vim /etc/profile</td>
+<td>使用 vim 编辑 /etc/profile 文件 进入文件后按住 j 光标移动到最后一行，然后使用 shift+a 表示在本行最后一行编辑 然后敲一个 enter 键，在最后一行下一行 编辑 配置如下：</td>
+</tr>
+</tbody></table>
+<p>export JAVA_HOME=/usr/local/jdk-11.0.6<br>export PATH=$JAVA_HOME/bin:$PATH<br>export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</p>
+<p>【注】/usr/local/ 表示你的 jdk 解压的路径，jdk-11.0.6 表示 jdk 解压的名字 请根据实际情况填写</p>
+<p>命令使用：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>然后添加好后使用命令 :wq 来保存并且退出</td>
+<td>保存文件</td>
+</tr>
+<tr>
+<td>这时候重启主机 然后 /etc/profile 长期起作用</td>
+<td>重启主机使 /etc/profile 长期有效</td>
+</tr>
+<tr>
+<td>重启完成后 java -version</td>
+<td>如果有打印内容说明 java 环境变量配置成功</td>
+</tr>
+<tr>
+<td>cd /home/pan/tomcat/conf/</td>
+<td>进入 conf/ 目录下编辑 server.xml 文件</td>
+</tr>
+<tr>
+<td>通过 /Connector 找到 &lt;Connector port=”8080” 字样</td>
+<td>输入 i 命令然后修改 port 值为 80 然后 按电脑上 esc 键后 输入 :wq 保存退出</td>
+</tr>
+<tr>
+<td>cd ..</td>
+<td>返回上级目录</td>
+</tr>
+<tr>
+<td>cd bin/</td>
+<td>进入 bin 目录下</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic.downk.cc/item/5e741af5e83c3a1e3aff66d8.png" alt=""></p>
+<p>shutdown.sh：tomcat 的关闭命令<br>startup.sh：tomcat 的启动命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;startup.sh</span><br></pre></td></tr></table></figure>
+<p>启动 tomcat<br>Linux 中运行一个可执行文件使用实心点  <strong>.</strong>   反斜杠 <strong>/</strong> 代表当前目录</p>
+<p><img src="https://pic.downk.cc/item/5e741af5e83c3a1e3aff66d4.png" alt=""></p>
+<p>然后在浏览器地址栏输入你的 云主机 的公网 ip 回车后进行访问，如果可以看到以下画面<br><img src="https://pic.downk.cc/item/5e741af5e83c3a1e3aff66d6.png" alt=""><br>说明 服务器 那些配置成功！</p>
+<h1 id="购买域名并设置域名解析"><a href="#购买域名并设置域名解析" class="headerlink" title="购买域名并设置域名解析"></a>购买域名并设置域名解析</h1>
       
 
       
@@ -212,7 +316,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">LinuxEnvironmentSetup</a>
         		</li>
       		
 		</ul>
@@ -222,7 +326,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/centos-7-x-%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85-docker-%E5%B9%B6%E5%9C%A8%E5%85%B6%E4%B8%AD%E5%AE%89%E8%A3%85-mysql-%E5%92%8C-redis-%E9%95%9C%E5%83%8F/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/17/%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85-tomcat/">展开全文 >></a>
         </p>
       
 
@@ -254,7 +358,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/6/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/8/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/6/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><a class="extend next" rel="next" href="/page/8/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -402,6 +506,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">LinuxEnvironmentSetup</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
             
             <div class="clearfix"></div>

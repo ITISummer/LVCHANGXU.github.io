@@ -152,42 +152,37 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-LeetCode-0048-RotateImage" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-spring-boot-整合-redis-实现分页查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/LeetCode-0048-RotateImage/">LeetCode_0048_RotateImage</a>
+      <a class="article-title" href="/2020/04/17/spring-boot-%E6%95%B4%E5%90%88-redis-%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">spring boot 整合 redis 实现分页查询</a>
     </h1>
   
 
         
-        <a href="/2020/04/17/LeetCode-0048-RotateImage/" class="archive-article-date">
-  	<time datetime="2020-04-17T04:27:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+        <a href="/2020/04/17/spring-boot-%E6%95%B4%E5%90%88-redis-%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/" class="archive-article-date">
+  	<time datetime="2020-04-17T04:30:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
-<p>在计算机图像处理里，旋转图片是很常见的，由于图片的本质是二维数组，所以也就变成了对数组的操作处理，翻转的本质就是某个位置上数移动到另一个位置上</p>
-</blockquote>
-<ul>
-<li><a href="https://www.cnblogs.com/grandyang/p/4389572.html" target="_blank" rel="noopener">Grandyang</a>就是这个博主的，有兴趣可以看下。<br><br>上面那段是引用，我看了下别人写的博客，然后发现这个解释还可以，然后就引用下咯！<br>,说下我的思路吧，我是观察出，顺时针旋转90度的话，是可以先调换以==正对角线==为对称轴的元素，然后再调换每一行中以==行中点==元素为对称轴的元素，最后就是顺时针的结果了，但是这样运行出来的效率很低，所以我想着找一下有没有更优化和更直接的方法，所以就上网查了下。嗯，所以在这个博客当中找到了他的第一种思路便是我想要的，具体思路可以移步去这个博主的博客中。</li>
-</ul>
-<h1 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h1><p>你有一个n x n二维矩阵表示一个图像。<br>将图像旋转90度(顺时针方向)。<br>注意:<br>你必须原地旋转图像，这意味着你必须直接修改输入2D矩阵。不要分配另一个2D矩阵，做旋转。<br></p>
-<p><strong>Example 1:</strong><br></p>
-<blockquote>
-<p>Given input matrix = <br><br>[<br><br>  [1,2,3],<br><br>  [4,5,6],<br><br>  [7,8,9]<br><br>],<br><br>rotate the input matrix in-place such that it<br> becomes:<br><br>[<br>  [7,4,1],<br><br>  [8,5,2],<br><br>  [9,6,3]<br><br>]<br></p>
-</blockquote>
-<p><strong>Example 2:</strong><br></p>
-<blockquote>
-<p>Given input matrix =<br><br>[<br><br>  [ 5, 1, 9,11],<br><br>  [ 2, 4, 8,10],<br><br>  [13, 3, 6, 7],<br><br>  [15,14,12,16]<br><br>], <br><br>rotate the input matrix in-place such that it<br> becomes:<br><br>[<br><br>  [15,13, 2, 5],<br><br>  [14, 3, 4, 1],<br><br>  [12, 6, 8, 9],<br><br>  [16, 7,10,11]<br><br>]<br></p>
-</blockquote>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">package javaLeetCode.medium;</span><br><span class="line"></span><br><span class="line">public class RotateImage_48 &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		int[][] matrix &#x3D; &#123; &#123;5, 1, 9,11&#125;, &#123; 2, 4, 8,10&#125;, &#123;13, 3, 6, 7&#125;,&#123;15,14,12,16&#125; &#125;;</span><br><span class="line">		rotate_2(matrix);</span><br><span class="line">	&#125;&#x2F;&#x2F; end main()</span><br><span class="line"></span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Conventional idea.&lt;br&gt;</span><br><span class="line">	 * 1. It&#39;s rotating diagonally&lt;br&gt;</span><br><span class="line">	 * 2. 2. Rotating column.&lt;br&gt;</span><br><span class="line">	 * 3. Print the array of matrix.&lt;br&gt;</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 * Test Data: Example 1: Given input matrix &#x3D; &#123; &#123;1,2,3&#125;, &#123;4,5,6&#125;, &#123;7,8,9&#125; &#125;,</span><br><span class="line">	 * rotate the input matrix in-place such that it becomes: &#123; &#123;7,4,1&#125;,&#123;8,5,2&#125;,&#123;9,6,3&#125; &#125;</span><br><span class="line">	 * </span><br><span class="line">	 * Example 2:</span><br><span class="line">	 * Given input matrix &#x3D; &#123; &#123;5, 1, 9,11&#125;, &#123; 2, 4, 8,10&#125;, &#123;13, 3, 6, 7&#125;,&#123;15,14,12,16&#125; &#125;,</span><br><span class="line">	 * rotate the input matrix in-place such that it becomes: &#123; &#123;15,13, 2, 5&#125;, &#123;14,3, 4, 1&#125;, &#123;12, 6, 8, 9&#125;, &#123;16, 7,10,11&#125; &#125;</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	public static void rotate_1(int[][] matrix) &#123;</span><br><span class="line">		if(matrix&#x3D;&#x3D;null) &#123;</span><br><span class="line">			return;</span><br><span class="line">		&#125;&#x2F;&#x2F;end for</span><br><span class="line">&#x2F;&#x2F;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">		&#x2F;&#x2F; 1. It&#39;s rotating diagonally</span><br><span class="line">		for (int i &#x3D; 0; i &lt; matrix.length; i++) &#123;</span><br><span class="line">			for (int j &#x3D; 0; j &lt; matrix[i].length; j++) &#123;</span><br><span class="line">				if (i &lt; j) &#123;</span><br><span class="line">					matrix[i][j] &#x3D; matrix[i][j] ^ matrix[j][i];</span><br><span class="line">					matrix[j][i] &#x3D; matrix[i][j] ^ matrix[j][i];</span><br><span class="line">					matrix[i][j] &#x3D; matrix[i][j] ^ matrix[j][i];</span><br><span class="line">				&#125; else &#123;</span><br><span class="line">					continue;</span><br><span class="line">				&#125; &#x2F;&#x2F; end if</span><br><span class="line">			&#125; &#x2F;&#x2F; end for</span><br><span class="line">		&#125; &#x2F;&#x2F; end for</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;2. Rotating column.</span><br><span class="line">		for(int i&#x3D;0;i&lt;matrix.length;i++) &#123;</span><br><span class="line">			int length &#x3D; matrix[i].length;</span><br><span class="line">			for(int j&#x3D;0;j&lt;length&#x2F;2;j++) &#123;</span><br><span class="line">				matrix[i][j] &#x3D; matrix[i][j] ^  matrix[i][length-j-1] ;</span><br><span class="line">				matrix[i][length-j-1] &#x3D; matrix[i][j] ^  matrix[i][length-j-1] ;</span><br><span class="line">				matrix[i][j] &#x3D; matrix[i][j] ^  matrix[i][length-j-1] ;</span><br><span class="line">			&#125;&#x2F;&#x2F;end for</span><br><span class="line">		&#125;&#x2F;&#x2F;end for</span><br><span class="line">&#x2F;&#x2F;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">		&#x2F;&#x2F;3. Print the array of matrix.</span><br><span class="line">		for (int x[] : matrix) &#123;</span><br><span class="line">			for (int y : x) &#123;</span><br><span class="line">				System.out.print(y + &quot; &quot;);</span><br><span class="line">			&#125; &#x2F;&#x2F; end for</span><br><span class="line">			System.out.println();</span><br><span class="line">		&#125; &#x2F;&#x2F; end for</span><br><span class="line">	&#125;&#x2F;&#x2F; end rotate()</span><br><span class="line">	</span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * </span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	public static void rotate_2(int[][] matrix) &#123;</span><br><span class="line">		if(matrix&#x3D;&#x3D;null) &#123;</span><br><span class="line">			return;</span><br><span class="line">		&#125;&#x2F;&#x2F;end for</span><br><span class="line">&#x2F;&#x2F;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">		int n &#x3D; matrix.length;</span><br><span class="line">        for (int i &#x3D; 0; i &lt; n &#x2F; 2; ++i) &#123;</span><br><span class="line">            for (int j &#x3D; i; j &lt; n - 1 - i; ++j) &#123;</span><br><span class="line">                int tmp &#x3D; matrix[i][j];</span><br><span class="line">                matrix[i][j] &#x3D; matrix[n - 1 - j][i];</span><br><span class="line">                matrix[n - 1 - j][i] &#x3D; matrix[n - 1 - i][n - 1 - j];</span><br><span class="line">                matrix[n - 1 - i][n - 1 - j] &#x3D; matrix[j][n - 1 - i];</span><br><span class="line">                matrix[j][n - 1 - i] &#x3D; tmp;</span><br><span class="line">            &#125;&#x2F;&#x2F;end for</span><br><span class="line">        &#125;&#x2F;&#x2F;end for</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">		&#x2F;&#x2F;Print the array of matrix.</span><br><span class="line">		for (int x[] : matrix) &#123;</span><br><span class="line">			for (int y : x) &#123;</span><br><span class="line">				System.out.print(y + &quot; &quot;);</span><br><span class="line">			&#125; &#x2F;&#x2F; end for</span><br><span class="line">			System.out.println();</span><br><span class="line">		&#125; &#x2F;&#x2F; end for</span><br><span class="line">	&#125;&#x2F;&#x2F; end rotate()</span><br><span class="line">&#125;&#x2F;&#x2F; end RotateImage_48</span><br></pre></td></tr></table></figure>
+        <h1 id="需求："><a href="#需求：" class="headerlink" title="需求："></a>需求：</h1><p>有 视频 图片 文档 这样三个分类<br>然后每个分类下都有许多对应的文件，我现在需要在每个分类下进行分页查询，比如当我点击 视频 分类的时候就会从数据库中查询到所有带有 视频 分类名的所有文件，然后可以在这些文件基础上进行 分页查询<br>但是这样有一个问题，就是容易对数据库进行频繁的查询操作，所以我就想在这两层之间加一个 redis 来做缓存，然后我就是想的，当用户点击 视频 卡片的时候，如果 redis 中有相应的数据的话，那么我就直接从 redis 缓存中获取而不用再去向数据库中查询，但是这样我遇到了几个问题：</p>
+<h1 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h1><ol>
+<li><p>选用 redis 哪种数据结构来存储比较合适，因为涉及到分页查询，所以就有两种数据结构 List 和 ZSet 数据结构，我参考的这篇文章 <a href="https://my.oschina.net/1107156537/blog/1617252" target="_blank" rel="noopener">基于 redis 做缓存分页</a> 中选用了 redis 中的 ZSet 数据结构</p>
+</li>
+<li><p>选定好数据结构后，又有一个新的问题，那就是在进行键值对存储的时候，redis 中好像都是使用的 add(Object key,Object value)这样来存储一个键值对，我是想的能不能用一个键(key) 来对应一个对象集合，因为我在使用分页查询的时候，前期我是使用的 com.github.pagehelper 这个 jar 包 里面的方法</p>
+<p> <img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200328145928.png" alt=""> </p>
+<p> 将全部的查询结果封装到 PageInfo<T> 中后，前端就可以根据传递相关的参数就可以进行分页查询了，然后我后面就是想着能不能往 redis 数据库中存入这样的一个 add(“video”,PageInfo<T>) 键值对，但是我看了下提供的方法：</p>
+<p> <img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200328150734.png" alt=""></p>
+<p> 只有图中红色框中的两个，第一个可以存入一个 Set 集合，但是我又不知道如何将 PageInfo<T> 给转换成 TypeTuple 类型的，所以我就放弃这个方法了<br> 第二个方法就是简单的 key-value 的，这样存储的话，我是这样想的，数据库中查询结果返回 List 后，然后通过遍历其中的元素（对象），依次将其中的元素（对象）给 转换成 json 字符串后存入 redis 中，然后如果前端发来分页查询请求的话，那么我就从 redis 中获取到指定范围的数据后，然后将 json 字符串再转换为对象后再封装进 PageInfo<T> 里面，但是我不清楚这样的可行性有多高？</p>
+</li>
+</ol>
 
       
 
@@ -201,7 +196,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">javaweb</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
         		</li>
       		
 		</ul>
@@ -211,7 +214,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/LeetCode-0048-RotateImage/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/17/spring-boot-%E6%95%B4%E5%90%88-redis-%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">展开全文 >></a>
         </p>
       
 
@@ -243,7 +246,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/9/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><a class="extend next" rel="next" href="/page/9/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -391,6 +394,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">LinuxEnvironmentSetup</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
             
             <div class="clearfix"></div>

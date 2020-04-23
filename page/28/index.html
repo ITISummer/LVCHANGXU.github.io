@@ -152,38 +152,174 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-关于-模运算-出现的一些问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-关于-jdk-BigInteger-类的基本使用的梳理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/%E5%85%B3%E4%BA%8E-%E6%A8%A1%E8%BF%90%E7%AE%97-%E5%87%BA%E7%8E%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">关于 模运算(%) 出现的一些问题</a>
+      <a class="article-title" href="/2020/04/17/%E5%85%B3%E4%BA%8E-jdk-BigInteger-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/">关于 jdk-BigInteger 类的基本使用的梳理</a>
     </h1>
   
 
         
-        <a href="/2020/04/17/%E5%85%B3%E4%BA%8E-%E6%A8%A1%E8%BF%90%E7%AE%97-%E5%87%BA%E7%8E%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-04-17T04:00:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+        <a href="/2020/04/17/%E5%85%B3%E4%BA%8E-jdk-BigInteger-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/" class="archive-article-date">
+  	<time datetime="2020-04-17T04:05:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h1><p>今天在做一道算法题的时候遇到了一个问题：<br>在进行模运算的时候，我把<br>(a+b) % n 理所当然的与 (a%n) + (b%n) 做了相等，在一些情况下它们确实是可以相等的，就像 乘法运算 的交换法则一样吧，但是当我在做这道题的时候，遇到了问题：</p>
-<h1 id="算法题："><a href="#算法题：" class="headerlink" title="算法题："></a>算法题：</h1><p>问题描述<br>Fibonacci数列的递推公式为：Fn=Fn-1+Fn-2，其中F1=F2=1。当n比较大时，Fn也非常大，现在我们想知道，Fn除以10007的余数是多少。</p>
-<p>输入格式<br>输入包含一个整数n。</p>
-<p>输出格式<br>输出一行，包含一个整数，表示Fn除以10007的余数。</p>
-<p>样例输入<br>10<br>样例输出<br>55<br>样例输入<br>22<br>样例输出<br>7704<br>数据规模与约定<br>1 &lt;= n &lt;= 1,000,000。</p>
-<h1 id="我的解法："><a href="#我的解法：" class="headerlink" title="我的解法："></a>我的解法：</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Fibonacci</span>数列 </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">int</span> n = in.nextInt();</span><br><span class="line">        System.out.println(recurrence(n));</span><br><span class="line">        in.close();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * recursion</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> n</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">recursion</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt;= <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (recursion(n-<span class="number">1</span>)+recursion(n-<span class="number">2</span>))%<span class="number">10007</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * right answer</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> n</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">recurrence</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> f1 = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> f2 = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> temp = f1;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n - <span class="number">2</span>; i++) &#123;</span><br><span class="line"><span class="comment">//            f1 %= 10007;</span></span><br><span class="line"><span class="comment">//            f2 %= 10007;</span></span><br><span class="line">            temp = (f1 + f2)%<span class="number">10007</span>;</span><br><span class="line">            f1 = f2;</span><br><span class="line">            f2 = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * has a problem</span></span><br><span class="line"><span class="comment">     * can not get a correct result</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> n</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Deprecated</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">recurrenceHasProblem</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> f1 = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> f2 = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> temp = f1;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n - <span class="number">2</span>; i++) &#123;</span><br><span class="line">            f1 %= <span class="number">10007</span>;</span><br><span class="line">            f2 %= <span class="number">10007</span>;</span><br><span class="line">            temp = f1 + f2;</span><br><span class="line">            f1 = f2;</span><br><span class="line">            f2 = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * the solution below my question "modular arithmetic problems" on Stackoverflow.</span></span><br><span class="line"><span class="comment">     * https://stackoverflow.com/questions/61228886/modular-arithmetic-problems/61229351#61229351</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> n</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> mod</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">fibMod</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> mod)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt; <span class="number">0</span> || mod &lt; <span class="number">2</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException();</span><br><span class="line">        <span class="keyword">if</span> (n &lt;= <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> n;</span><br><span class="line">        <span class="keyword">int</span> prev = <span class="number">1</span>, fib = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">3</span>; i &lt;= n; i++)</span><br><span class="line">            fib = (prev + (prev = fib)) % mod;</span><br><span class="line">        <span class="keyword">return</span> fib;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="BigInteger-类的定义："><a href="#BigInteger-类的定义：" class="headerlink" title="BigInteger 类的定义："></a>BigInteger 类的定义：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java.math public class BigInteger</span><br><span class="line">extends Number</span><br><span class="line">implements Comparable&lt;BigInteger&gt;</span><br></pre></td></tr></table></figure>
 
-<h1 id="Stackoverflow-上的回答："><a href="#Stackoverflow-上的回答：" class="headerlink" title="Stackoverflow 上的回答："></a>Stackoverflow 上的回答：</h1><p><a href="https://stackoverflow.com/questions/61228886/modular-arithmetic-problems/61229351#61229351" target="_blank" rel="noopener">Stackoverflow 对这道题的回答</a></p>
-<p><a href="https://en.wikipedia.org/wiki/Modulo_operation#Properties_%28identities%29" target="_blank" rel="noopener">Wikipedia 上的解释</a></p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200415215334.png" alt=""></p>
-<p>其中有个回答就是说：<br>(a + b) % n = ((a % n) + (b % n)) % n 而不是简单的 (a+b) % c = (a%n) + (b%n).<br>这也许是一个数学问题吧？我还是不懂，哈哈</p>
-<p>说实话，我看到 Wikipedia 上面的内容太多了，我也没仔细看，明天再仔细看下吧！</p>
+<p><a href="https://en.wikipedia.org/wiki/Two%27s_complement" target="_blank" rel="noopener">关于 Two’s complement( 二进制补码 ) 的解释</a></p>
+<h1 id="BigInteger-创建对象："><a href="#BigInteger-创建对象：" class="headerlink" title="BigInteger 创建对象："></a>BigInteger 创建对象：</h1><ol>
+<li>使用构造方法：</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200414182325.png" alt=""></p>
+<ol start="2">
+<li>挑选几个常用的方法说说吧(主要是 public 修饰的方法)：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">将BigInteger的十进制字符串表示形式转换为BigInteger。</span></span><br><span class="line"><span class="comment">字符串表示形式由一个可选的负号和一个或多个十进制数字的序列组成。</span></span><br><span class="line"><span class="comment">字符到数字的映射由Character.digit提供。</span></span><br><span class="line"><span class="comment">字符串可能不包含任何无关字符(例如空格)。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">BigInteger(String val);</span><br></pre></td></tr></table></figure>
+<p>内部实现：</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200414183526.png" alt=""></p>
+<p>实际上是调用了 <code>public BigInteger(String val, int radix)</code><br>根据给定的 基数 来转换字符串为指定进制的数值，其内部规定 2&lt;=radix&lt;=36.</p>
+<h1 id="BigInteger-常用方法："><a href="#BigInteger-常用方法：" class="headerlink" title="BigInteger 常用方法："></a>BigInteger 常用方法：</h1><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public BigInteger abs()</td>
+<td>返回一个大整数(this)的绝对值</td>
+</tr>
+<tr>
+<td>public BigInteger add(BigInteger val)</td>
+<td>返回 this+val</td>
+</tr>
+<tr>
+<td>public BigInteger and(BigInteger val)</td>
+<td>返回 this &amp; val</td>
+</tr>
+<tr>
+<td>public BigInteger andNot(BigInteger val)</td>
+<td>返回 this &amp;  ~val,相当于 this.and(val.not())</td>
+</tr>
+<tr>
+<td>public int bitCount()</td>
+<td>返回 this 的二进制补码</td>
+</tr>
+<tr>
+<td>public int bitLength()</td>
+<td>返回该BigInteger的最小二补表示形式中的位数，不包括符号位。</td>
+</tr>
+<tr>
+<td>public int compareTo(BigInteger val)</td>
+<td>返回值：- 1,0或1，因为这个大整数在数字上小于，等于，或大于val。</td>
+</tr>
+<tr>
+<td>public BigInteger divide(BigInteger val)</td>
+<td>this/val</td>
+</tr>
+<tr>
+<td>public BigInteger[] divideAndRemainder(BigInteger val)</td>
+<td>返回一个由两个大整数组成的数组，其中包含(this / val)和(this % val)。例如：1/3-&gt;[0,1]</td>
+</tr>
+<tr>
+<td>public double doubleValue()</td>
+<td>将大整数转换为 double 类型数据</td>
+</tr>
+<tr>
+<td>public boolean equals(Object x)</td>
+<td>判断大数是否相等，等，返回 true</td>
+</tr>
+<tr>
+<td>public float floatValue()</td>
+<td>转换为 float 型数据</td>
+</tr>
+<tr>
+<td>public BigInteger gcd(BigInteger val)</td>
+<td>返回一个BigInteger，其值是abs(this)和abs(val)的最大公约数。如果这个== 0 &amp;&amp; val == 0，则返回0</td>
+</tr>
+<tr>
+<td>public int hashCode()</td>
+<td>返回这个大整数值的 hash code 值</td>
+</tr>
+<tr>
+<td>public int intValue()</td>
+<td>返回整型值，如果有缺失的话，不抛出异常</td>
+</tr>
+<tr>
+<td>public int intValueExact()</td>
+<td>返回整型值，如果有缺失的话，抛出异常</td>
+</tr>
+<tr>
+<td>public boolean isProbablePrime(int certainty)</td>
+<td>如果这个BigInteger可能是质数，则返回true;如果它肯定是合数，则返回false。如果确定性≤0，则返回true。</td>
+</tr>
+<tr>
+<td>public long longValue()</td>
+<td>返回长整型数</td>
+</tr>
+<tr>
+<td>public BigInteger max(BigInteger val)</td>
+<td>返回 this 和 val 的最大值</td>
+</tr>
+<tr>
+<td>public BigInteger min(BigInteger val)</td>
+<td>返回 this 和 val 的最小值</td>
+</tr>
+<tr>
+<td>public BigInteger mod(BigInteger m)</td>
+<td>返回 this%m</td>
+</tr>
+<tr>
+<td>public BigInteger modInverse(BigInteger m)</td>
+<td>返回 m%this</td>
+</tr>
+<tr>
+<td>public BigInteger modPow(BigInteger exponent, BigInteger m)</td>
+<td>返回 this <sup> exponent </sup> %m</td>
+</tr>
+<tr>
+<td>public BigInteger multiply(BigInteger val)</td>
+<td>返回 this * va;</td>
+</tr>
+<tr>
+<td>public BigInteger negate()</td>
+<td>返回 -this</td>
+</tr>
+<tr>
+<td>public BigInteger not()</td>
+<td>返回 ~this</td>
+</tr>
+<tr>
+<td>public BigInteger or(BigInteger val)</td>
+<td>返回 this 相或 val</td>
+</tr>
+<tr>
+<td>public BigInteger pow(int exponent)</td>
+<td>返回 this <sup>exponent</sup></td>
+</tr>
+<tr>
+<td>public BigInteger subtract(BigInteger val)</td>
+<td>this-val</td>
+</tr>
+<tr>
+<td>public String toString()</td>
+<td>转换为 String 类型的数据</td>
+</tr>
+<tr>
+<td>public BigInteger xor(BigInteger val)</td>
+<td>this ^ val</td>
+</tr>
+</tbody></table>
+<h1 id="题和代码："><a href="#题和代码：" class="headerlink" title="题和代码："></a>题和代码：</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.math.BigDecimal;</span><br><span class="line"><span class="keyword">import</span> java.math.BigInteger;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 标题: 黄金连分数</span></span><br><span class="line"><span class="comment"> * 黄金分割数0.61803... 是个无理数，这个常数十分重要，在许多工程问题中会出现。有时需要把这个数字求得很精确。</span></span><br><span class="line"><span class="comment"> * 对于某些精密工程，常数的精度很重要。也许你听说过哈勃太空望远镜，它首次升空后就发现了一处人工加工错误，对那样一个庞然大物，</span></span><br><span class="line"><span class="comment"> * 其实只是镜面加工时有比头发丝还细许多倍的一处错误而已，却使它成了“近视眼”!!</span></span><br><span class="line"><span class="comment"> * 言归正传，我们如何求得黄金分割数的尽可能精确的值呢？有许多方法。</span></span><br><span class="line"><span class="comment"> * 比较简单的一种是用连分数：</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> *                 1</span></span><br><span class="line"><span class="comment"> * 黄金数 = ---------------------</span></span><br><span class="line"><span class="comment"> *                  1</span></span><br><span class="line"><span class="comment"> *         1 + -----------------</span></span><br><span class="line"><span class="comment"> *                      1</span></span><br><span class="line"><span class="comment"> *              1 + -------------</span></span><br><span class="line"><span class="comment"> *                          1</span></span><br><span class="line"><span class="comment"> *                  1 + ---------</span></span><br><span class="line"><span class="comment"> *                          1 + ...</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * 这个连分数计算的“层数”越多，它的值越接近黄金分割数。</span></span><br><span class="line"><span class="comment"> * 请你利用这一特性，求出黄金分割数的足够精确值，要求四舍五入到小数点后100位。</span></span><br><span class="line"><span class="comment"> * 小数点后3位的值为：0.618</span></span><br><span class="line"><span class="comment"> * 小数点后4位的值为：0.6180</span></span><br><span class="line"><span class="comment"> * 小数点后5位的值为：0.61803</span></span><br><span class="line"><span class="comment"> * 小数点后7位的值为：0.6180340</span></span><br><span class="line"><span class="comment"> * （注意尾部的0，不能忽略）</span></span><br><span class="line"><span class="comment"> * 你的任务是：写出精确到小数点后100位精度的黄金分割值。</span></span><br><span class="line"><span class="comment"> * 注意：尾数的四舍五入！ 尾数是0也要保留！</span></span><br><span class="line"><span class="comment"> * 显然答案是一个小数，其小数点后有100位数字，请通过浏览器直接提交该数字。</span></span><br><span class="line"><span class="comment"> * 注意：不要提交解答过程，或其它辅助说明类的内容。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">//1.化为求斐波那契相邻两项的比值，到多少项？越多越精确，n/n+1项，</span></span><br><span class="line"><span class="comment">// n再往上增加，这个比值的小数点后101位是稳定的，也就是不变的</span></span><br><span class="line"><span class="comment">//2.double无法表示100位小数，BigInteger和BigDecimal</span></span><br><span class="line"><span class="comment">// 化简成分数(1, 1/2, 2/3...)-》由分数观察得为斐波那契数列(1,2,3,5,8...)-》利用 BigInteger 计算斐波那契</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">_04</span>黄金连分数 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        BigInteger a = BigInteger.ONE;</span><br><span class="line">        BigInteger b = BigInteger.ONE;</span><br><span class="line">        <span class="comment">//斐波那契数列的迭代形式</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">3</span>; i &lt; <span class="number">500</span>; i++) &#123;</span><br><span class="line"><span class="comment">//      BigInteger t=b;</span></span><br><span class="line"><span class="comment">//      b=a.add(b);//大整数的加法</span></span><br><span class="line"><span class="comment">//      a=t;</span></span><br><span class="line">            BigInteger t = a.add(b);</span><br><span class="line">            a = b;</span><br><span class="line">            b = t;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//大浮点数的除法</span></span><br><span class="line">        BigDecimal divide = <span class="keyword">new</span> BigDecimal(a, <span class="number">110</span>).divide(<span class="keyword">new</span> BigDecimal(b, <span class="number">110</span>), BigDecimal.ROUND_HALF_DOWN);</span><br><span class="line">        <span class="comment">//截取字符串</span></span><br><span class="line">        System.out.println(divide.toPlainString().substring(<span class="number">0</span>, <span class="number">103</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//0.6180339887498948482045868343656381177203091798057628621354486227052604628189024497072072041893911375</span></span><br><span class="line"><span class="comment">//0.61803398874989484820458683436563811772030917980576286213544862270526046281890244970720720418939113748</span></span><br></pre></td></tr></table></figure>
+<p>下一篇分析 BigDicimal 和 String 类</p>
 
       
 
@@ -197,7 +333,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">lanqiaoOJ</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JDK</a>
         		</li>
       		
 		</ul>
@@ -207,7 +343,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/%E5%85%B3%E4%BA%8E-%E6%A8%A1%E8%BF%90%E7%AE%97-%E5%87%BA%E7%8E%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/17/%E5%85%B3%E4%BA%8E-jdk-BigInteger-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/">展开全文 >></a>
         </p>
       
 
@@ -239,7 +375,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/27/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="page-number" href="/page/27/">27</a><span class="page-number current">28</span><a class="page-number" href="/page/29/">29</a><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/29/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/27/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="page-number" href="/page/27/">27</a><span class="page-number current">28</span><a class="page-number" href="/page/29/">29</a><a class="page-number" href="/page/30/">30</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><a class="extend next" rel="next" href="/page/29/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -387,6 +523,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">LinuxEnvironmentSetup</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
             
             <div class="clearfix"></div>

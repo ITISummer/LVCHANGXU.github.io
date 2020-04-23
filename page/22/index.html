@@ -152,227 +152,49 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-关于-jdk-Calendar-类的基本使用的梳理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-LeetCode-0007-ReverseInteger" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/%E5%85%B3%E4%BA%8E-jdk-Calendar-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/">关于 jdk-Calendar 类的基本使用的梳理</a>
+      <a class="article-title" href="/2020/04/17/LeetCode-0007-ReverseInteger/">LeetCode_0007_ReverseInteger</a>
     </h1>
   
 
         
-        <a href="/2020/04/17/%E5%85%B3%E4%BA%8E-jdk-Calendar-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/" class="archive-article-date">
-  	<time datetime="2020-04-17T04:14:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+        <a href="/2020/04/17/LeetCode-0007-ReverseInteger/" class="archive-article-date">
+  	<time datetime="2020-04-17T04:17:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p> Calendar 类的基本使用</p>
-<p> <a href="https://blog.csdn.net/lfsf802/article/details/50616263" target="_blank" rel="noopener">相关阅读：Java 的 Calendar 类</a></p>
-<h1 id="Calendar-类的定义"><a href="#Calendar-类的定义" class="headerlink" title="Calendar 类的定义"></a>Calendar 类的定义</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java.util <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Calendar</span></span></span><br><span class="line"><span class="class"><span class="keyword">extends</span> <span class="title">Object</span></span></span><br><span class="line"><span class="class"><span class="keyword">implements</span> <span class="title">Serializable</span>, <span class="title">Cloneable</span>, <span class="title">Comparable</span>&lt;<span class="title">Calendar</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="创建-Calendar-类对象"><a href="#创建-Calendar-类对象" class="headerlink" title="创建 Calendar 类对象"></a>创建 Calendar 类对象</h1><blockquote>
-<p>Like other locale-sensitive classes, Calendar provides a class method, getInstance, for getting a generally useful object of this type. Calendar’s getInstance method returns a Calendar object whose calendar fields have been initialized with the current date and time:</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Calendar rightNow = Calendar.getInstance();</span><br></pre></td></tr></table></figure>
-<p>getInstance() 方法默认时区和地点创造一个 Calendar 对象</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200412192726.png" alt=""></p>
-<p>另外三个重载方法：</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200412193303.png" alt=""></p>
-<table>
-<thead>
-<tr>
-<th>字段</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public final static int ERA = 0;</td>
-<td>表示年代</td>
-</tr>
-<tr>
-<td>public final static int YEAR = 1;</td>
-<td>年</td>
-</tr>
-<tr>
-<td>public final static int MONTH = 2;</td>
-<td>月；第一个月使用是 January(一月) 用 0 表示，后面月份的数值依次增加 即 1-February</td>
-</tr>
-<tr>
-<td>public final static int WEEK_OF_YEAR = 3;</td>
-<td>表示当前年的第几周</td>
-</tr>
-<tr>
-<td>public final static int WEEK_OF_MONTH = 4;</td>
-<td>表示当前月的第几周</td>
-</tr>
-<tr>
-<td>public final static int DATE = 5;</td>
-<td>指示当前月份的第几天</td>
-</tr>
-<tr>
-<td>public final static int DAY_OF_MONTH = 5;</td>
-<td>指示当前月份的第几天，第一天使用 1 来表示</td>
-</tr>
-<tr>
-<td>public final static int DAY_OF_YEAR = 6;</td>
-<td>指示当前年份的第几天，第一天使用 1 来表示</td>
-</tr>
-<tr>
-<td>public final static int DAY_OF_WEEK = 7;</td>
-<td>表示当前周的第几天，第一天是 SUNDAY-1,MONDAY-2,依次类推</td>
-</tr>
-<tr>
-<td>public final static int DAY_OF_WEEK_IN_MONTH = 8;</td>
-<td>表示当前月份中星期几的序号。</td>
-</tr>
-<tr>
-<td>public final static int AM_PM = 9;</td>
-<td>指示上午(AM)还是下午(PM)</td>
-</tr>
-<tr>
-<td>public final static int HOUR = 10;</td>
-<td>正午和午夜是用0表示的，不是用12表示的</td>
-</tr>
-<tr>
-<td>public final static int HOUR_OF_DAY = 11;</td>
-<td>指示是一天的第几个小时，通常用于 24 小时制</td>
-</tr>
-<tr>
-<td>public final static int MINUTE = 12;</td>
-<td>指示一小时的第几分钟</td>
-</tr>
-<tr>
-<td>public final static int SECOND = 13;</td>
-<td>指示一分钟的第几秒</td>
-</tr>
-<tr>
-<td>public final static int MILLISECOND = 14;</td>
-<td>指示一秒中的第几毫秒</td>
-</tr>
-<tr>
-<td>public final static int ZONE_OFFSET = 15;</td>
-<td>以毫秒为单位的当前时区原始偏移量</td>
-</tr>
-<tr>
-<td>public final static int DST_OFFSET = 16;</td>
-<td>以毫秒为单位的这一天的原始偏移量</td>
-</tr>
-<tr>
-<td>public final static int FIELD_COUNT = 17;</td>
-<td>指示总共设置了多少个字段</td>
-</tr>
-</tbody></table>
-<p>注意以上字段的值都存储在变量 fields[] 中，定义如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="keyword">int</span>           fields[];</span><br></pre></td></tr></table></figure>
-<p>另外一周中的各字段对应值如下：</p>
-<table>
-<thead>
-<tr>
-<th>字段</th>
-<th>值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public final static int SUNDAY = 1;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int MONDAY = 2;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int TUESDAY = 3;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int WEDNESDAY = 4;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int THURSDAY = 5;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int FRIDAY = 6;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int SATURDAY = 7;</td>
-<td></td>
-</tr>
-</tbody></table>
-<p>月份各字段值：</p>
-<table>
-<thead>
-<tr>
-<th>字段</th>
-<th>值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public final static int JANUARY = 0;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int FEBRUARY = 1;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int MARCH = 2;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int APRIL = 3;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int MAY = 4;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int JUNE = 5;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int JULY = 6;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int AUGUST = 7;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int SEPTEMBER = 8;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int OCTOBER = 9;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int NOVEMBER = 10;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int DECEMBER = 11;</td>
-<td></td>
-</tr>
-</tbody></table>
-<p>最后通过给 field[] 赋值可以使用 set(int field,int value) 方法</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200412205049.png" alt=""></p>
-<p>此方法中 field 可选值即为上面列表一种列出的值（除表最后一个值外）</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200412205117.png" alt=""></p>
-<p>该方法内部实现：</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200412205605.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200412205653.png" alt=""></p>
-<p>另外 set 的一些重载方法：按指定的字段顺序给相应的日历字段赋值：</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200412210425.png" alt=""></p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>嗯，今天看了下另一道简单的题，其实吧，我觉得上面说简单的，其实都不简单，哎，看别人写得多么简洁！</p>
+<ul>
+<li>第一个方法是我写的</li>
+<li>第二个方法是别人写的。<h1 id="原题："><a href="#原题：" class="headerlink" title="原题："></a>原题：</h1></li>
+</ul>
+<hr>
+<p>给定一个 32 位有符号整数，将整数中的数字进行反转。  </p>
+<p>示例 1:  </p>
+<p>输入: 123  </p>
+<p>输出: 321 </p>
+<p> 示例 2:</p>
+<p>输入: -123</p>
+<p>输出: -321<br>示例 3:</p>
+<p>输入: 120</p>
+<p>输出: 21<br>注意:</p>
+<ul>
+<li>假设我们的环境只能存储 32 位有符号整数，其数值范围是 [−231,  231 − 1]。根据这个假设，如果反转后的整数溢出，则返回 0。</li>
+</ul>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line">package javaLeetCode_primary;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * Given a 32-bit signed integer, reverse digits of an integer. &lt;b&gt;Example 1:</span><br><span class="line"> * &lt;li&gt;Input: 123</span><br><span class="line"> * &lt;li&gt;Output: 321 Example 2:</span><br><span class="line"> * &lt;li&gt;Input: -123</span><br><span class="line"> * &lt;li&gt;Output: -32  Example 3:</span><br><span class="line"> * &lt;li&gt;Input: 120</span><br><span class="line"> * &lt;li&gt;Output: 21</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;*</span><br><span class="line"> * Test data: </span><br><span class="line"> *1534236469-&gt;0</span><br><span class="line"> *999999991-&gt;199999999</span><br><span class="line"> *2147483647-&gt;0</span><br><span class="line"> *2147483642 -&gt;0</span><br><span class="line"> *1000000000-&gt;1</span><br><span class="line"> *-2147483648-&gt;0</span><br><span class="line"> *-214748364-&gt;-463847412</span><br><span class="line"> *901000-&gt; 109</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class ReverseInteger_7 &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">		@SuppressWarnings(&quot;resource&quot;)</span><br><span class="line">		Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">		System.out.println(&quot;Please input a integer:&quot;);</span><br><span class="line">		int x &#x3D; input.nextInt();</span><br><span class="line">		System.out.println(reverse_2(x));</span><br><span class="line">	&#125;&#x2F;&#x2F; end main</span><br><span class="line"></span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Use simple  methods to solve problems.</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	public static int reverse_1(int x) &#123;</span><br><span class="line"></span><br><span class="line">		int[] arr &#x3D; new int[10];&#x2F;&#x2F; Stores the number of bits of a parameter</span><br><span class="line">		int countDigit &#x3D; 0;&#x2F;&#x2F; Calculate the length of the number</span><br><span class="line">		int cf &#x3D; 0;&#x2F;&#x2F; Leave the parameter state</span><br><span class="line">		int i &#x3D; 0;</span><br><span class="line">		&#x2F;&#x2F; The element that initializes array is 0.</span><br><span class="line">		for (i &#x3D; 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">			arr[i] &#x3D; 0;</span><br><span class="line">		&#125; &#x2F;&#x2F; end for</span><br><span class="line">		</span><br><span class="line">		if (x &lt; 0) &#123;</span><br><span class="line">			cf &#x3D; 1;</span><br><span class="line">			x *&#x3D; -1;</span><br><span class="line">		&#125; &#x2F;&#x2F; end if</span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F;Get the the digit of parameter and reverse&#x2F;invert  it.</span><br><span class="line">		i &#x3D; 0;</span><br><span class="line">		while (x &gt; 0) &#123;</span><br><span class="line">			countDigit++;</span><br><span class="line">			arr[i] &#x3D; x % 10;</span><br><span class="line">			x &#x2F;&#x3D; 10;</span><br><span class="line">			i++;</span><br><span class="line">		&#125; &#x2F;&#x2F; end while</span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F; Print the integer</span><br><span class="line">		i &#x3D; 0;</span><br><span class="line">		long  y &#x3D; 0;</span><br><span class="line">		for (; i &lt; countDigit; i++) &#123;</span><br><span class="line">			y &#x3D; y * 10 + arr[i];</span><br><span class="line">		&#125; &#x2F;&#x2F; end for</span><br><span class="line"></span><br><span class="line">		&#x2F;&#x2F;Judge whether  the integer is valid.</span><br><span class="line">		if(y&gt;2147483647) &#123;</span><br><span class="line">			x &#x3D; 0;</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			x &#x3D; (int)y;</span><br><span class="line">		&#125;&#x2F;&#x2F;end if</span><br><span class="line">		</span><br><span class="line">		if (cf &#x3D;&#x3D; 1) &#123;</span><br><span class="line">			x *&#x3D; -1;</span><br><span class="line">		&#125; &#x2F;&#x2F; end if</span><br><span class="line"></span><br><span class="line">		return x;</span><br><span class="line"></span><br><span class="line">	&#125;&#x2F;&#x2F; end reverse()</span><br><span class="line">	</span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Answer online</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	public static int reverse_2(int x) &#123;</span><br><span class="line">        int rev &#x3D; 0;</span><br><span class="line">        while (x !&#x3D; 0) &#123;</span><br><span class="line">            int pop &#x3D; x % 10;</span><br><span class="line">            x &#x2F;&#x3D; 10;</span><br><span class="line">            if (rev &gt; Integer.MAX_VALUE&#x2F;10 || (rev &#x3D;&#x3D; Integer.MAX_VALUE &#x2F; 10 &amp;&amp; pop &gt; 7)) return 0;</span><br><span class="line">            if (rev &lt; Integer.MIN_VALUE&#x2F;10 || (rev &#x3D;&#x3D; Integer.MIN_VALUE &#x2F; 10 &amp;&amp; pop &lt; -8)) return 0;</span><br><span class="line">            rev &#x3D; rev * 10 + pop;</span><br><span class="line">        &#125;</span><br><span class="line">        return rev;</span><br><span class="line">    &#125;&#x2F;&#x2F;end reverse()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>说实话，我看不懂别人写的代码。哎~ qwq。</li>
+</ul>
 
       
 
@@ -386,7 +208,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JDK</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
         		</li>
       		
 		</ul>
@@ -396,7 +218,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/%E5%85%B3%E4%BA%8E-jdk-Calendar-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/17/LeetCode-0007-ReverseInteger/">展开全文 >></a>
         </p>
       
 
@@ -428,7 +250,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/21/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><a class="page-number" href="/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/23/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/21/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><a class="page-number" href="/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><a class="extend next" rel="next" href="/page/23/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -576,6 +398,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">LinuxEnvironmentSetup</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
             
             <div class="clearfix"></div>
