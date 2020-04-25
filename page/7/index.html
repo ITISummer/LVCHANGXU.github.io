@@ -152,158 +152,104 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-阿里云主机安装-tomcat" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-使用-WorldPress-phpStudy-搭建个人网站过程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85-tomcat/">阿里云主机安装 tomcat</a>
+      <a class="article-title" href="/2020/04/17/%E4%BD%BF%E7%94%A8-WorldPress-phpStudy-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E8%BF%87%E7%A8%8B/">使用 WorldPress+phpStudy 搭建个人网站过程</a>
     </h1>
   
 
         
-        <a href="/2020/04/17/%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85-tomcat/" class="archive-article-date">
-  	<time datetime="2020-04-17T12:32:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+        <a href="/2020/04/17/%E4%BD%BF%E7%94%A8-WorldPress-phpStudy-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E8%BF%87%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2020-04-17T12:33:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><ol>
-<li>SmarTTY：用于远程连接 阿里云主机，注意通过分配的公网 ip 进行连接，便于远程操作</li>
-<li>FileZilla：用于往 阿里云主机 传输文件的工具，很方便，可以让你在 Windows 系统上下载完文件后，然后拖动到 云主机 的文件夹中</li>
+        <h1 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h1><p><a href="www.bilibili.com/video/av40307690">根据此教程学习，很详细</a></p>
+<h1 id="下载-phpStudy"><a href="#下载-phpStudy" class="headerlink" title="下载 phpStudy"></a>下载 phpStudy</h1><p><a href="https://www.xp.cn/download.html" target="_blank" rel="noopener">点击下载 phpStudy</a></p>
+<p>之所以建议下载 phpStudy 是因为这是一款集成了 mysql apache php 环境的一个软件吧，而 worldpress 是 php 写的，apache 可以作为本机的网络服务器，然后 mysql 作为存储网站数据的数据库，所以需要下载这个 phpStudy，一键下载就可以了。当然可能你原来在本机安装过 mysql 可能会与原来的 mysql 服务冲突，但是别慌，网上有很多关于这些问题的教程，上网耐心搜搜，这里放下我搜过的一些：</p>
+<ul>
+<li><a href="https://blog.csdn.net/aokuiyu1635/article/details/101973758?utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">完美解决phpstudy安装后mysql无法启动（无需删除原数据库，无需更改任何配置，无需更改端口）直接共存…</a></li>
+<li><a href="https://blog.csdn.net/Al_assad/article/details/70510889" target="_blank" rel="noopener">PHPStudy 无法启动 Apache 和 MySQL (Windows环境)</a></li>
+</ul>
+<p>在这里说下我的问题，就是我可以启动 Apache 服务，但是 MYSQL 服务不能启动，于是我去手动启动 MYSQLa, 这个在 任务管理器-&gt;服务 中可以找到，但是也不能启动，我在网上搜了很多，刚开始我也以为和他们的问题一样，但是我忽然猛的记起，我以前好像因为 MYSQLa 总是开机自启，然后我用 火绒安全软件 的 启动项管理功能 把 MYSQLa 服务给 禁止启动 了，所以我后面解除了禁止后，然后就可以了，还有就是你可能使用以下界面 只能启动 Apache 服务，但是 MYSQL 服务也不能启动，先去 任务管理器-&gt;服务 里面手动启动下 MYSQLa 服务吧，别一来就上网搜，然后把原来的 MYSQL 服务给删掉，还让你删干净，记得遇到问题多看多搜教程，别一股脑的就按着别人教程来做：<br><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image.png" alt=""></p>
+<h1 id="下载-WorldPress"><a href="#下载-WorldPress" class="headerlink" title="下载 WorldPress"></a>下载 WorldPress</h1><p><a href="www.WorldPress.com">点击下载 WorldPress</a></p>
+<ol>
+<li><p>解压缩后放到 [F:\PhpStudy2018\PHPTutorial\WWW] 我这里是这样的，请对照这找到 WWW 文件夹，这个文件夹里面是放网站的，如果你找不到下载的位置，那如果你能正常启动 phpStudy ，看到上图的话，那么 点击 其他选项菜单-&gt;网站跟目录，这样也可以弹出资源管理器窗口，所打开的文件夹正是 WWW 文件夹。</p>
+</li>
+<li><p>访问 worldpress 里面的 index.php 文件，注意查看下解压的目录里面是否有子目录</p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B1%5D.png" alt=""></p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B2%5D.png" alt=""></p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B3%5D.png" alt=""></p>
+</li>
 </ol>
-<h1 id="购买服务器"><a href="#购买服务器" class="headerlink" title="购买服务器"></a>购买服务器</h1><p>可以按需购买阿里云的学生服务器</p>
-<h1 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h1><p>通过 FileZilla 上传：到 /home/pan 文件夹下<br>命令使用：</p>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>cd /home</td>
-<td>切换到跟目录的 home 目录下</td>
-</tr>
-<tr>
-<td>mkdir pan</td>
-<td>创建一个 文件夹 pan</td>
-</tr>
-<tr>
-<td>然后通过 FileZilla 选中 Windows 上的文件，然后上传到 pan 目录下</td>
-<td></td>
-</tr>
-<tr>
-<td>apache-tomcat-8.5.51.tar.gz</td>
-<td></td>
-</tr>
-<tr>
-<td>jdk-11.0.6_linux-x64_bin.tar.gz</td>
-<td></td>
-</tr>
-</tbody></table>
-<h1 id="配置阿里云的安全组规则"><a href="#配置阿里云的安全组规则" class="headerlink" title="配置阿里云的安全组规则"></a>配置阿里云的安全组规则</h1><p>添加 80 端口访问</p>
-<h1 id="解压上传的文件"><a href="#解压上传的文件" class="headerlink" title="解压上传的文件"></a>解压上传的文件</h1><p>命令使用：</p>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>tar -zxvf jdk-11.0.6_linux-x64_bin.tar.gz</td>
-<td>解压 jdk 压缩包</td>
-</tr>
-<tr>
-<td>ls</td>
-<td>列出当前文件夹里面的文件</td>
-</tr>
-<tr>
-<td>mv <strong>jdk-11.0.6/</strong> /usr/local</td>
-<td>将jdk-11.0.6_linux-x64_bin.tar.gz 压缩包移动到 /usr/local 目录下 【注意】执行命令后没反应，没反应就是最好的结果 可以通过 ls 命令查看当前文件夹有多少文件，发现 没有 了 jdk-11.0.6 说明已经移动了</td>
-</tr>
-<tr>
-<td>rm jdk-11.0.6_linux-x64_bin.tar.gz</td>
-<td>删除当前目录下的 jdk</td>
-</tr>
-<tr>
-<td>tar -zxvf apache-tomcat-8.5.51.tar.gz</td>
-<td>解压 tomcat 压缩包</td>
-</tr>
-<tr>
-<td>rm apache-tomcat-8.5.51.tar.gz</td>
-<td>删除它</td>
-</tr>
-<tr>
-<td>mv apache-tomcat-8.5.51/ tomcat</td>
-<td>重命名为 tomcat</td>
-</tr>
-</tbody></table>
-<h1 id="配置-java-环境变量"><a href="#配置-java-环境变量" class="headerlink" title="配置 java 环境变量"></a>配置 java 环境变量</h1><p>命令使用：</p>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>vim /etc/profile</td>
-<td>使用 vim 编辑 /etc/profile 文件 进入文件后按住 j 光标移动到最后一行，然后使用 shift+a 表示在本行最后一行编辑 然后敲一个 enter 键，在最后一行下一行 编辑 配置如下：</td>
-</tr>
-</tbody></table>
-<p>export JAVA_HOME=/usr/local/jdk-11.0.6<br>export PATH=$JAVA_HOME/bin:$PATH<br>export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</p>
-<p>【注】/usr/local/ 表示你的 jdk 解压的路径，jdk-11.0.6 表示 jdk 解压的名字 请根据实际情况填写</p>
-<p>命令使用：</p>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>然后添加好后使用命令 :wq 来保存并且退出</td>
-<td>保存文件</td>
-</tr>
-<tr>
-<td>这时候重启主机 然后 /etc/profile 长期起作用</td>
-<td>重启主机使 /etc/profile 长期有效</td>
-</tr>
-<tr>
-<td>重启完成后 java -version</td>
-<td>如果有打印内容说明 java 环境变量配置成功</td>
-</tr>
-<tr>
-<td>cd /home/pan/tomcat/conf/</td>
-<td>进入 conf/ 目录下编辑 server.xml 文件</td>
-</tr>
-<tr>
-<td>通过 /Connector 找到 &lt;Connector port=”8080” 字样</td>
-<td>输入 i 命令然后修改 port 值为 80 然后 按电脑上 esc 键后 输入 :wq 保存退出</td>
-</tr>
-<tr>
-<td>cd ..</td>
-<td>返回上级目录</td>
-</tr>
-<tr>
-<td>cd bin/</td>
-<td>进入 bin 目录下</td>
-</tr>
-</tbody></table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls</span><br></pre></td></tr></table></figure>
-<p><img src="https://pic.downk.cc/item/5e741af5e83c3a1e3aff66d8.png" alt=""></p>
-<p>shutdown.sh：tomcat 的关闭命令<br>startup.sh：tomcat 的启动命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;startup.sh</span><br></pre></td></tr></table></figure>
-<p>启动 tomcat<br>Linux 中运行一个可执行文件使用实心点  <strong>.</strong>   反斜杠 <strong>/</strong> 代表当前目录</p>
-<p><img src="https://pic.downk.cc/item/5e741af5e83c3a1e3aff66d4.png" alt=""></p>
-<p>然后在浏览器地址栏输入你的 云主机 的公网 ip 回车后进行访问，如果可以看到以下画面<br><img src="https://pic.downk.cc/item/5e741af5e83c3a1e3aff66d6.png" alt=""><br>说明 服务器 那些配置成功！</p>
-<h1 id="购买域名并设置域名解析"><a href="#购买域名并设置域名解析" class="headerlink" title="购买域名并设置域名解析"></a>购买域名并设置域名解析</h1>
+<p>点击 MYSQL 管理器-&gt;phpMyAdmin<br>6. <img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B4%5D.png" alt=""></p>
+<ol start="7">
+<li><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B5%5D.png" alt=""></p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B6%5D.png" alt=""></p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B7%5D.png" alt=""></p>
+</li>
+<li><p>登录成功-&gt;网站管理后台：<br><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B8%5D.png" alt=""></p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B9%5D.png" alt=""></p>
+</li>
+</ol>
+<h1 id="WorldPress-后台操作"><a href="#WorldPress-后台操作" class="headerlink" title="WorldPress 后台操作"></a>WorldPress 后台操作</h1><h2 id="一、插件"><a href="#一、插件" class="headerlink" title="一、插件"></a>一、插件</h2><ol>
+<li>这里可以安装一些插件：<img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B10%5D.png" alt=""></li>
+</ol>
+<p>下载下来的插件位置：【F:\PhpStudy2018\PHPTutorial\WWW\wordpress\wp-content\plugins】<br>2. 注意你下次登录 WorldPress 时，只要访问 worldPress文件夹 里面的 wp-login.php 文件就行，在浏览器访问，注意在这之前把 phpStudy 运行起来<br>3. 安装插件，在进行后台管理的时候会发现页面加载速度很慢，可以安装 Disable Google Fonts 这款插件，点击 安装插件 按钮后 搜索即可安装</p>
+<h2 id="二、分类目录"><a href="#二、分类目录" class="headerlink" title="二、分类目录"></a>二、分类目录</h2><p>文章：放网站的主要的内容的地方</p>
+<p>页面：放网站其他内容的地方</p>
+<ol>
+<li><p>添加自己网站的分类：<img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B11%5D.png" alt=""></p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B12%5D.png" alt=""></p>
+</li>
+</ol>
+<h2 id="三、填充内容"><a href="#三、填充内容" class="headerlink" title="三、填充内容"></a>三、填充内容</h2><ol>
+<li><p>点击写文章：<img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B13%5D.png" alt=""></p>
+</li>
+<li><p>页面：管理网站中每一张网页，和文章相关操作差不多</p>
+</li>
+<li><p>媒体库：管理网站中上传的多媒体（图片，视频，音频）等</p>
+</li>
+<li><p>评论：管理访问（使用）你网站用户的评论</p>
+</li>
+<li><p>添加用户：可以提供给用户注册的功能</p>
+</li>
+<li><p>工具栏：可以添加丰富网站功能的系列工具</p>
+</li>
+<li><p>外观：内有设置网站主题相关操作，显示什么内容，由主题决定，好的主题会让网站视觉效果发生很大的改变，网站更加好看</p>
+</li>
+<li><p>设置：对一些网站基础功能进行预先设置</p>
+<ol>
+<li><p>设置里面对固定连接进行自定义或者更改前，对 apache 开启 rewrite 功能，不然有可能出现此错误 <a href="http://blog.sina.com.cn/s/blog_737ebdf20101gfmy.html" target="_blank" rel="noopener">Wordpress修改固定链接后出现403 Forbidden错误</a></p>
+</li>
+<li><p>让 apache 开启 rewrite 功能：<img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B14%5D.png" alt=""></p>
+<p>其他选项菜单-&gt;打开配置文件-&gt;httpd-conf</p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B15%5D.png" alt=""></p>
+</li>
+<li><p>去掉前面的 “#” 符号，然后保存</p>
+</li>
+</ol>
+</li>
+<li><p>开启用户注册：设置-&gt;常规-&gt;开启用户注册 <img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B16%5D.png" alt=""></p>
+</li>
+</ol>
+
       
 
       
@@ -316,7 +262,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">LinuxEnvironmentSetup</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">phpStudy</a>
         		</li>
       		
 		</ul>
@@ -326,7 +272,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85-tomcat/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/17/%E4%BD%BF%E7%94%A8-WorldPress-phpStudy-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E8%BF%87%E7%A8%8B/">展开全文 >></a>
         </p>
       
 
@@ -380,7 +326,7 @@ gitalk.render('gitalk-container')
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/6/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><a class="extend next" rel="next" href="/page/8/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/6/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><a class="extend next" rel="next" href="/page/8/">Next &amp;raquo;</a>
     </nav>
   
 

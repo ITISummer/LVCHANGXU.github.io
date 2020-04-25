@@ -152,38 +152,158 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-spring-boot-整合-redis-实现分页查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-阿里云主机安装-tomcat" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/spring-boot-%E6%95%B4%E5%90%88-redis-%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">spring boot 整合 redis 实现分页查询</a>
+      <a class="article-title" href="/2020/04/17/%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85-tomcat/">阿里云主机安装 tomcat</a>
     </h1>
   
 
         
-        <a href="/2020/04/17/spring-boot-%E6%95%B4%E5%90%88-redis-%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/" class="archive-article-date">
-  	<time datetime="2020-04-17T12:30:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+        <a href="/2020/04/17/%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85-tomcat/" class="archive-article-date">
+  	<time datetime="2020-04-17T12:32:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="需求："><a href="#需求：" class="headerlink" title="需求："></a>需求：</h1><p>有 视频 图片 文档 这样三个分类<br>然后每个分类下都有许多对应的文件，我现在需要在每个分类下进行分页查询，比如当我点击 视频 分类的时候就会从数据库中查询到所有带有 视频 分类名的所有文件，然后可以在这些文件基础上进行 分页查询<br>但是这样有一个问题，就是容易对数据库进行频繁的查询操作，所以我就想在这两层之间加一个 redis 来做缓存，然后我就是想的，当用户点击 视频 卡片的时候，如果 redis 中有相应的数据的话，那么我就直接从 redis 缓存中获取而不用再去向数据库中查询，但是这样我遇到了几个问题：</p>
-<h1 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h1><ol>
-<li><p>选用 redis 哪种数据结构来存储比较合适，因为涉及到分页查询，所以就有两种数据结构 List 和 ZSet 数据结构，我参考的这篇文章 <a href="https://my.oschina.net/1107156537/blog/1617252" target="_blank" rel="noopener">基于 redis 做缓存分页</a> 中选用了 redis 中的 ZSet 数据结构</p>
-</li>
-<li><p>选定好数据结构后，又有一个新的问题，那就是在进行键值对存储的时候，redis 中好像都是使用的 add(Object key,Object value)这样来存储一个键值对，我是想的能不能用一个键(key) 来对应一个对象集合，因为我在使用分页查询的时候，前期我是使用的 com.github.pagehelper 这个 jar 包 里面的方法</p>
-<p> <img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200328145928.png" alt=""> </p>
-<p> 将全部的查询结果封装到 PageInfo<T> 中后，前端就可以根据传递相关的参数就可以进行分页查询了，然后我后面就是想着能不能往 redis 数据库中存入这样的一个 add(“video”,PageInfo<T>) 键值对，但是我看了下提供的方法：</p>
-<p> <img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200328150734.png" alt=""></p>
-<p> 只有图中红色框中的两个，第一个可以存入一个 Set 集合，但是我又不知道如何将 PageInfo<T> 给转换成 TypeTuple 类型的，所以我就放弃这个方法了<br> 第二个方法就是简单的 key-value 的，这样存储的话，我是这样想的，数据库中查询结果返回 List 后，然后通过遍历其中的元素（对象），依次将其中的元素（对象）给 转换成 json 字符串后存入 redis 中，然后如果前端发来分页查询请求的话，那么我就从 redis 中获取到指定范围的数据后，然后将 json 字符串再转换为对象后再封装进 PageInfo<T> 里面，但是我不清楚这样的可行性有多高？</p>
-</li>
+        <h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><ol>
+<li>SmarTTY：用于远程连接 阿里云主机，注意通过分配的公网 ip 进行连接，便于远程操作</li>
+<li>FileZilla：用于往 阿里云主机 传输文件的工具，很方便，可以让你在 Windows 系统上下载完文件后，然后拖动到 云主机 的文件夹中</li>
 </ol>
-
+<h1 id="购买服务器"><a href="#购买服务器" class="headerlink" title="购买服务器"></a>购买服务器</h1><p>可以按需购买阿里云的学生服务器</p>
+<h1 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h1><p>通过 FileZilla 上传：到 /home/pan 文件夹下<br>命令使用：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cd /home</td>
+<td>切换到跟目录的 home 目录下</td>
+</tr>
+<tr>
+<td>mkdir pan</td>
+<td>创建一个 文件夹 pan</td>
+</tr>
+<tr>
+<td>然后通过 FileZilla 选中 Windows 上的文件，然后上传到 pan 目录下</td>
+<td></td>
+</tr>
+<tr>
+<td>apache-tomcat-8.5.51.tar.gz</td>
+<td></td>
+</tr>
+<tr>
+<td>jdk-11.0.6_linux-x64_bin.tar.gz</td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="配置阿里云的安全组规则"><a href="#配置阿里云的安全组规则" class="headerlink" title="配置阿里云的安全组规则"></a>配置阿里云的安全组规则</h1><p>添加 80 端口访问</p>
+<h1 id="解压上传的文件"><a href="#解压上传的文件" class="headerlink" title="解压上传的文件"></a>解压上传的文件</h1><p>命令使用：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>tar -zxvf jdk-11.0.6_linux-x64_bin.tar.gz</td>
+<td>解压 jdk 压缩包</td>
+</tr>
+<tr>
+<td>ls</td>
+<td>列出当前文件夹里面的文件</td>
+</tr>
+<tr>
+<td>mv <strong>jdk-11.0.6/</strong> /usr/local</td>
+<td>将jdk-11.0.6_linux-x64_bin.tar.gz 压缩包移动到 /usr/local 目录下 【注意】执行命令后没反应，没反应就是最好的结果 可以通过 ls 命令查看当前文件夹有多少文件，发现 没有 了 jdk-11.0.6 说明已经移动了</td>
+</tr>
+<tr>
+<td>rm jdk-11.0.6_linux-x64_bin.tar.gz</td>
+<td>删除当前目录下的 jdk</td>
+</tr>
+<tr>
+<td>tar -zxvf apache-tomcat-8.5.51.tar.gz</td>
+<td>解压 tomcat 压缩包</td>
+</tr>
+<tr>
+<td>rm apache-tomcat-8.5.51.tar.gz</td>
+<td>删除它</td>
+</tr>
+<tr>
+<td>mv apache-tomcat-8.5.51/ tomcat</td>
+<td>重命名为 tomcat</td>
+</tr>
+</tbody></table>
+<h1 id="配置-java-环境变量"><a href="#配置-java-环境变量" class="headerlink" title="配置 java 环境变量"></a>配置 java 环境变量</h1><p>命令使用：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>vim /etc/profile</td>
+<td>使用 vim 编辑 /etc/profile 文件 进入文件后按住 j 光标移动到最后一行，然后使用 shift+a 表示在本行最后一行编辑 然后敲一个 enter 键，在最后一行下一行 编辑 配置如下：</td>
+</tr>
+</tbody></table>
+<p>export JAVA_HOME=/usr/local/jdk-11.0.6<br>export PATH=$JAVA_HOME/bin:$PATH<br>export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</p>
+<p>【注】/usr/local/ 表示你的 jdk 解压的路径，jdk-11.0.6 表示 jdk 解压的名字 请根据实际情况填写</p>
+<p>命令使用：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>然后添加好后使用命令 :wq 来保存并且退出</td>
+<td>保存文件</td>
+</tr>
+<tr>
+<td>这时候重启主机 然后 /etc/profile 长期起作用</td>
+<td>重启主机使 /etc/profile 长期有效</td>
+</tr>
+<tr>
+<td>重启完成后 java -version</td>
+<td>如果有打印内容说明 java 环境变量配置成功</td>
+</tr>
+<tr>
+<td>cd /home/pan/tomcat/conf/</td>
+<td>进入 conf/ 目录下编辑 server.xml 文件</td>
+</tr>
+<tr>
+<td>通过 /Connector 找到 &lt;Connector port=”8080” 字样</td>
+<td>输入 i 命令然后修改 port 值为 80 然后 按电脑上 esc 键后 输入 :wq 保存退出</td>
+</tr>
+<tr>
+<td>cd ..</td>
+<td>返回上级目录</td>
+</tr>
+<tr>
+<td>cd bin/</td>
+<td>进入 bin 目录下</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic.downk.cc/item/5e741af5e83c3a1e3aff66d8.png" alt=""></p>
+<p>shutdown.sh：tomcat 的关闭命令<br>startup.sh：tomcat 的启动命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;startup.sh</span><br></pre></td></tr></table></figure>
+<p>启动 tomcat<br>Linux 中运行一个可执行文件使用实心点  <strong>.</strong>   反斜杠 <strong>/</strong> 代表当前目录</p>
+<p><img src="https://pic.downk.cc/item/5e741af5e83c3a1e3aff66d4.png" alt=""></p>
+<p>然后在浏览器地址栏输入你的 云主机 的公网 ip 回车后进行访问，如果可以看到以下画面<br><img src="https://pic.downk.cc/item/5e741af5e83c3a1e3aff66d6.png" alt=""><br>说明 服务器 那些配置成功！</p>
+<h1 id="购买域名并设置域名解析"><a href="#购买域名并设置域名解析" class="headerlink" title="购买域名并设置域名解析"></a>购买域名并设置域名解析</h1>
       
 
       
@@ -196,15 +316,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">javaweb</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">LinuxEnvironmentSetup</a>
         		</li>
       		
 		</ul>
@@ -214,7 +326,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/spring-boot-%E6%95%B4%E5%90%88-redis-%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/17/%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85-tomcat/">展开全文 >></a>
         </p>
       
 
@@ -268,7 +380,7 @@ gitalk.render('gitalk-container')
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><a class="extend next" rel="next" href="/page/9/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><a class="extend next" rel="next" href="/page/9/">Next &amp;raquo;</a>
     </nav>
   
 

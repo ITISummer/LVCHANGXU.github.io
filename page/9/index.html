@@ -152,53 +152,37 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-centos-7-x-版本安装-docker-并在其中安装-mysql-和-redis-镜像" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-spring-boot-整合-redis-实现分页查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/centos-7-x-%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85-docker-%E5%B9%B6%E5%9C%A8%E5%85%B6%E4%B8%AD%E5%AE%89%E8%A3%85-mysql-%E5%92%8C-redis-%E9%95%9C%E5%83%8F/">centos 7.x 版本安装 docker 并在其中安装 mysql 和 redis 镜像</a>
+      <a class="article-title" href="/2020/04/17/spring-boot-%E6%95%B4%E5%90%88-redis-%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">spring boot 整合 redis 实现分页查询</a>
     </h1>
   
 
         
-        <a href="/2020/04/17/centos-7-x-%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85-docker-%E5%B9%B6%E5%9C%A8%E5%85%B6%E4%B8%AD%E5%AE%89%E8%A3%85-mysql-%E5%92%8C-redis-%E9%95%9C%E5%83%8F/" class="archive-article-date">
-  	<time datetime="2020-04-17T12:28:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+        <a href="/2020/04/17/spring-boot-%E6%95%B4%E5%90%88-redis-%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/" class="archive-article-date">
+  	<time datetime="2020-04-17T12:30:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我主要是看了这篇博文：</p>
-<p><a href="https://yq.aliyun.com/articles/336442" target="_blank" rel="noopener">阿里云CentOS 7上安装配置Docker</a></p>
-<p><a href="https://www.jianshu.com/p/5fbb02d886d4" target="_blank" rel="noopener">使用docker安装mysql和redis</a></p>
-<p><a href="https://www.bilibili.com/video/BV1MJ411e7y7?p=9" target="_blank" rel="noopener">springboot 项目学习</a></p>
-<p><a href="https://blog.csdn.net/u010246789/article/details/53958662" target="_blank" rel="noopener">docker 一些命令</a></p>
-<p><strong>如果有不懂的请转到列出的博文</strong></p>
-<h1 id="检查-centos-内核版本"><a href="#检查-centos-内核版本" class="headerlink" title="检查 centos 内核版本"></a>检查 centos 内核版本</h1><p>这一步检查 centos 内核版本主要是 </p>
-<blockquote>
-<p>RedHat/CentOS必须要6.6版本以上，或者7.x才能安装docker，建议在RedHat/CentOS 7上使用docker，因为RedHat/CentOS 7的内核升级到了kernel 3.10，对lxc容器支持更好。</p>
-</blockquote>
-<p>里面的一些步骤我没有完全照做，主要用了以下命令：<br>检查 centos 内核版本：<code>cat /proc/version</code></p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410175036.png" alt=""></p>
-<h1 id="安装-docker"><a href="#安装-docker" class="headerlink" title="安装 docker"></a>安装 docker</h1><p>命令：<code>yum  install docker -y</code></p>
-<p>由于我已经安装了，所以就不再执行下命令了</p>
-<p>安装完后可以查看 docker 的版本： <code>docker -v</code><br><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410175644.png" alt=""></p>
-<p>docker 一些命令：<br><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410185252.png" alt=""></p>
-<h1 id="安装并启动-mysql"><a href="#安装并启动-mysql" class="headerlink" title="安装并启动 mysql"></a>安装并启动 mysql</h1><p>可以使用 <code>docker search mysql</code><br>查看 mysql 目前有哪些版本可以安装<br><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410175938.png" alt=""></p>
-<p>这里默认安装最新版本镜像：<code>docker pull mysql</code></p>
-<p>查看是否安装成功：<code>docker images</code><br><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410180249.png" alt=""></p>
-<p>安装成功后启动 mysql 容器（MySQL 镜像实例）：<code>docker run --name 镜像名 -p 外部访问端口:docker内mysql容器运行端口 -e MYSQL_ROOT_PASSWORD=mysql123 -d 镜像名:版本号</code></p>
-<p><a href="https://blog.csdn.net/qq_33997121/article/details/83689068" target="_blank" rel="noopener">关于这里启动参数没明白的可以看这篇博文</a></p>
-<p>如果还不明白的可以自己搜索下也可以参考 本文中前言中的第三条链接，是视频讲解</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410181258.png" alt=""></p>
-<p>对了，因为是使用的远程服务器，所以还得去远程服务器配置安全组规则开启外部的端口的访问权限，比如开启 5555 端口啥的，这样才能通过服务器公网 ip 地址+ 端口 去访问到 docker 容器中的 mysql 服务</p>
-<h1 id="安装并启动-redis"><a href="#安装并启动-redis" class="headerlink" title="安装并启动 redis"></a>安装并启动 redis</h1><p>使用下载命令：<code>docker pull redis</code><br>使用启动命令：<code>docker run --name redis -p 外部访问端口:6379 -v docker/redis/data:/data -d redis redis-server --appendonly yes</code></p>
-<p>同样记得开启外部访问端口的安全组规则配置</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410183837.png" alt=""></p>
+        <h1 id="需求："><a href="#需求：" class="headerlink" title="需求："></a>需求：</h1><p>有 视频 图片 文档 这样三个分类<br>然后每个分类下都有许多对应的文件，我现在需要在每个分类下进行分页查询，比如当我点击 视频 分类的时候就会从数据库中查询到所有带有 视频 分类名的所有文件，然后可以在这些文件基础上进行 分页查询<br>但是这样有一个问题，就是容易对数据库进行频繁的查询操作，所以我就想在这两层之间加一个 redis 来做缓存，然后我就是想的，当用户点击 视频 卡片的时候，如果 redis 中有相应的数据的话，那么我就直接从 redis 缓存中获取而不用再去向数据库中查询，但是这样我遇到了几个问题：</p>
+<h1 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h1><ol>
+<li><p>选用 redis 哪种数据结构来存储比较合适，因为涉及到分页查询，所以就有两种数据结构 List 和 ZSet 数据结构，我参考的这篇文章 <a href="https://my.oschina.net/1107156537/blog/1617252" target="_blank" rel="noopener">基于 redis 做缓存分页</a> 中选用了 redis 中的 ZSet 数据结构</p>
+</li>
+<li><p>选定好数据结构后，又有一个新的问题，那就是在进行键值对存储的时候，redis 中好像都是使用的 add(Object key,Object value)这样来存储一个键值对，我是想的能不能用一个键(key) 来对应一个对象集合，因为我在使用分页查询的时候，前期我是使用的 com.github.pagehelper 这个 jar 包 里面的方法</p>
+<p> <img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200328145928.png" alt=""> </p>
+<p> 将全部的查询结果封装到 PageInfo<T> 中后，前端就可以根据传递相关的参数就可以进行分页查询了，然后我后面就是想着能不能往 redis 数据库中存入这样的一个 add(“video”,PageInfo<T>) 键值对，但是我看了下提供的方法：</p>
+<p> <img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200328150734.png" alt=""></p>
+<p> 只有图中红色框中的两个，第一个可以存入一个 Set 集合，但是我又不知道如何将 PageInfo<T> 给转换成 TypeTuple 类型的，所以我就放弃这个方法了<br> 第二个方法就是简单的 key-value 的，这样存储的话，我是这样想的，数据库中查询结果返回 List 后，然后通过遍历其中的元素（对象），依次将其中的元素（对象）给 转换成 json 字符串后存入 redis 中，然后如果前端发来分页查询请求的话，那么我就从 redis 中获取到指定范围的数据后，然后将 json 字符串再转换为对象后再封装进 PageInfo<T> 里面，但是我不清楚这样的可行性有多高？</p>
+</li>
+</ol>
 
       
 
@@ -212,7 +196,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">javaweb</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
         		</li>
       		
 		</ul>
@@ -222,7 +214,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/centos-7-x-%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85-docker-%E5%B9%B6%E5%9C%A8%E5%85%B6%E4%B8%AD%E5%AE%89%E8%A3%85-mysql-%E5%92%8C-redis-%E9%95%9C%E5%83%8F/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/17/spring-boot-%E6%95%B4%E5%90%88-redis-%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">展开全文 >></a>
         </p>
       
 
@@ -276,7 +268,7 @@ gitalk.render('gitalk-container')
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/8/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><a class="extend next" rel="next" href="/page/10/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/8/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><a class="extend next" rel="next" href="/page/10/">Next &amp;raquo;</a>
     </nav>
   
 

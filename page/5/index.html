@@ -152,38 +152,106 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-centos-云主机使用-WordPress-出现的问题汇总" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Linux安装xampp来搭建WordPress网站-图文教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/centos-%E4%BA%91%E4%B8%BB%E6%9C%BA%E4%BD%BF%E7%94%A8-WordPress-%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/">centos 云主机使用 WordPress 出现的问题汇总</a>
+      <a class="article-title" href="/2020/04/17/Linux%E5%AE%89%E8%A3%85xampp%E6%9D%A5%E6%90%AD%E5%BB%BAWordPress%E7%BD%91%E7%AB%99-%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B/">Linux安装xampp来搭建WordPress网站(图文教程)</a>
     </h1>
   
 
         
-        <a href="/2020/04/17/centos-%E4%BA%91%E4%B8%BB%E6%9C%BA%E4%BD%BF%E7%94%A8-WordPress-%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/" class="archive-article-date">
-  	<time datetime="2020-04-17T12:34:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+        <a href="/2020/04/17/Linux%E5%AE%89%E8%A3%85xampp%E6%9D%A5%E6%90%AD%E5%BB%BAWordPress%E7%BD%91%E7%AB%99-%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2020-04-17T12:35:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h1><p>对于 “问题一” 和 “问题二”都可以只看看就行，不用一步步的按着操作，可以滑动到最底部 “终极方案”，找到更快捷便利的方法</p>
-<h1 id="问题一：-安装过程出现不能创建-wp-config-php-文件，要求手动创建，然后复制内容，图文如下："><a href="#问题一：-安装过程出现不能创建-wp-config-php-文件，要求手动创建，然后复制内容，图文如下：" class="headerlink" title="问题一： 安装过程出现不能创建 wp-config.php 文件，要求手动创建，然后复制内容，图文如下："></a>问题一： 安装过程出现不能创建 wp-config.php 文件，要求手动创建，然后复制内容，图文如下：</h1><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200318181613.png" alt=""></p>
-<p>出现这个问题，我就是直接按着它说的做，复制那个文本内容，然后自己手动在指定目录创建 wp-config.php，然后粘贴内容就行</p>
-<h1 id="问题二：一切配置好后，进入-WordPress-后台管理界面，当我想上传媒体文件时，出现以下错误："><a href="#问题二：一切配置好后，进入-WordPress-后台管理界面，当我想上传媒体文件时，出现以下错误：" class="headerlink" title="问题二：一切配置好后，进入 WordPress 后台管理界面，当我想上传媒体文件时，出现以下错误："></a>问题二：一切配置好后，进入 WordPress 后台管理界面，当我想上传媒体文件时，出现以下错误：</h1><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200319132710.png" alt=""></p>
-<p>这个图片是我在别人的博客中截图的，因为我写这篇博文的时候，已经把那些问题给解决了，然后期间也没做好笔记，所以先用下别人的图，嘿嘿！</p>
-<p>然后连续遇到的问题就是这篇博文中遇到的，然后我按着做就暂时解决了问题，不过我得说下只是暂时性的，有兴趣可以看下这篇博文：<br><a href="https://blog.csdn.net/wy_bk/article/details/78405588" target="_blank" rel="noopener">wordpress 问题</a></p>
-<p>然后当我设置好后，我安装插件的时候又不行了，而且我的主题什么的，总是提手我 style.css 不能用，然后那些已经安装好的主题的样式就没有了，我当时就郁闷了</p>
-<h1 id="终极方案："><a href="#终极方案：" class="headerlink" title="终极方案："></a>终极方案：</h1><p>然后我今天有开始搜索，当我搜索到一篇英文的博文时，我读完，顿时就醒悟了：<a href="https://kinsta.com/knowledgebase/installation-failed-could-not-create-directory/" target="_blank" rel="noopener">终极解决 wordpress 一系列问题-英文博文</a></p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200319134343.png" alt=""></p>
-<p>简单地说：就是去主面板下 Tools-&gt;Site Health 去找到最后的 Filesystem Permissions 你会看到哪些文件夹包含有写的权限，哪些没有写的权限，然后我的终极解决方案就是将你解压出来的 wordpress 程序包给全部给个 0766 或者 0777 权限，我就是这样以后，然后就给解决了以上所有问题，可以安装插件，可以上传多媒体文件了，自带的主题样式也可以了，主题安装也可以了，反正目前遇到的问题都解决了！！！</p>
-<p>总结下来，就是你的 wordpress 中每个文件夹没有一些写的权限，所以需要你给它们赋予可以写的权限，一般 0766 就够了吧</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200319131855.png" alt=""></p>
+        <h1 id="下载-xampp"><a href="#下载-xampp" class="headerlink" title="下载 xampp"></a>下载 xampp</h1><p><a href="http://cloud.yundashi168.com/archives/250#xampp" target="_blank" rel="noopener">本博文是根据此博文学习的，相当于是跟着做，然后做一个学习记录吧</a><br><a href="https://www.apachefriends.org/download.html" target="_blank" rel="noopener">点击访问 xampp 网站</a></p>
+<p><strong><em>【注意：】注意文中所给命令运行时请根据自己下载的 文件 的版本号对应，切不可直接复制</em></strong></p>
+<p><img src="https://pic.downk.cc/item/5e71c8c6e83c3a1e3abfd7f2.png" alt=""></p>
+<p>本文下载的版本是途中红色勾选框中的版本</p>
+<h1 id="下载-WordPress"><a href="#下载-WordPress" class="headerlink" title="下载 WordPress"></a>下载 WordPress</h1><p><a href="https://wordpress.org/download/" target="_blank" rel="noopener">点击访问 wordpress 官网</a></p>
+<p><img src="https://pic.downk.cc/item/5e71c9e4e83c3a1e3ac0f437.png" alt=""></p>
+<p>注意访问此网站可能会出现</p>
+<p><img src="https://pic.downk.cc/item/5e71c7b5e83c3a1e3abf1b7e.png" alt=""></p>
+<p>解决办法就是多访问几下就行了</p>
+<h1 id="安装-xampp"><a href="#安装-xampp" class="headerlink" title="安装 xampp"></a>安装 xampp</h1><ol>
+<li>通过 FileZilla 来连接 云主机，然后上传 xampp 和 wordpress </li>
+<li>通过 SmarTTY 来远程链接 云主机，然后通过以下命令来执行安装 xampp<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">先运行   chmod -R 755 xampp-linux-x64-7.2.12-0-installer.run</span><br><span class="line">后运行   .&#x2F;xampp-linux-x64-7.2.12-0-installer.run</span><br><span class="line">注意版本号请根据自己下载的 xampp 的版本号对应，切不可直接复制</span><br></pre></td></tr></table></figure>
+<img src="https://pic.downk.cc/item/5e71c9e4e83c3a1e3ac0f43a.png" alt=""></li>
+</ol>
+<p><img src="https://pic.downk.cc/item/5e71cb1fe83c3a1e3ac228ac.png" alt=""></p>
+<p>注意这里默认安装的路径是 /opt/lampp</p>
+<ol start="3">
+<li>手动启动 xampp 服务</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;home&#x2F;ProgrammingToolsAndEnvironments&#x2F;lampp&#x2F;lampp start</span><br><span class="line">根据自己的实际目录去运行</span><br><span class="line"></span><br><span class="line">网上复制的一些命令</span><br><span class="line">linux启动XAMPP命令：</span><br><span class="line">启动 XAMPP&#x2F;opt&#x2F;lampp&#x2F;.&#x2F;lampp start</span><br><span class="line">停止 XAMPP&#x2F;opt&#x2F;lampp&#x2F;.&#x2F;lampp stop</span><br><span class="line">重启 XAMPP&#x2F;opt&#x2F;lampp&#x2F;.&#x2F;lampp restart</span><br><span class="line">安全设置&#x2F;opt&#x2F;lampp&#x2F;.&#x2F;lampp security</span><br><span class="line">卸载 XAMPPrm -rf &#x2F;opt&#x2F;lampp</span><br></pre></td></tr></table></figure>
+
+<p>启动成功截图如下：</p>
+<p><img src="https://pic.downk.cc/item/5e71d358e83c3a1e3aca1cfb.png" alt=""></p>
+<p>然后通过你的 云主机 的公网 ip 地址进行访问，注意在访问前确认配置了云主机 80 端口的安全组规则</p>
+<p><img src="https://pic.downk.cc/item/5e71cb1fe83c3a1e3ac228ae.png" alt=""></p>
+<ol start="4">
+<li>设置各个环境的密码<br>使用命令：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo &#x2F;opt&#x2F;lampp&#x2F;lampp security</span><br></pre></td></tr></table></figure>
+命令使用成功后如下：</li>
+</ol>
+<p><img src="https://pic.downk.cc/item/5e71d358e83c3a1e3aca1cff.png" alt=""></p>
+<p>注意输入密码是不会有提示的，所以直接输入就行</p>
+<p>1、输入xampp控制面板的密码（用户名是xampp）；<br>2、输入phpmyadmin的密码（用户名是pma）<br>3、输入mysql的密码（用户名是root）<br>4、输入ftp密码（用户名是daemon，默认端口21）</p>
+<ol start="5">
+<li>访问 phpmyadmin</li>
+</ol>
+<p>这是管理mysql数据库的客户端工具，可以在浏览器访问。在访问phpmyadmin的时候，发现403错误。这个是由于服务器设置了xampp不允许远程访问</p>
+<p><img src="https://pic.downk.cc/item/5e71c7b5e83c3a1e3abf1b80.png" alt=""></p>
+<p>找到httpd-xampp.conf配置文件：用命令 cd /opt/lampp/etc/extra进入目录，ls列出文件，找到httpd-xampp.conf</p>
+<p><img src="https://pic.downk.cc/item/5e71c8c6e83c3a1e3abfd7f5.png" alt=""></p>
+<p>然后：<br>通过命令：vim httpd-xampp.conf 对配置文件进行编辑</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">AllowOverride AuthConfig</span><br><span class="line">Require all granted</span><br><span class="line">ErrorDocument 403 &#x2F;error&#x2F;XAMPP_FORBIDDEN.html.var</span><br></pre></td></tr></table></figure>
+
+<p>也就是将 Require local 改成 Require all granted 。保存文件，使用命令 [./lampp restart] 重启xampp即可。访问phpmyadmin出现如下界面，就表示问题解决，安装xampp成功。</p>
+<p><img src="https://pic.downk.cc/item/5e71c7b5e83c3a1e3abf1b83.png" alt=""></p>
+<p>然后输入用户名 和密码进行登录就行<br><img src="https://pic.downk.cc/item/5e71c7b5e83c3a1e3abf1b83.png" alt=""></p>
+<p>登陆后的状态<br><img src="https://pic.downk.cc/item/5e71c9e4e83c3a1e3ac0f433.png" alt=""></p>
+<p>感觉这个和 phpStudy 一样的内容，都差不多，哈哈</p>
+<h1 id="安装WordPress"><a href="#安装WordPress" class="headerlink" title="安装WordPress"></a>安装WordPress</h1><ol>
+<li>先把wordpress-4.9.8.tar.gz文件上传到htdocs目录下。利用 FileZilla 进行上传操作。并对文件进行解压操作</li>
+</ol>
+<p>解压所需命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvzf wordpress-4.9.8.tar.gz</span><br></pre></td></tr></table></figure>
+<p>注意我在一开始上传的时候是上传到了/home/ProgrammingToolsAndEnvironments/ 目录下，所以我这里先移动 wordpress 文件压缩包到 /opt/lampp/htdocs 目录下，具体操作看截图</p>
+<p><img src="https://pic.downk.cc/item/5e71cb1fe83c3a1e3ac228b0.png" alt=""></p>
+<p>这时候解压 wordpress 压缩包，解压后：</p>
+<p><img src="https://pic.downk.cc/item/5e71caaee83c3a1e3ac1c026.png" alt=""></p>
+<ol start="2">
+<li>验证mysql登录是否成功</li>
+</ol>
+<p>在阿里云服务器中设置好安全组规则，把数据库端口3306端口放行。否则，数据库端口没有放行，就没办法远程访问和操作mysql数据库了。</p>
+<p><img src="https://pic.downk.cc/item/5e71c8c6e83c3a1e3abfd7fb.png" alt=""></p>
+<ol start="3">
+<li>利用phpmyadmin建立数据库 aliyun (数据库名自己取)。这个数据库在安装 wordpress 是必须需要的。</li>
+</ol>
+<p>注意我这里 使用的是用户 pma 登录的 phpmyadmin 所以会提示没有权限创建数据库</p>
+<p><img src="https://pic.downk.cc/item/5e71c9e4e83c3a1e3ac0f435.png" alt=""></p>
+<p>所以点击左上角第二个图标来退出登录，然后使用 root 来登录，密码是 和 pma 一样的密码</p>
+<p>然后创建数据库：<br><img src="https://pic.downk.cc/item/5e71c8c6e83c3a1e3abfd7f9.png" alt=""></p>
+<ol start="4">
+<li>浏览器安装WordPress。（这一步必须保证 mysq l数据库是安装成功并且建立好了数据库，因为在安装 wordpress 的时候需要填写已经创建好的数据库名字）</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200318172112.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200318172314.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Snipaste_2020-03-18_17-27-07.png" alt=""></p>
+<p>我在安装的时候出现了问题<br><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200318181613.png" alt=""></p>
+<p>它告诉我手动复制下面的文件，然后创建 wp-config.php 文件，那我就按照它说的办吧，因为我上网找了下其他解决办法，有说重启下服务器的，也有说是路径问题，但是我不想按照那些来修改，复制后就可以了，不过在正常模式下复制会出现缺少字符的问题，这篇文章有介绍：<br><a href="https://segmentfault.com/q/1010000013970800" target="_blank" rel="noopener">正常模式下粘贴文本到vim中出现缺少字符的情况</a></p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200318190220.png" alt=""></p>
+<p>然后登录就可以了，大公告成！</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200318190559.png" alt=""></p>
+<p><a href="https://www.bilibili.com/video/av40307690" target="_blank" rel="noopener">关于 WordPress 如何使用，我建议你看下这个</a></p>
 
       
 
@@ -197,7 +265,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">WebsiteBuildProblemsSolutions</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">xampp</a>
         		</li>
       		
 		</ul>
@@ -207,7 +275,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/centos-%E4%BA%91%E4%B8%BB%E6%9C%BA%E4%BD%BF%E7%94%A8-WordPress-%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/17/Linux%E5%AE%89%E8%A3%85xampp%E6%9D%A5%E6%90%AD%E5%BB%BAWordPress%E7%BD%91%E7%AB%99-%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B/">展开全文 >></a>
         </p>
       
 
@@ -261,7 +329,7 @@ gitalk.render('gitalk-container')
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
     </nav>
   
 
