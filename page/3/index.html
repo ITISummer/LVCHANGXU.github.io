@@ -152,70 +152,66 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-将本地仓库-push-到-GitHub" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-使用虚拟机工具-VirtualBox-安装-CentOs7" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/23/%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93-push-%E5%88%B0-GitHub/">将本地仓库 push 到 GitHub</a>
+      <a class="article-title" href="/2020/04/23/%E4%BD%BF%E7%94%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%B7%A5%E5%85%B7-VirtualBox-%E5%AE%89%E8%A3%85-CentOs7/">使用虚拟机工具 VirtualBox 安装 CentOs7</a>
     </h1>
   
 
         
-        <a href="/2020/04/23/%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93-push-%E5%88%B0-GitHub/" class="archive-article-date">
-  	<time datetime="2020-04-23T09:43:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
+        <a href="/2020/04/23/%E4%BD%BF%E7%94%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%B7%A5%E5%85%B7-VirtualBox-%E5%AE%89%E8%A3%85-CentOs7/" class="archive-article-date">
+  	<time datetime="2020-04-23T09:45:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>记录下当在本地新建一个未 git 初始化工程时如何推送到 git</p>
-<h1 id="新建一个工程"><a href="#新建一个工程" class="headerlink" title="新建一个工程"></a>新建一个工程</h1><p>使用 idea 新建一个工程 test</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422160330.png" alt=""></p>
-<p>这时候这个工程没有用 git 初始化的</p>
-<h1 id="利用-idea-来初始化"><a href="#利用-idea-来初始化" class="headerlink" title="利用 idea 来初始化"></a>利用 idea 来初始化</h1><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422160704.png" alt=""></p>
-<p>在当前 test 工程下按照图中操作</p>
-<h1 id="或者利用-git-bash-来初始化"><a href="#或者利用-git-bash-来初始化" class="headerlink" title="或者利用 git bash 来初始化"></a>或者利用 git bash 来初始化</h1><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Snipaste_2020-04-22_16-08-37.png" alt=""></p>
-<p>输入 <code>git init</code> 命令即可</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422161156.png" alt=""></p>
-<p>不过我建议安装一个 .gitignore 插件，然后在创建 git 工程后添加一个 .gitignore 文件，可以避免上传一些和源码不想关的文件</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Snipaste_2020-04-22_16-13-35.png" alt=""></p>
-<p><a href="https://blog.csdn.net/static_void_james/article/details/78619314" target="_blank" rel="noopener">git .gitignore规则及取消追踪已追踪文件</a></p>
-<p><a href="https://blog.csdn.net/qq_34590097/article/details/56284935" target="_blank" rel="noopener">如何在IntelliJ IDEA中使用.ignore插件忽略不必要提交的文件</a></p>
-<p>可以参考下这两篇博文</p>
-<h1 id="github-上建立一个远程仓库"><a href="#github-上建立一个远程仓库" class="headerlink" title="github 上建立一个远程仓库"></a>github 上建立一个远程仓库</h1><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422162410.png" alt=""></p>
-<p>两个地方建立都行，任选一个</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Snipaste_2020-04-22_16-25-23.png" alt=""></p>
-<h1 id="上传本地项目到远程仓库"><a href="#上传本地项目到远程仓库" class="headerlink" title="上传本地项目到远程仓库"></a>上传本地项目到远程仓库</h1><p><a href="https://www.liaoxuefeng.com/wiki/896043488029600/898732864121440" target="_blank" rel="noopener">参考资料：廖雪峰的官方网站</a></p>
-<p>先复制远程仓库地址</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Snipaste_2020-04-22_16-27-46.png" alt=""></p>
-<p>使用命令 <code>git remote add 远程名(一般是 origin) 远程仓库地址</code><br>这里使用 <code>git remote add origin https://github.com/LVCHANGXU/test.git</code></p>
-<p>在本地添加一些内容<br>git add * 表示将所有内容添加<br>然后本地提交<br>git commit -m “first commit”</p>
-<p>然后使用 <code>git push -u 远程名 master</code> 即可<br>这里使用 <code>git push -u origin master</code></p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Snipaste_2020-04-22_16-49-35.png" alt=""></p>
-<p>注意这时候我使用 <code>git push</code> 命令出现了这个错误，我想原因就是我在远程创建仓库的时候勾选了初始化 readme.md 文件，所以我的远程仓库相对于我的本地仓库更新了，所以需要先 <code>git pull</code> 下，但是呢，我刚在本地又 commit 了下，所以 pull 也会出问题，它提示我：</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Snipaste_2020-04-22_16-53-37.png" alt=""></p>
-<h2 id="尝试一：失败"><a href="#尝试一：失败" class="headerlink" title="尝试一：失败"></a>尝试一：失败</h2><p>我想是因为我这个操作是合并远程的 master 到本地的 master，本地又不能给合并，所以我觉得应该可以在本地创建一个其他分支，比如 fix 啥的，然后切换本地到 fix 分支看下能不能给 pull，然后我试了下，也是不能，（因为我 git 也就只会一些基本的命令，然后对 git 的理解也是不够透彻，所以就试试，哈哈）</p>
-<h2 id="尝试二：成功"><a href="#尝试二：成功" class="headerlink" title="尝试二：成功"></a>尝试二：成功</h2><p>把远程仓库给删掉，然后新建一个，不过不选初始化 readme.md 文件</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422171124.png" alt=""></p>
-<p>这时候远程仓库就是最干净的了，这时候再 push 下，这时候就成功了</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422171450.png" alt=""></p>
-<h2 id="尝试三：成功"><a href="#尝试三：成功" class="headerlink" title="尝试三：成功"></a>尝试三：成功</h2><p>不过如果我不想做 “尝试二”呢？，然后我就在浏览器中搜寻 “refusing to merge unrelated histories” 然后就搜寻到了<a href="https://github.community/t5/How-to-use-Git-and-GitHub/How-to-deal-with-quot-refusing-to-merge-unrelated-histories-quot/m-p/16305#M5000" target="_blank" rel="noopener">这篇博文</a> 解决了问题，方法就是使用命令 <code>git pull --allow-unrelated-histories</code> ，然后我还得试下，于是我在 github 上新建了一个文件：</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422172050.png" alt=""></p>
-<p>这时候远程就比本地新了，然后我本地再新建一个文件后添加提交一次，</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422172325.png" alt=""></p>
-<p>然后使用  <code>git pull --allow-unrelated-histories</code>  命令试下能不能成功</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422172852.png" alt=""></p>
-<p>这时候也是成功了</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422173114.png" alt=""></p>
-<p>发现本地和远程也都没啥变化啊</p>
-<p>然后这时候再把本地的给 push 到远程，发现还是可以</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422173347.png" alt=""></p>
-<p>至此，测试就完成了！！！</p>
-<h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>不过我推荐还是使用 “尝试二”比较简单快捷方便，还有就是如果你是想同步本地仓库到远程的话，那么最好是在远程创建一个新的仓库，不要选 初始化 readme.md 文件</p>
+        <h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p><a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" rel="noopener">官网下载 VirtualBox</a></p>
+<p><a href="http://mirrors.aliyun.com/centos/7/isos/x86_64/" target="_blank" rel="noopener">阿里云 centos 系列镜像下载</a></p>
+<p><a href="https://www.jianshu.com/p/18207167b1e7" target="_blank" rel="noopener">参考博文一：使用 VirtualBox 安装 centos7</a></p>
+<p><a href="https://resources.infosecinstitute.com/installing-configuring-centos-7-virtualbox/#gref" target="_blank" rel="noopener">参考博文二：Installing and Configuring CentOS 7 on Virtualbox</a></p>
+<p><a href="https://www.cnblogs.com/set-config/p/9040407.html" target="_blank" rel="noopener">参考博文三：手动分区建议</a></p>
+<p>关于网上讨论的自动分区和手动分区的区别，这里摘录下：</p>
+<blockquote>
+<p>自动分区百的话，linux是根据默认配置对你的硬盘进行度分区，属于标知准化的分区格式，如果对系统没有特殊要求的话，可以使用自动道话分区手动分区专的话，如果你需要某个属分区特别大或者特别小，需<br>要定制，就需要自己手动进行分区</p>
+</blockquote>
+<p>我这里下载的镜像是：CentOS-7-x86_64-DVD-1908.iso</p>
+<p>因为国内访问 centos.org 官网太慢了，所以使用国内的大的镜像网站下载比较好</p>
+<h1 id="步骤一：配置虚拟机"><a href="#步骤一：配置虚拟机" class="headerlink" title="步骤一：配置虚拟机"></a>步骤一：配置虚拟机</h1><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200420162323.png" alt=""></p>
+<p>选择 RedHat 就行 -&gt; next</p>
+<p>分配内存，按自己实际情况分配，一般 1G 吧<br>然后就是创建虚拟硬盘：</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200420163042.png" alt=""></p>
+<p>点击 next 后 选择  dynamically allocated(动态分配)</p>
+<p>点击 next，分配空间</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200420163752.png" alt=""></p>
+<h1 id="步骤二：链接镜像和空间"><a href="#步骤二：链接镜像和空间" class="headerlink" title="步骤二：链接镜像和空间"></a>步骤二：链接镜像和空间</h1><p>将创建的虚拟机和 iso 镜像给链接起来</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200420181617.png" alt=""></p>
+<h1 id="步骤三：启动虚拟机"><a href="#步骤三：启动虚拟机" class="headerlink" title="步骤三：启动虚拟机"></a>步骤三：启动虚拟机</h1><p>上下键选择，选择第一个</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200420164837.png" alt=""></p>
+<p>选择语言（安装时）：</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200420165707.png" alt=""></p>
+<p><strong>如果想回到 Windows 本机的话，可以按一下 右边的 ctrl 键盘</strong></p>
+<p>然后设置磁盘</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200420170127.png" alt=""></p>
+<p>选择之前配置的磁盘，就选择自动分区就行了</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200420170423.png" alt=""></p>
+<p>点击软件选择</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200420182702.png" alt=""></p>
+<p>设置网络和主机名</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200420182956.png" alt=""></p>
+<p>然后 完成 -&gt; 开始安装<br>然后设置 root 用户密码，和创建一个新用户</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200420171216.png" alt=""></p>
+<p>完成配置-&gt;重启下</p>
+<p>然后接受许可证就行了</p>
+<p>完成！！！</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200420190031.png" alt=""></p>
+<h1 id="配置中文输入法"><a href="#配置中文输入法" class="headerlink" title="配置中文输入法"></a>配置中文输入法</h1><p><a href="https://blog.csdn.net/alex_my/article/details/38223449" target="_blank" rel="noopener">CentOS 7.0 安装中文输入法</a><br>不需要安装啥，就能切换中文输入法</p>
 
       
 
@@ -229,7 +225,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">centos7</a>
         		</li>
       		
 		</ul>
@@ -239,7 +235,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/23/%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93-push-%E5%88%B0-GitHub/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/23/%E4%BD%BF%E7%94%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%B7%A5%E5%85%B7-VirtualBox-%E5%AE%89%E8%A3%85-CentOs7/">展开全文 >></a>
         </p>
       
 
@@ -293,7 +289,7 @@ gitalk.render('gitalk-container')
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
     </nav>
   
 

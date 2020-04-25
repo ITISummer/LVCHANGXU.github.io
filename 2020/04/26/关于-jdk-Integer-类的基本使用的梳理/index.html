@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Summer&#39;s Blog</title>
+  <title>关于 jdk-Integer 类的基本使用的梳理 | Summer&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Summer&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="Integer 类的定义1234package java.lang;public final class Integer extends Number implements Comparable&lt;Integer&gt;  参考文档Java Integer类详解 Java中Integer类的方法 Integer 创建对象   构造函数 说明    public Integer(int valu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于 jdk-Integer 类的基本使用的梳理">
+<meta property="og:url" content="http://yoursite.com/2020/04/26/%E5%85%B3%E4%BA%8E-jdk-Integer-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/index.html">
 <meta property="og:site_name" content="Summer&#39;s Blog">
+<meta property="og:description" content="Integer 类的定义1234package java.lang;public final class Integer extends Number implements Comparable&lt;Integer&gt;  参考文档Java Integer类详解 Java中Integer类的方法 Integer 创建对象   构造函数 说明    public Integer(int valu">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-25T22:27:33.000Z">
+<meta property="article:modified_time" content="2020-04-25T14:29:16.268Z">
 <meta property="article:author" content="Summer Lv">
+<meta property="article:tag" content="JDK">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Summer&#39;s Blog" type="application/atom+xml">
@@ -150,36 +155,145 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-关于-jdk-Integer-类的基本使用的梳理" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      关于 jdk-Integer 类的基本使用的梳理
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/26/%E5%85%B3%E4%BA%8E-jdk-Integer-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/" class="archive-article-date">
+
+        
+        <a href="/2020/04/26/%E5%85%B3%E4%BA%8E-jdk-Integer-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/" class="archive-article-date">
   	<time datetime="2020-04-25T22:27:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/26/%E5%85%B3%E4%BA%8E-jdk-Integer-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/">关于 jdk-Integer 类的基本使用的梳理</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Integer-类的定义"><a href="#Integer-类的定义" class="headerlink" title="Integer 类的定义"></a>Integer 类的定义</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> java.lang;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Integer</span> <span class="keyword">extends</span> <span class="title">Number</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Integer</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><a href="http://c.biancheng.net/view/890.html" target="_blank" rel="noopener">Java Integer类详解</a></p>
+<p><a href="https://blog.csdn.net/softwave/article/details/1381846" target="_blank" rel="noopener">Java中Integer类的方法</a></p>
+<h1 id="Integer-创建对象"><a href="#Integer-创建对象" class="headerlink" title="Integer 创建对象"></a>Integer 创建对象</h1><table>
+<thead>
+<tr>
+<th>构造函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public Integer(int value)</td>
+<td>将传入的 int 值构造为整数类型</td>
+</tr>
+<tr>
+<td>public Integer(String s) throws NumberFormatException</td>
+<td>将字符串 s 解析为整数类型，默认以 10 进制方式去解析，底层就是将每个字符取出来，获取每个字符的字面值，然后乘以给定的进制(基数)，最后返回结果，注意 s 的字面值是 [Integer.MIN_VALUE,Integer.MAX_VALUE]</td>
+</tr>
+</tbody></table>
+<h1 id="Integer-常用方法"><a href="#Integer-常用方法" class="headerlink" title="Integer 常用方法"></a>Integer 常用方法</h1><table>
+<thead>
+<tr>
+<th>常用方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public static int compare(int x, int y)</td>
+<td>比较 x,y; 如果 x&gt;y,返回正数；x&lt;y, 返回负数；x==y,返回 0</td>
+</tr>
+<tr>
+<td>public int compareTo(Integer anotherInteger)</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>public boolean equals(Object obj)</td>
+<td>判断值是否相等，如果相等返回 true</td>
+</tr>
+<tr>
+<td>public int intValue()</td>
+<td>返回 int 值</td>
+</tr>
+<tr>
+<td>public static int max(int a, int b)</td>
+<td>返回 较大值</td>
+</tr>
+<tr>
+<td>public static int min(int a, int b)</td>
+<td>返回 较小值</td>
+</tr>
+<tr>
+<td>public static int parseInt(String s) throws NumberFormatException</td>
+<td>将 s 解析成十进制整数</td>
+</tr>
+<tr>
+<td>public static int parseInt(String s, int radix)throwsNumberFormatException</td>
+<td>以指定基数去解析 s</td>
+</tr>
+<tr>
+<td>public static int sum(int a, int b)</td>
+<td>求和</td>
+</tr>
+<tr>
+<td>public static String toHexString(int i)</td>
+<td>返回 i 的十六进制字符串</td>
+</tr>
+<tr>
+<td>public String toString()</td>
+<td>以字面值字符串形式返回</td>
+</tr>
+<tr>
+<td>public static Integer valueOf(int i)</td>
+<td>返回 i 的 Integer 包装类型</td>
+</tr>
+<tr>
+<td>public static Integer valueOf(String s) throws NumberFormatException</td>
+<td>将 s 转换为 Integer 类型</td>
+</tr>
+</tbody></table>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>如果你觉得我的博文对你有帮助的话，一分也是鼓励 (￣▽￣)<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/wechatpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,375 +305,143 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/26/%E5%85%B3%E4%BA%8E-jdk-Integer-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/25/%E5%85%B3%E4%BA%8E-jdk-String-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/" class="archive-article-date">
-  	<time datetime="2020-04-25T13:37:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/25/%E5%85%B3%E4%BA%8E-jdk-String-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于 jdk-String 类的基本使用的梳理</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/25/%E5%85%B3%E4%BA%8E-jdk-String-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/">关于 jdk-String 类的基本使用的梳理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JDK</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Integer-类的定义"><span class="toc-number">1.</span> <span class="toc-text">Integer 类的定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文档"><span class="toc-number">2.</span> <span class="toc-text">参考文档</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Integer-创建对象"><span class="toc-number">3.</span> <span class="toc-text">Integer 创建对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Integer-常用方法"><span class="toc-number">4.</span> <span class="toc-text">Integer 常用方法</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/23/%E4%BD%BF%E7%94%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%B7%A5%E5%85%B7-VirtualBox-%E5%AE%89%E8%A3%85-CentOs7/" class="archive-article-date">
-  	<time datetime="2020-04-23T09:45:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/23/%E4%BD%BF%E7%94%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%B7%A5%E5%85%B7-VirtualBox-%E5%AE%89%E8%A3%85-CentOs7/">使用虚拟机工具 VirtualBox 安装 CentOs7</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">centos7</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/23/%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93-push-%E5%88%B0-GitHub/" class="archive-article-date">
-  	<time datetime="2020-04-23T09:43:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/23/%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93-push-%E5%88%B0-GitHub/">将本地仓库 push 到 GitHub</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/18/%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9F%BA%E7%A1%80%E7%BB%83%E4%B9%A0-%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%85%AB%E8%BF%9B%E5%88%B6/" class="archive-article-date">
-  	<time datetime="2020-04-17T23:55:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/18/%E8%93%9D%E6%A1%A5%E6%9D%AF-%E5%9F%BA%E7%A1%80%E7%BB%83%E4%B9%A0-%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%85%AB%E8%BF%9B%E5%88%B6/">蓝桥杯-基础练习-十六进制转八进制</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">lanqiaoOJ</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/17/Linux%E5%AE%89%E8%A3%85xampp%E6%9D%A5%E6%90%AD%E5%BB%BAWordPress%E7%BD%91%E7%AB%99-%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2020-04-17T12:35:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/17/Linux%E5%AE%89%E8%A3%85xampp%E6%9D%A5%E6%90%AD%E5%BB%BAWordPress%E7%BD%91%E7%AB%99-%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B/">Linux安装xampp来搭建WordPress网站(图文教程)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">xampp</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/17/centos-%E4%BA%91%E4%B8%BB%E6%9C%BA%E4%BD%BF%E7%94%A8-WordPress-%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/" class="archive-article-date">
-  	<time datetime="2020-04-17T12:34:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/17/centos-%E4%BA%91%E4%B8%BB%E6%9C%BA%E4%BD%BF%E7%94%A8-WordPress-%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/">centos 云主机使用 WordPress 出现的问题汇总</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">WebsiteBuildProblemsSolutions</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/17/%E4%BD%BF%E7%94%A8-WorldPress-phpStudy-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E8%BF%87%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2020-04-17T12:33:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/17/%E4%BD%BF%E7%94%A8-WorldPress-phpStudy-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E8%BF%87%E7%A8%8B/">使用 WorldPress+phpStudy 搭建个人网站过程</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">phpStudy</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/17/%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85-tomcat/" class="archive-article-date">
-  	<time datetime="2020-04-17T12:32:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/17/%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%BB%E6%9C%BA%E5%AE%89%E8%A3%85-tomcat/">阿里云主机安装 tomcat</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">LinuxEnvironmentSetup</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/17/spring-boot-%E6%95%B4%E5%90%88-redis-%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/" class="archive-article-date">
-  	<time datetime="2020-04-17T12:30:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/17/spring-boot-%E6%95%B4%E5%90%88-redis-%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">spring boot 整合 redis 实现分页查询</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">javaweb</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
+
+
+  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: 'def073c6e5287e63537f',
+  	clientSecret: '272f85297154e7ad1e60633026fb5379e759ba7f',
+  	repo: 'comments',
+  	owner: 'LVCHANGXU',
+  	admin: ['LVCHANGXU'],
+  	id: 'Sat Apr 25 2020 22:27:33 GMT+0000',
+  	distractionFreeMode: 'true'
+})
+gitalk.render('gitalk-container') 
+}
+</script>
+  
           </div>
         </div>
       </div>
@@ -590,8 +472,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
