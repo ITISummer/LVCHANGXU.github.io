@@ -152,38 +152,53 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-LeetCode-0038-CountandSay" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-centos-7-x-版本安装-docker-并在其中安装-mysql-和-redis-镜像" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/LeetCode-0038-CountandSay/">LeetCode_0038_CountandSay</a>
+      <a class="article-title" href="/2020/04/17/centos-7-x-%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85-docker-%E5%B9%B6%E5%9C%A8%E5%85%B6%E4%B8%AD%E5%AE%89%E8%A3%85-mysql-%E5%92%8C-redis-%E9%95%9C%E5%83%8F/">centos 7.x 版本安装 docker 并在其中安装 mysql 和 redis 镜像</a>
     </h1>
   
 
         
-        <a href="/2020/04/17/LeetCode-0038-CountandSay/" class="archive-article-date">
-  	<time datetime="2020-04-17T12:26:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+        <a href="/2020/04/17/centos-7-x-%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85-docker-%E5%B9%B6%E5%9C%A8%E5%85%B6%E4%B8%AD%E5%AE%89%E8%A3%85-mysql-%E5%92%8C-redis-%E9%95%9C%E5%83%8F/" class="archive-article-date">
+  	<time datetime="2020-04-17T12:28:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这道题真的还是挺有意思的，我说的有意思是指它的结果，只包含1、2、3三个数字组成的字符串，然后我说下我的思路吧，其实大题思路就是找到判断相邻的字符是不是相同，通过一个变量来记录相同相邻字符的个数，然后遇到不同的字符以后就在一个StringBuilder对象str_1后面添加一下，之所以使用StringBuilder对象不仅是因为这个类的对象里面有append()方法，而且这样可以不用像String类每添加一次就产生一个对象，可以节约堆内存。然后在写代码的时候如果遇到问题的话，多调试是很好的，我在写这个题的时候就是遇到了很多细节上面的问题，然后都是通过调试来解决的。这里面每一个写法都是值得看下的。哈哈~</p>
-<h1 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h1><p>count-and-say序列是前五项为整数的序列:<br></p>
-<ol>
-<li>1<br></li>
-<li>11<br></li>
-<li>21<br></li>
-<li>1211<br></li>
-<li>111221<br><br>1被读作“one 1”或“11”。<br><br>11被读作“两个1”或21。<br><br>21被读作“1,2，然后1,1”或1211。<br><br>给定一个整数n，其中1≤n≤30，生成count-and-say序列的第n项。<br><br>注意:整数序列的每一项都表示为字符串。<br></li>
-</ol>
-<p>en~ 表示刚开始看到题的时候一脸懵，然后网上找了别人的理解，然后才知道了题意原来挺简单的啊~，就是根据上一个字符串，然后读出其中的数据。比如输入1 则返回字符串“1”，然后输入2 则根据输入1时产生的字符串，可以数得是一个1，则字符串表示为“11”，然后输入3则数得字符串是两个1，表示为“21”，输入4则是一个2一个1，表示为：“1211”。嗯，依次类推吧！</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>这道题我分别使用了循环和递归，可以参照理解下，发现递归还比循环快了些。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">package javaLeetCode.primary;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class CountandSay_38 &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		@SuppressWarnings(&quot;resource&quot;)</span><br><span class="line">		Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">		System.out.println(&quot;Please input a integer:&quot;);</span><br><span class="line">		int n &#x3D; input.nextInt();</span><br><span class="line">		System.out.println(countAndSay_2(n));</span><br><span class="line"></span><br><span class="line">	&#125;&#x2F;&#x2F; end main()</span><br><span class="line"></span><br><span class="line">	public static String countAndSay_1(int n) &#123;</span><br><span class="line"></span><br><span class="line">		StringBuilder str &#x3D; new StringBuilder(&quot;1&quot;);</span><br><span class="line">		if (n &lt;&#x3D; 0 || n &gt; 30) &#123;</span><br><span class="line">			return null;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			int i &#x3D; 1;</span><br><span class="line">			int num &#x3D; 1;&#x2F;&#x2F; Count the number of character.</span><br><span class="line">			int temp &#x3D; 1;&#x2F;&#x2F; Control the whileLoop.</span><br><span class="line">			while (temp &lt; n) &#123;</span><br><span class="line">				StringBuilder str_1 &#x3D; new StringBuilder();</span><br><span class="line">				for (i &#x3D; 1; i &lt; str.length(); i++) &#123;</span><br><span class="line">					if (str.charAt(i) &#x3D;&#x3D; str.charAt(i - 1)) &#123;</span><br><span class="line">						num +&#x3D; 1;</span><br><span class="line">					&#125; else &#123;</span><br><span class="line">						str_1.append(num + &quot;&quot; + str.charAt(i - 1));</span><br><span class="line">						num &#x3D; 1;</span><br><span class="line">					&#125; &#x2F;&#x2F; end if</span><br><span class="line">				&#125; &#x2F;&#x2F; end for</span><br><span class="line">				str_1.append(num + &quot;&quot; + str.charAt(i - 1));</span><br><span class="line">				num &#x3D; 1;</span><br><span class="line">				str &#x3D; str_1;</span><br><span class="line">				temp++;</span><br><span class="line">			&#125; &#x2F;&#x2F; end while</span><br><span class="line">		&#125; &#x2F;&#x2F; end if</span><br><span class="line">		return str.toString();</span><br><span class="line">	&#125;&#x2F;&#x2F; end countAndSay()</span><br><span class="line"></span><br><span class="line">	public static String countAndSay_2(int n) &#123;</span><br><span class="line"></span><br><span class="line">		StringBuilder str &#x3D; new StringBuilder(&quot;&quot;);</span><br><span class="line">		if (n &gt;&#x3D; 1 &amp;&amp; n &lt;&#x3D; 30) &#123;</span><br><span class="line">			str.append(&quot;1&quot;);</span><br><span class="line">			str &#x3D; countAndSay_2_1(n, str);</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			;</span><br><span class="line">		&#125; &#x2F;&#x2F; end if</span><br><span class="line">		return str.toString();</span><br><span class="line">	&#125;&#x2F;&#x2F; end countAndSay()</span><br><span class="line"></span><br><span class="line">	public static StringBuilder countAndSay_2_1(int n, StringBuilder str) &#123;</span><br><span class="line"></span><br><span class="line">		if (n &gt; 1) &#123;</span><br><span class="line">			int i &#x3D; 1;</span><br><span class="line">			int num &#x3D; 1;&#x2F;&#x2F; Count the number of character.</span><br><span class="line">			StringBuilder str_1 &#x3D; new StringBuilder();</span><br><span class="line">			for (i &#x3D; 1; i &lt; str.length(); i++) &#123;</span><br><span class="line">				if (str.charAt(i) &#x3D;&#x3D; str.charAt(i - 1)) &#123;</span><br><span class="line">					num +&#x3D; 1;</span><br><span class="line">				&#125; else &#123;</span><br><span class="line">					str_1.append(num + &quot;&quot; + str.charAt(i - 1));</span><br><span class="line">					num &#x3D; 1;</span><br><span class="line">				&#125; &#x2F;&#x2F; end if</span><br><span class="line">			&#125; &#x2F;&#x2F; end for</span><br><span class="line">			str_1.append(num + &quot;&quot; + str.charAt(i - 1));</span><br><span class="line">			str &#x3D; str_1;</span><br><span class="line">			str &#x3D; countAndSay_2_1(--n,str);</span><br><span class="line">&#x2F;&#x2F;			return str;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			;</span><br><span class="line">		&#125; &#x2F;&#x2F; end if</span><br><span class="line">		return str;</span><br><span class="line">	&#125;&#x2F;&#x2F; end countAndSay_2_1()</span><br><span class="line">&#125;&#x2F;&#x2F; end CountandSay_38</span><br></pre></td></tr></table></figure>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我主要是看了这篇博文：</p>
+<p><a href="https://yq.aliyun.com/articles/336442" target="_blank" rel="noopener">阿里云CentOS 7上安装配置Docker</a></p>
+<p><a href="https://www.jianshu.com/p/5fbb02d886d4" target="_blank" rel="noopener">使用docker安装mysql和redis</a></p>
+<p><a href="https://www.bilibili.com/video/BV1MJ411e7y7?p=9" target="_blank" rel="noopener">springboot 项目学习</a></p>
+<p><a href="https://blog.csdn.net/u010246789/article/details/53958662" target="_blank" rel="noopener">docker 一些命令</a></p>
+<p><strong>如果有不懂的请转到列出的博文</strong></p>
+<h1 id="检查-centos-内核版本"><a href="#检查-centos-内核版本" class="headerlink" title="检查 centos 内核版本"></a>检查 centos 内核版本</h1><p>这一步检查 centos 内核版本主要是 </p>
+<blockquote>
+<p>RedHat/CentOS必须要6.6版本以上，或者7.x才能安装docker，建议在RedHat/CentOS 7上使用docker，因为RedHat/CentOS 7的内核升级到了kernel 3.10，对lxc容器支持更好。</p>
+</blockquote>
+<p>里面的一些步骤我没有完全照做，主要用了以下命令：<br>检查 centos 内核版本：<code>cat /proc/version</code></p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410175036.png" alt=""></p>
+<h1 id="安装-docker"><a href="#安装-docker" class="headerlink" title="安装 docker"></a>安装 docker</h1><p>命令：<code>yum  install docker -y</code></p>
+<p>由于我已经安装了，所以就不再执行下命令了</p>
+<p>安装完后可以查看 docker 的版本： <code>docker -v</code><br><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410175644.png" alt=""></p>
+<p>docker 一些命令：<br><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410185252.png" alt=""></p>
+<h1 id="安装并启动-mysql"><a href="#安装并启动-mysql" class="headerlink" title="安装并启动 mysql"></a>安装并启动 mysql</h1><p>可以使用 <code>docker search mysql</code><br>查看 mysql 目前有哪些版本可以安装<br><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410175938.png" alt=""></p>
+<p>这里默认安装最新版本镜像：<code>docker pull mysql</code></p>
+<p>查看是否安装成功：<code>docker images</code><br><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410180249.png" alt=""></p>
+<p>安装成功后启动 mysql 容器（MySQL 镜像实例）：<code>docker run --name 镜像名 -p 外部访问端口:docker内mysql容器运行端口 -e MYSQL_ROOT_PASSWORD=mysql123 -d 镜像名:版本号</code></p>
+<p><a href="https://blog.csdn.net/qq_33997121/article/details/83689068" target="_blank" rel="noopener">关于这里启动参数没明白的可以看这篇博文</a></p>
+<p>如果还不明白的可以自己搜索下也可以参考 本文中前言中的第三条链接，是视频讲解</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410181258.png" alt=""></p>
+<p>对了，因为是使用的远程服务器，所以还得去远程服务器配置安全组规则开启外部的端口的访问权限，比如开启 5555 端口啥的，这样才能通过服务器公网 ip 地址+ 端口 去访问到 docker 容器中的 mysql 服务</p>
+<h1 id="安装并启动-redis"><a href="#安装并启动-redis" class="headerlink" title="安装并启动 redis"></a>安装并启动 redis</h1><p>使用下载命令：<code>docker pull redis</code><br>使用启动命令：<code>docker run --name redis -p 外部访问端口:6379 -v docker/redis/data:/data -d redis redis-server --appendonly yes</code></p>
+<p>同样记得开启外部访问端口的安全组规则配置</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410183837.png" alt=""></p>
 
       
 
@@ -197,7 +212,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
         		</li>
       		
 		</ul>
@@ -207,7 +222,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/LeetCode-0038-CountandSay/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/17/centos-7-x-%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85-docker-%E5%B9%B6%E5%9C%A8%E5%85%B6%E4%B8%AD%E5%AE%89%E8%A3%85-mysql-%E5%92%8C-redis-%E9%95%9C%E5%83%8F/">展开全文 >></a>
         </p>
       
 
@@ -261,7 +276,7 @@ gitalk.render('gitalk-container')
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/13/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/15/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/13/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/15/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -427,6 +442,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">LinuxEnvironmentSetup</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">lanqioaOJ</a>
               </li>
             
             <div class="clearfix"></div>

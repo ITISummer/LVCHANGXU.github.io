@@ -152,227 +152,47 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-关于-jdk-Calendar-类的基本使用的梳理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-LeetCode-0014-LongestCommonPrefix" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/%E5%85%B3%E4%BA%8E-jdk-Calendar-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/">关于 jdk-Calendar 类的基本使用的梳理</a>
+      <a class="article-title" href="/2020/04/17/LeetCode-0014-LongestCommonPrefix/">LeetCode_0014_LongestCommonPrefix</a>
     </h1>
   
 
         
-        <a href="/2020/04/17/%E5%85%B3%E4%BA%8E-jdk-Calendar-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/" class="archive-article-date">
-  	<time datetime="2020-04-17T12:14:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+        <a href="/2020/04/17/LeetCode-0014-LongestCommonPrefix/" class="archive-article-date">
+  	<time datetime="2020-04-17T12:18:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p> Calendar 类的基本使用</p>
-<p> <a href="https://blog.csdn.net/lfsf802/article/details/50616263" target="_blank" rel="noopener">相关阅读：Java 的 Calendar 类</a></p>
-<h1 id="Calendar-类的定义"><a href="#Calendar-类的定义" class="headerlink" title="Calendar 类的定义"></a>Calendar 类的定义</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java.util <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Calendar</span></span></span><br><span class="line"><span class="class"><span class="keyword">extends</span> <span class="title">Object</span></span></span><br><span class="line"><span class="class"><span class="keyword">implements</span> <span class="title">Serializable</span>, <span class="title">Cloneable</span>, <span class="title">Comparable</span>&lt;<span class="title">Calendar</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="创建-Calendar-类对象"><a href="#创建-Calendar-类对象" class="headerlink" title="创建 Calendar 类对象"></a>创建 Calendar 类对象</h1><blockquote>
-<p>Like other locale-sensitive classes, Calendar provides a class method, getInstance, for getting a generally useful object of this type. Calendar’s getInstance method returns a Calendar object whose calendar fields have been initialized with the current date and time:</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Calendar rightNow = Calendar.getInstance();</span><br></pre></td></tr></table></figure>
-<p>getInstance() 方法默认时区和地点创造一个 Calendar 对象</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200412192726.png" alt=""></p>
-<p>另外三个重载方法：</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200412193303.png" alt=""></p>
-<table>
-<thead>
-<tr>
-<th>字段</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public final static int ERA = 0;</td>
-<td>表示年代</td>
-</tr>
-<tr>
-<td>public final static int YEAR = 1;</td>
-<td>年</td>
-</tr>
-<tr>
-<td>public final static int MONTH = 2;</td>
-<td>月；第一个月使用是 January(一月) 用 0 表示，后面月份的数值依次增加 即 1-February</td>
-</tr>
-<tr>
-<td>public final static int WEEK_OF_YEAR = 3;</td>
-<td>表示当前年的第几周</td>
-</tr>
-<tr>
-<td>public final static int WEEK_OF_MONTH = 4;</td>
-<td>表示当前月的第几周</td>
-</tr>
-<tr>
-<td>public final static int DATE = 5;</td>
-<td>指示当前月份的第几天</td>
-</tr>
-<tr>
-<td>public final static int DAY_OF_MONTH = 5;</td>
-<td>指示当前月份的第几天，第一天使用 1 来表示</td>
-</tr>
-<tr>
-<td>public final static int DAY_OF_YEAR = 6;</td>
-<td>指示当前年份的第几天，第一天使用 1 来表示</td>
-</tr>
-<tr>
-<td>public final static int DAY_OF_WEEK = 7;</td>
-<td>表示当前周的第几天，第一天是 SUNDAY-1,MONDAY-2,依次类推</td>
-</tr>
-<tr>
-<td>public final static int DAY_OF_WEEK_IN_MONTH = 8;</td>
-<td>表示当前月份中星期几的序号。</td>
-</tr>
-<tr>
-<td>public final static int AM_PM = 9;</td>
-<td>指示上午(AM)还是下午(PM)</td>
-</tr>
-<tr>
-<td>public final static int HOUR = 10;</td>
-<td>正午和午夜是用0表示的，不是用12表示的</td>
-</tr>
-<tr>
-<td>public final static int HOUR_OF_DAY = 11;</td>
-<td>指示是一天的第几个小时，通常用于 24 小时制</td>
-</tr>
-<tr>
-<td>public final static int MINUTE = 12;</td>
-<td>指示一小时的第几分钟</td>
-</tr>
-<tr>
-<td>public final static int SECOND = 13;</td>
-<td>指示一分钟的第几秒</td>
-</tr>
-<tr>
-<td>public final static int MILLISECOND = 14;</td>
-<td>指示一秒中的第几毫秒</td>
-</tr>
-<tr>
-<td>public final static int ZONE_OFFSET = 15;</td>
-<td>以毫秒为单位的当前时区原始偏移量</td>
-</tr>
-<tr>
-<td>public final static int DST_OFFSET = 16;</td>
-<td>以毫秒为单位的这一天的原始偏移量</td>
-</tr>
-<tr>
-<td>public final static int FIELD_COUNT = 17;</td>
-<td>指示总共设置了多少个字段</td>
-</tr>
-</tbody></table>
-<p>注意以上字段的值都存储在变量 fields[] 中，定义如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="keyword">int</span>           fields[];</span><br></pre></td></tr></table></figure>
-<p>另外一周中的各字段对应值如下：</p>
-<table>
-<thead>
-<tr>
-<th>字段</th>
-<th>值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public final static int SUNDAY = 1;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int MONDAY = 2;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int TUESDAY = 3;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int WEDNESDAY = 4;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int THURSDAY = 5;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int FRIDAY = 6;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int SATURDAY = 7;</td>
-<td></td>
-</tr>
-</tbody></table>
-<p>月份各字段值：</p>
-<table>
-<thead>
-<tr>
-<th>字段</th>
-<th>值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public final static int JANUARY = 0;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int FEBRUARY = 1;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int MARCH = 2;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int APRIL = 3;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int MAY = 4;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int JUNE = 5;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int JULY = 6;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int AUGUST = 7;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int SEPTEMBER = 8;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int OCTOBER = 9;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int NOVEMBER = 10;</td>
-<td></td>
-</tr>
-<tr>
-<td>public final static int DECEMBER = 11;</td>
-<td></td>
-</tr>
-</tbody></table>
-<p>最后通过给 field[] 赋值可以使用 set(int field,int value) 方法</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200412205049.png" alt=""></p>
-<p>此方法中 field 可选值即为上面列表一种列出的值（除表最后一个值外）</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200412205117.png" alt=""></p>
-<p>该方法内部实现：</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200412205605.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200412205653.png" alt=""></p>
-<p>另外 set 的一些重载方法：按指定的字段顺序给相应的日历字段赋值：</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200412210425.png" alt=""></p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这道题是关于求解字符串包含问题的。可以使用String类里面的一些现有的方法去解，也可以手动的去按着正常思路去解就行了。我都能做出来，你肯定也能（嬉皮）<br></p>
+<h1 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h1><p>编写一个函数来查找字符串数组中最长的公共前缀字符串。<br>如果没有公共前缀，返回一个空字符串“”。<br><br><strong><em>Example 1:</em></strong><br><br><strong>Input:</strong>[“flower”,”flow”,”flight”]<br><br><strong>Output:</strong> “fl”<br><br><strong><em>Example 2:</em></strong><br><br><strong>Input:</strong> [“dog”,”racecar”,”car”]<br><br><strong>Output:</strong> “”<br><br><strong>Explanation:</strong> 输入字符串之间没有公共前缀。<br><br><strong>Note:</strong><br><br>所有给定的输入都是小写字母a-z。<br></p>
+<hr>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><ul>
+<li>首先第一个方法和第二个方法是我自己写的，然后第三和第四方法是网上别人写的</li>
+<li>第一个方法的思路就是<ul>
+<li>1.先找到最短的字符串str</li>
+<li>2.然后利用循环在字符串数组中去匹配每一个字符串元素中是否有str，如果找到都有的话，那么就返回此时匹配的字符串str，如果没有则将str进行从0~str.length()-1取字符串即==str=str.subString(0,str.length()-1)==,此时继续进行如上操作。</li>
+<li>那么循环停止的条件是什么呢，那就是当str都没有长度的时候，即str=””的时候，注意：在<code>str=str.subString(0,str.length()-1)</code>的时候，实际上是生成的新的字符串，然后<code>str=&quot;&quot;</code>是说明，str所指向的内存空间中的值为空，但是是有空间的，注意区别str=null，这个表示str根本就没有指向一个内存空间（我不知道这样的理解是不是对的，但是你可以想象成，前者是指向了一片开辟出的内存空间，但是其中的值是空的，然后后者是没有开辟出空间）。</li>
+</ul>
+</li>
+<li>第二个方法的话<ul>
+<li>1.先找到最短的字符串的长度</li>
+<li>2.利用循环将字符串数组每一个元素从头到尾扫描，然后比对每一个字符，如果相等的话那么就利用str将它们连接起来。</li>
+<li>3.结束条件是达到字符串数组最短元素的长度后就退出。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br></pre></td><td class="code"><pre><span class="line">package javaLeetCode.primary;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * Write a function to find the longest common prefix string amongst an array of strings.</span><br><span class="line"> *	If there is no common prefix, return an empty string &quot;&quot;.</span><br><span class="line"> * *&#x2F;</span><br><span class="line">public class LongestCommonPrefix_14 &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		String[] strs &#x3D; new String[]&#123;&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;&#125;;</span><br><span class="line">		System.out.println(longestCommonPrefix_1(strs));</span><br><span class="line">	&#125;&#x2F;&#x2F;end main()</span><br><span class="line"></span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Make full use of the methods of the String class.&lt;br&gt;</span><br><span class="line">	 * 1. Find the shortest  string.&lt;br&gt;</span><br><span class="line">	 * 2. Compare it to each element of the string array from beginning to end.&lt;br&gt;</span><br><span class="line">	 * 3. If it does not match any of the elements in the string array, it is clipped off the last character and out of the for loop.&lt;br&gt;</span><br><span class="line">	 * 4. When its length is zero, break out of the while loop.</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 * Test Data:</span><br><span class="line">	 * [&quot;dog&quot;,&quot;racecar&quot;,&quot;car&quot;]</span><br><span class="line">	 * [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]</span><br><span class="line">	 * [&quot;ca&quot;,&quot;a&quot;]</span><br><span class="line">	 * [&quot;a&quot;]</span><br><span class="line">	 * [&quot;aca&quot;,&quot;cba&quot;]</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">public static String longestCommonPrefix_1(String[] strs) &#123;</span><br><span class="line">	</span><br><span class="line">	if (strs &#x3D;&#x3D; null || strs.length &#x3D;&#x3D; 0)</span><br><span class="line">        return &quot;&quot;;</span><br><span class="line">	&#x2F;&#x2F; Find the shortest  string.</span><br><span class="line">	String minString &#x3D; strs[0];</span><br><span class="line">	for(int i&#x3D;1;i&lt;strs.length;i++) &#123;</span><br><span class="line">		if(minString.length()&gt;strs[i].length()) &#123;</span><br><span class="line">			minString &#x3D; strs[i];</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			continue;</span><br><span class="line">		&#125;&#x2F;&#x2F;end if</span><br><span class="line">	&#125;&#x2F;&#x2F;end for</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;Find whether  other strings include the minString.</span><br><span class="line">	boolean isInclude &#x3D; true;</span><br><span class="line">		while(minString!&#x3D;null) &#123;</span><br><span class="line">			for(int i&#x3D;0;i&lt;strs.length;i++) &#123;</span><br><span class="line">				if(strs[i].startsWith(minString)) &#123;</span><br><span class="line">					isInclude &#x3D; true;</span><br><span class="line">				&#125;else &#123;</span><br><span class="line">					minString&#x3D;minString.substring(0, minString.length()-1);</span><br><span class="line">					isInclude &#x3D; false;</span><br><span class="line">					break;</span><br><span class="line">				&#125;&#x2F;&#x2F;end if</span><br><span class="line">			&#125;&#x2F;&#x2F;end for</span><br><span class="line">			if(isInclude &#x3D;&#x3D; true) </span><br><span class="line">				break;</span><br><span class="line">			else ;</span><br><span class="line">		&#125;&#x2F;&#x2F;end while</span><br><span class="line">		</span><br><span class="line">	return minString;</span><br><span class="line">        </span><br><span class="line">    &#125;&#x2F;&#x2F;end longestCommonPrefix()</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * Use the simply method.</span><br><span class="line"> * 1. Find the shortest  string.&lt;br&gt;</span><br><span class="line"> * 2. Using two for loops, the outer loop&#39;s control condition is the length of the shortest string, </span><br><span class="line"> * and the memory loop&#39;s control condition is each element of the string array&lt;br&gt;</span><br><span class="line"> * *&#x2F;</span><br><span class="line">public static String longestCommonPrefix_2(String[] strs) &#123;</span><br><span class="line">	</span><br><span class="line">	if (strs &#x3D;&#x3D; null || strs.length &#x3D;&#x3D; 0)</span><br><span class="line">        return &quot;&quot;;</span><br><span class="line">	&#x2F;&#x2F; Find the shortest  string.</span><br><span class="line">	String minString &#x3D; strs[0];</span><br><span class="line">	for(int i&#x3D;1;i&lt;strs.length;i++) &#123;</span><br><span class="line">		if(minString.length()&gt;strs[i].length()) &#123;</span><br><span class="line">			minString &#x3D; strs[i];</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			continue;</span><br><span class="line">		&#125;&#x2F;&#x2F;end if</span><br><span class="line">	&#125;&#x2F;&#x2F;end for</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;Find whether  other strings include the minString.</span><br><span class="line">	boolean isInclude &#x3D; true;</span><br><span class="line">	StringBuilder str &#x3D; new StringBuilder();</span><br><span class="line">	for (int j &#x3D; 0; j &lt; minString.length(); j++) &#123;</span><br><span class="line">		for (int i &#x3D; 0; i &lt; strs.length-1; i++) &#123;</span><br><span class="line">			if (strs[i].charAt(j) &#x3D;&#x3D; strs[i + 1].charAt(j)) &#123;</span><br><span class="line">				isInclude &#x3D; true;</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				isInclude &#x3D; false;</span><br><span class="line">				break;</span><br><span class="line">			&#125;&#x2F;&#x2F;end if</span><br><span class="line">		&#125;&#x2F;&#x2F; end for</span><br><span class="line">		if(isInclude&#x3D;&#x3D;true)&#123;</span><br><span class="line">			str.append(minString.charAt(j));</span><br><span class="line">		&#125;else if(isInclude &#x3D;&#x3D; false&amp;&amp;j&#x3D;&#x3D;0) &#123;</span><br><span class="line">			break;</span><br><span class="line">		&#125;&#x2F;&#x2F;end if</span><br><span class="line">	&#125;&#x2F;&#x2F; end for</span><br><span class="line">	</span><br><span class="line">	return String.valueOf(str);</span><br><span class="line">        </span><br><span class="line">    &#125;&#x2F;&#x2F;end longestCommonPrefix()</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * Answer online.</span><br><span class="line"> * Horizontal scanning</span><br><span class="line"> * *&#x2F;</span><br><span class="line">public String longestCommonPrefix_3(String[] strs) &#123;</span><br><span class="line">    if (strs.length &#x3D;&#x3D; 0) return &quot;&quot;;</span><br><span class="line">    String prefix &#x3D; strs[0];</span><br><span class="line">    for (int i &#x3D; 1; i &lt; strs.length; i++)</span><br><span class="line">        while (strs[i].indexOf(prefix) !&#x3D; 0) &#123;</span><br><span class="line">            prefix &#x3D; prefix.substring(0, prefix.length() - 1);</span><br><span class="line">            if (prefix.isEmpty()) return &quot;&quot;;</span><br><span class="line">        &#125;        </span><br><span class="line">    return prefix;</span><br><span class="line">&#125;&#x2F;&#x2F;end longestCommonPrefix()</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * Answer online.</span><br><span class="line"> * Binary search</span><br><span class="line"> * *&#x2F;</span><br><span class="line">public static String longestCommonPrefix_4(String[] strs) &#123;</span><br><span class="line">    if (strs &#x3D;&#x3D; null || strs.length &#x3D;&#x3D; 0)</span><br><span class="line">        return &quot;&quot;;</span><br><span class="line">    int minLen &#x3D; Integer.MAX_VALUE;</span><br><span class="line">    for (String str : strs)</span><br><span class="line">        minLen &#x3D; Math.min(minLen, str.length());</span><br><span class="line">    int low &#x3D; 1;</span><br><span class="line">    int high &#x3D; minLen;</span><br><span class="line">    while (low &lt;&#x3D; high) &#123;</span><br><span class="line">        int middle &#x3D; (low + high) &#x2F; 2;</span><br><span class="line">        if (isCommonPrefix(strs, middle))</span><br><span class="line">            low &#x3D; middle + 1;</span><br><span class="line">        else</span><br><span class="line">            high &#x3D; middle - 1;</span><br><span class="line">    &#125;</span><br><span class="line">    return strs[0].substring(0, (low + high) &#x2F; 2);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;**aiding method *&#x2F;</span><br><span class="line">private static boolean isCommonPrefix(String[] strs, int len)&#123;</span><br><span class="line">    String str1 &#x3D; strs[0].substring(0,len);</span><br><span class="line">    for (int i &#x3D; 1; i &lt; strs.length; i++)</span><br><span class="line">        if (!strs[i].startsWith(str1))</span><br><span class="line">            return false;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line">&#125;&#x2F;&#x2F;end LongestCommonPrefix_14</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>嗯，别人的思路，你们看下吧，因为我其实很不习惯去阅读别人的代码，但是这却是很重要的一个入门的技巧和方法。留给你们去分析吧！</p>
 
       
 
@@ -386,7 +206,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JDK</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
         		</li>
       		
 		</ul>
@@ -396,7 +216,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/%E5%85%B3%E4%BA%8E-jdk-Calendar-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/17/LeetCode-0014-LongestCommonPrefix/">展开全文 >></a>
         </p>
       
 
@@ -450,7 +270,7 @@ gitalk.render('gitalk-container')
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/25/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/25/">25</a><span class="page-number current">26</span><a class="page-number" href="/page/27/">27</a><a class="page-number" href="/page/28/">28</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/27/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/25/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/25/">25</a><span class="page-number current">26</span><a class="page-number" href="/page/27/">27</a><a class="page-number" href="/page/28/">28</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/27/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -616,6 +436,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">LinuxEnvironmentSetup</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">lanqioaOJ</a>
               </li>
             
             <div class="clearfix"></div>

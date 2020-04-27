@@ -152,46 +152,60 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-LeetCode-0009-PalindromeNumber" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-LeetCode-0020-ValidParentheses" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/LeetCode-0009-PalindromeNumber/">LeetCode_0009_PalindromeNumber</a>
+      <a class="article-title" href="/2020/04/17/LeetCode-0020-ValidParentheses/">LeetCode_0020_ValidParentheses</a>
     </h1>
   
 
         
-        <a href="/2020/04/17/LeetCode-0009-PalindromeNumber/" class="archive-article-date">
-  	<time datetime="2020-04-17T12:19:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+        <a href="/2020/04/17/LeetCode-0020-ValidParentheses/" class="archive-article-date">
+  	<time datetime="2020-04-17T12:22:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这道题是关于回文数的，解法有很多，只能说多看别人的解法，然后增长见识吧，我也只能刷刷简单题了，慢慢来吧！</p>
-<h1 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h1><p>判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。</p>
-<p><strong>示例 1:</strong></p>
-<p><strong>输入:</strong> 121</p>
-<p><strong>输出:</strong> true</p>
-<p><strong>示例 2:</strong></p>
-<p><strong>输入:</strong>-121</p>
-<p><strong>输出:</strong> false</p>
-<p><strong>解释:</strong></p>
-<pre><code>- 从左向右读, 为 -121 。 
-
-- 从右向左读, 为 121- 。
-
-- 因此它不是一个回文数。</code></pre><p><strong>示例 3:</strong></p>
-<p><strong>输入:</strong> 10</p>
-<p><strong>输出:</strong> false</p>
-<p><strong>解释:</strong> </p>
-<p>从右向左读, 为 01 。因此它不是一个回文数。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line">package javaLeetCode_primary;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line">import java.util.Stack;</span><br><span class="line"></span><br><span class="line">public class PalindromeNumber_9 &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">		@SuppressWarnings(&quot;resource&quot;)</span><br><span class="line">		Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">		System.out.println(&quot;Please input the integer:&quot;);			</span><br><span class="line">		int x&#x3D;input.nextInt();</span><br><span class="line">		System.out.println(isPalindrome_3(x));</span><br><span class="line">	&#125;&#x2F;&#x2F; end main()</span><br><span class="line"></span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Data is stored on a stack.</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 * Test data:</span><br><span class="line">	 * 121</span><br><span class="line">	 * 1221</span><br><span class="line">	 * -121</span><br><span class="line">	 * 10</span><br><span class="line">	 * 1221</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	public static boolean isPalindrome_1(int x) &#123;</span><br><span class="line">		</span><br><span class="line">		String str &#x3D; Integer.toString(x);</span><br><span class="line">		char[] cha &#x3D; str.toCharArray();</span><br><span class="line">		Stack &lt;Character&gt;stack &#x3D; new Stack&lt;Character&gt;();</span><br><span class="line">		boolean isPalindrome &#x3D; true;</span><br><span class="line">		</span><br><span class="line">		for(int i&#x3D;0;i&lt;str.length()&#x2F;2;i++) &#123;</span><br><span class="line">			stack.push(cha[i]);</span><br><span class="line">		&#125;&#x2F;&#x2F;end for</span><br><span class="line">		</span><br><span class="line">		int temp&#x3D;0;</span><br><span class="line">		if(str.length()%2&#x3D;&#x3D;0) &#123;</span><br><span class="line">			temp&#x3D; str.length()&#x2F;2;			</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			temp &#x3D; str.length()&#x2F;2+1;</span><br><span class="line">		&#125;&#x2F;&#x2F;end if</span><br><span class="line">		</span><br><span class="line">		for(int i&#x3D;temp;i&lt;str.length();i++) &#123;</span><br><span class="line">			</span><br><span class="line">			if(stack.pop()&#x3D;&#x3D;cha[i]) &#123;</span><br><span class="line">				isPalindrome &#x3D; true;</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">				isPalindrome &#x3D; false;</span><br><span class="line">				break;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;&#x2F;&#x2F;end for</span><br><span class="line">		</span><br><span class="line">		return isPalindrome;</span><br><span class="line">	&#125;&#x2F;&#x2F; end isPalindrome()</span><br><span class="line">	</span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Use the Conventional thinking.</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">public static boolean isPalindrome_2(int x) &#123;</span><br><span class="line">		</span><br><span class="line">		String str &#x3D; Integer.toString(x);</span><br><span class="line">		char[] cha &#x3D; str.toCharArray();</span><br><span class="line">		boolean isPalindrome &#x3D; true;</span><br><span class="line">		</span><br><span class="line">		int temp &#x3D; str.length();</span><br><span class="line">		for(int i&#x3D;0;i&lt;temp&#x2F;2;i++) &#123;</span><br><span class="line">			if(cha[i]&#x3D;&#x3D;cha[temp-i-1]) &#123;</span><br><span class="line">				isPalindrome &#x3D; true;</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">				isPalindrome &#x3D; false;</span><br><span class="line">				break;</span><br><span class="line">			&#125;&#x2F;&#x2F;end if</span><br><span class="line">		&#125;&#x2F;&#x2F;end for</span><br><span class="line">		</span><br><span class="line">		return isPalindrome;</span><br><span class="line">	&#125;&#x2F;&#x2F; end isPalindrome()</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * Answer online </span><br><span class="line"> * Use the MathMetical method.</span><br><span class="line"> * *&#x2F;</span><br><span class="line">public static boolean isPalindrome_3(int x) &#123;</span><br><span class="line">	</span><br><span class="line">	boolean isPalindrome &#x3D; false;</span><br><span class="line">	int temp &#x3D; 0;</span><br><span class="line">	</span><br><span class="line">	if(x &lt; 0 || (x % 10 &#x3D;&#x3D; 0 &amp;&amp; x !&#x3D; 0)) &#123;</span><br><span class="line">        return isPalindrome;</span><br><span class="line">    &#125;&#x2F;&#x2F;end if</span><br><span class="line">	</span><br><span class="line">	while(temp&lt;x) &#123;</span><br><span class="line">		temp &#x3D; (temp*10)+ (x%10);</span><br><span class="line">		x &#x2F;&#x3D; 10;</span><br><span class="line">	&#125;&#x2F;&#x2F;end while()</span><br><span class="line">	</span><br><span class="line">	if(temp&#x2F;10&#x3D;&#x3D;x||temp &#x3D;&#x3D; x)</span><br><span class="line">		isPalindrome &#x3D; true;</span><br><span class="line">	</span><br><span class="line">	return isPalindrome;</span><br><span class="line">&#125;&#x2F;&#x2F; end isPalindrome()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>–<del>~</del></p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这道题呢其实很简单，就是思维上面想着也是挺简单的，但是主要是一些细节上面的考虑。我在写的时候就是有很多细节没考虑，然后都是大方面是通过的，但是碰到一些细节的话，就不过了。所以细节是很重要的。比如我在写的时候没考虑左括号多余的情况，然后还有右括号的多余的情况，我只是想着它能匹配的问题，所以代码写得很不好看，很多逻辑都是独立出来的，然后你会看到很多的if…else…，因为我都是后面添加那些逻辑进去，所以呢，所以呢，细节很重要，在写代码之前一定要先考虑好一些特定的情况。嗯。<br>还需要注意一点的是，那个判断空字符的那里，当我们输入在控制台输入””的时候，其实这是两个字符，分别是左引号和右引号，所以，在判断的时候需要使用长度来判断，如果是空字符，则长度一定等于0，否则就不是空字符。</p>
+<h1 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h1><ul>
+<li>给定一个只包含字符’(‘，’)’，’{‘，’}’，’[‘和’]’的字符串，判断输入字符串是否有效。</li>
+<li>输入字符串在下列情况下有效:<ul>
+<li>开括号必须由相同类型的括号关闭。</li>
+<li>开括号必须按正确的顺序关闭。</li>
+</ul>
+</li>
+<li>注意，空字符串也被认为是有效的。<br></li>
+</ul>
+<hr>
+<p><strong>Example 1:</strong><br></p>
+<blockquote>
+<p>Input: “()”<br><br> Output: true<br></p>
+</blockquote>
+<p><strong>Example 2:</strong><br></p>
+<blockquote>
+<p>Input: “()[]{}”<br><br>Output: true<br></p>
+</blockquote>
+<p><strong>Example 3:</strong><br></p>
+<blockquote>
+<p>Input: “(]”<br><br>Output: false<br></p>
+</blockquote>
+<p><strong>Example 4:</strong><br></p>
+<blockquote>
+<p>Input: “([)]”<br><br>Output: false<br></p>
+</blockquote>
+<p><strong>Example 5:</strong><br></p>
+<blockquote>
+<p>Input: “{[]}”<br><br>Output: true<br></p>
+</blockquote>
+<hr>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">package javaLeetCode.primary;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line">import java.util.Stack;</span><br><span class="line"></span><br><span class="line">public class ValidParentheses_20 &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		@SuppressWarnings(&quot;resource&quot;)</span><br><span class="line">		Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">		System.out.println(&quot;Please input a string:&quot;);</span><br><span class="line">		String s &#x3D; input.next();</span><br><span class="line">		System.out.println(isValid_1(s));</span><br><span class="line">	&#125;&#x2F;&#x2F;end main</span><br><span class="line">	</span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Use Stack.</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 * Test Data:</span><br><span class="line">	 * ()--true</span><br><span class="line">	 * ()[]&#123;&#125;--true</span><br><span class="line">	 * &#123;[]&#125;--true</span><br><span class="line">	 * ((()))([&#123;&#125;])--true</span><br><span class="line">	 * &#123;&#123;(&#125;&#125;)[(])--false</span><br><span class="line">	 * (]-- false</span><br><span class="line">	 * ([)]--false</span><br><span class="line">	 * [])--false</span><br><span class="line">	 * [--false</span><br><span class="line">	 * ([]--false</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">public static boolean isValid_1(String s) &#123;</span><br><span class="line">	boolean isMatch &#x3D; false;</span><br><span class="line">	&#x2F;&#x2F;There should be a procedure for handling strings.</span><br><span class="line">	if(s&#x3D;&#x3D;null)</span><br><span class="line">		return false;</span><br><span class="line">	if(s .length()!&#x3D; 0) &#123;</span><br><span class="line">		char []cha &#x3D; s.toCharArray();</span><br><span class="line">		Stack &lt;Character&gt;charStack &#x3D; new Stack&lt;Character&gt;();</span><br><span class="line">		if(charStack.isEmpty()) &#123;</span><br><span class="line">			charStack.push(cha[0]);</span><br><span class="line">			for(int i&#x3D;1;i&lt;cha.length;i++) &#123;</span><br><span class="line">				if(cha[i]&#x3D;&#x3D;&#39;(&#39;||cha[i]&#x3D;&#x3D;&#39;[&#39;||cha[i]&#x3D;&#x3D;&#39;&#123;&#39;) &#123;</span><br><span class="line">					charStack.push(cha[i]);</span><br><span class="line">				&#125;else if((!charStack.isEmpty())&amp;&amp;(cha[i]&#x3D;&#x3D;&#39;)&#39;&amp;&amp;charStack.peek()&#x3D;&#x3D;&#39;(&#39;||cha[i]&#x3D;&#x3D;&#39;]&#39;&amp;&amp;charStack.peek()&#x3D;&#x3D;&#39;[&#39;||cha[i]&#x3D;&#x3D;&#39;&#125;&#39;&amp;&amp;charStack.peek()&#x3D;&#x3D;&#39;&#123;&#39;))&#123;</span><br><span class="line">						charStack.pop();</span><br><span class="line">						isMatch &#x3D; true;</span><br><span class="line">				&#125;else &#123;</span><br><span class="line">					isMatch &#x3D; false;</span><br><span class="line">					break;</span><br><span class="line">				&#125;&#x2F;&#x2F;end if</span><br><span class="line">			&#125;&#x2F;&#x2F;end for</span><br><span class="line">		&#125;&#x2F;&#x2F;end if</span><br><span class="line">		if(!charStack.isEmpty()) &#123;</span><br><span class="line">			isMatch &#x3D; false;</span><br><span class="line">		&#125;&#x2F;&#x2F;end if</span><br><span class="line">	&#125;else &#123;</span><br><span class="line">		isMatch &#x3D; true;</span><br><span class="line">	&#125;&#x2F;&#x2F;end if</span><br><span class="line">	return isMatch;</span><br><span class="line">    &#125;&#x2F;&#x2F;end isValid()</span><br><span class="line">&#125;&#x2F;&#x2F;end ValidParentheses_20</span><br></pre></td></tr></table></figure>
+<hr>
 
       
 
@@ -215,7 +229,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/LeetCode-0009-PalindromeNumber/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/17/LeetCode-0020-ValidParentheses/">展开全文 >></a>
         </p>
       
 
@@ -269,7 +283,7 @@ gitalk.render('gitalk-container')
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/21/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><a class="page-number" href="/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/23/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/21/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><a class="page-number" href="/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/23/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -435,6 +449,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">LinuxEnvironmentSetup</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">lanqioaOJ</a>
               </li>
             
             <div class="clearfix"></div>

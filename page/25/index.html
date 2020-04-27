@@ -152,42 +152,46 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-LeetCode-0001-Two-Sum" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-LeetCode-0009-PalindromeNumber" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/LeetCode-0001-Two-Sum/">LeetCode_0001_Two Sum</a>
+      <a class="article-title" href="/2020/04/17/LeetCode-0009-PalindromeNumber/">LeetCode_0009_PalindromeNumber</a>
     </h1>
   
 
         
-        <a href="/2020/04/17/LeetCode-0001-Two-Sum/" class="archive-article-date">
-  	<time datetime="2020-04-17T12:16:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+        <a href="/2020/04/17/LeetCode-0009-PalindromeNumber/" class="archive-article-date">
+  	<time datetime="2020-04-17T12:19:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>哎，好久都没写过博客了，昨天突然感觉自己不能再持续颓废了，所以就想找点事情做，然后想起了我以前浏览过的一个刷题网站——LeetCode，我相信很多人都知道这个网站吧！是一个国外的刷题网站，汇聚了很多IT公司的面试题，当然这个网站也有很多适应不同国家语言相应的，如果英语非常吃力的话可以在主网站找到对应国家的网站，题都是一样的！然后今天，对，今天开始的，刷了第一道题，第一道题还算是简单的，用最笨但是最简单的方法去做就可以了，当然网上会有很多有技巧的结题思路，可以参照参照，拓展自己的思维也是非常好的。</p>
-<h1 id="两数之和-Two-Sum"><a href="#两数之和-Two-Sum" class="headerlink" title="两数之和-Two Sum"></a>两数之和-Two Sum</h1><ul>
-<li>在这里呢，我就用最笨但是最简单的方法吧!(其实是我不会其他的方法，哈哈！)</li>
-<li><strong>原题</strong>:<br><br>给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。<br>你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。<br><br>==示例==:<br><br>给定 nums = [2, 7, 11, 15], target = 9</li>
-</ul>
-<p>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p>
-<ul>
-<li><strong>解答</strong><br></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class TwoSum_1 &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">			@SuppressWarnings(&#123; &quot;resource&quot;&#125;)</span><br><span class="line">			Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">			System.out.println(&quot;Please input the array&#39;s length:&quot;);			</span><br><span class="line">			int length&#x3D;input.nextInt();</span><br><span class="line">			int []nums&#x3D;new int[length];</span><br><span class="line">			System.out.println(&quot;Please input the array elements:&quot;);</span><br><span class="line">			for(int i&#x3D;0;i&lt;nums.length;i++) &#123;</span><br><span class="line">					nums[i]&#x3D;input.nextInt();</span><br><span class="line">			&#125;&#x2F;&#x2F;end for</span><br><span class="line">			System.out.println(&quot;Please input the target:&quot;);</span><br><span class="line">			int target&#x3D;input.nextInt();</span><br><span class="line">			System.out.println(Arrays.toString(twoSum(nums,target)));</span><br><span class="line">	&#125;&#x2F;&#x2F; end main()</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> *</span><br><span class="line"> *the function of judge </span><br><span class="line"> *@param</span><br><span class="line"> *	</span><br><span class="line"> * *&#x2F;</span><br><span class="line">	public static int[] twoSum(int[] nums, int target) &#123;</span><br><span class="line">		int i, j; &#x2F;&#x2F; index</span><br><span class="line">		for (i &#x3D; 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">			for (j &#x3D; i+1; j &lt; nums.length; j++) &#123;</span><br><span class="line">				if (target - nums[j] &#x3D;&#x3D; nums[i]) &#123;</span><br><span class="line">					return new int[] &#123;i,j&#125;;</span><br><span class="line">				&#125; &#x2F;&#x2F; end if</span><br><span class="line">			&#125; &#x2F;&#x2F; end for</span><br><span class="line">		&#125; &#x2F;&#x2F; end for</span><br><span class="line">		 throw new IllegalArgumentException(&quot;No two sum solution&quot;);</span><br><span class="line">	&#125;&#x2F;&#x2F; end twoSum()</span><br><span class="line"></span><br><span class="line">&#125;&#x2F;&#x2F; end TwoSum_1</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>运行结果：</strong><br>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-YJjHSrA4-1586582501538)(<a href="https://a1.qpic.cn/psb?/V13mCE9d2xyaTQ/ro8KDWA87WMxXDekKf7Y34iv2ruvGLebyh39mgJD1S4!/m/dFQBAAAAAAAAnull&amp;bo=2gJ6AAAAAAADB4A!&amp;rf=photolist&amp;t=5)]" target="_blank" rel="noopener">https://a1.qpic.cn/psb?/V13mCE9d2xyaTQ/ro8KDWA87WMxXDekKf7Y34iv2ruvGLebyh39mgJD1S4!/m/dFQBAAAAAAAAnull&amp;bo=2gJ6AAAAAAADB4A!&amp;rf=photolist&amp;t=5)]</a></li>
-<li>正如你说看到的，运行效率很低下！Oops!</li>
-<li><strong>解题思路：</strong><br><br>正如网上的很多雷同的方法一样，就是通过遍历。但是在遍历的时候注意下第二层循环的起点是需要在第一层循环后一个的，不然就会容易出错，比如我在写的时候，刚开始没注意，直接第二层循环也是<code>for (j = 0; j &lt; nums.length; j++)</code>，然后导致有一组测试数据<code>[3,2,4]</code>没通过，比如当target=6的时候，得到的结果是[0,0],但是实际的结果应该是[1,2]，因为当i=0的时候，如果是j=0的话，是符合代码的逻辑的，但是我写的代码的逻辑是错误的，所以得到的结果是[0,0],最后我调试了下，然后发现了这个bug吧，嗯，虽然是很小的一个bug，但是还是有收获的。</li>
-<li>每天进步一点点，累计起来就会很多！加油吧，To myself，To everyone！！！去学习新的解题思路了。拜~</li>
-</ul>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这道题是关于回文数的，解法有很多，只能说多看别人的解法，然后增长见识吧，我也只能刷刷简单题了，慢慢来吧！</p>
+<h1 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h1><p>判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。</p>
+<p><strong>示例 1:</strong></p>
+<p><strong>输入:</strong> 121</p>
+<p><strong>输出:</strong> true</p>
+<p><strong>示例 2:</strong></p>
+<p><strong>输入:</strong>-121</p>
+<p><strong>输出:</strong> false</p>
+<p><strong>解释:</strong></p>
+<pre><code>- 从左向右读, 为 -121 。 
+
+- 从右向左读, 为 121- 。
+
+- 因此它不是一个回文数。</code></pre><p><strong>示例 3:</strong></p>
+<p><strong>输入:</strong> 10</p>
+<p><strong>输出:</strong> false</p>
+<p><strong>解释:</strong> </p>
+<p>从右向左读, 为 01 。因此它不是一个回文数。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line">package javaLeetCode_primary;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line">import java.util.Stack;</span><br><span class="line"></span><br><span class="line">public class PalindromeNumber_9 &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">		@SuppressWarnings(&quot;resource&quot;)</span><br><span class="line">		Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">		System.out.println(&quot;Please input the integer:&quot;);			</span><br><span class="line">		int x&#x3D;input.nextInt();</span><br><span class="line">		System.out.println(isPalindrome_3(x));</span><br><span class="line">	&#125;&#x2F;&#x2F; end main()</span><br><span class="line"></span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Data is stored on a stack.</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 * Test data:</span><br><span class="line">	 * 121</span><br><span class="line">	 * 1221</span><br><span class="line">	 * -121</span><br><span class="line">	 * 10</span><br><span class="line">	 * 1221</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	public static boolean isPalindrome_1(int x) &#123;</span><br><span class="line">		</span><br><span class="line">		String str &#x3D; Integer.toString(x);</span><br><span class="line">		char[] cha &#x3D; str.toCharArray();</span><br><span class="line">		Stack &lt;Character&gt;stack &#x3D; new Stack&lt;Character&gt;();</span><br><span class="line">		boolean isPalindrome &#x3D; true;</span><br><span class="line">		</span><br><span class="line">		for(int i&#x3D;0;i&lt;str.length()&#x2F;2;i++) &#123;</span><br><span class="line">			stack.push(cha[i]);</span><br><span class="line">		&#125;&#x2F;&#x2F;end for</span><br><span class="line">		</span><br><span class="line">		int temp&#x3D;0;</span><br><span class="line">		if(str.length()%2&#x3D;&#x3D;0) &#123;</span><br><span class="line">			temp&#x3D; str.length()&#x2F;2;			</span><br><span class="line">		&#125;else &#123;</span><br><span class="line">			temp &#x3D; str.length()&#x2F;2+1;</span><br><span class="line">		&#125;&#x2F;&#x2F;end if</span><br><span class="line">		</span><br><span class="line">		for(int i&#x3D;temp;i&lt;str.length();i++) &#123;</span><br><span class="line">			</span><br><span class="line">			if(stack.pop()&#x3D;&#x3D;cha[i]) &#123;</span><br><span class="line">				isPalindrome &#x3D; true;</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">				isPalindrome &#x3D; false;</span><br><span class="line">				break;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;&#x2F;&#x2F;end for</span><br><span class="line">		</span><br><span class="line">		return isPalindrome;</span><br><span class="line">	&#125;&#x2F;&#x2F; end isPalindrome()</span><br><span class="line">	</span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Use the Conventional thinking.</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">public static boolean isPalindrome_2(int x) &#123;</span><br><span class="line">		</span><br><span class="line">		String str &#x3D; Integer.toString(x);</span><br><span class="line">		char[] cha &#x3D; str.toCharArray();</span><br><span class="line">		boolean isPalindrome &#x3D; true;</span><br><span class="line">		</span><br><span class="line">		int temp &#x3D; str.length();</span><br><span class="line">		for(int i&#x3D;0;i&lt;temp&#x2F;2;i++) &#123;</span><br><span class="line">			if(cha[i]&#x3D;&#x3D;cha[temp-i-1]) &#123;</span><br><span class="line">				isPalindrome &#x3D; true;</span><br><span class="line">			&#125;else &#123;</span><br><span class="line">				isPalindrome &#x3D; false;</span><br><span class="line">				break;</span><br><span class="line">			&#125;&#x2F;&#x2F;end if</span><br><span class="line">		&#125;&#x2F;&#x2F;end for</span><br><span class="line">		</span><br><span class="line">		return isPalindrome;</span><br><span class="line">	&#125;&#x2F;&#x2F; end isPalindrome()</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * Answer online </span><br><span class="line"> * Use the MathMetical method.</span><br><span class="line"> * *&#x2F;</span><br><span class="line">public static boolean isPalindrome_3(int x) &#123;</span><br><span class="line">	</span><br><span class="line">	boolean isPalindrome &#x3D; false;</span><br><span class="line">	int temp &#x3D; 0;</span><br><span class="line">	</span><br><span class="line">	if(x &lt; 0 || (x % 10 &#x3D;&#x3D; 0 &amp;&amp; x !&#x3D; 0)) &#123;</span><br><span class="line">        return isPalindrome;</span><br><span class="line">    &#125;&#x2F;&#x2F;end if</span><br><span class="line">	</span><br><span class="line">	while(temp&lt;x) &#123;</span><br><span class="line">		temp &#x3D; (temp*10)+ (x%10);</span><br><span class="line">		x &#x2F;&#x3D; 10;</span><br><span class="line">	&#125;&#x2F;&#x2F;end while()</span><br><span class="line">	</span><br><span class="line">	if(temp&#x2F;10&#x3D;&#x3D;x||temp &#x3D;&#x3D; x)</span><br><span class="line">		isPalindrome &#x3D; true;</span><br><span class="line">	</span><br><span class="line">	return isPalindrome;</span><br><span class="line">&#125;&#x2F;&#x2F; end isPalindrome()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>–<del>~</del></p>
 
       
 
@@ -211,7 +215,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/LeetCode-0001-Two-Sum/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/17/LeetCode-0009-PalindromeNumber/">展开全文 >></a>
         </p>
       
 
@@ -265,7 +269,7 @@ gitalk.render('gitalk-container')
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/24/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="page-number" href="/page/24/">24</a><span class="page-number current">25</span><a class="page-number" href="/page/26/">26</a><a class="page-number" href="/page/27/">27</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/26/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/24/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="page-number" href="/page/24/">24</a><span class="page-number current">25</span><a class="page-number" href="/page/26/">26</a><a class="page-number" href="/page/27/">27</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/26/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -431,6 +435,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">LinuxEnvironmentSetup</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">lanqioaOJ</a>
               </li>
             
             <div class="clearfix"></div>

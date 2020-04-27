@@ -152,47 +152,37 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-LeetCode-0041-FirstMissingPositive" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-spring-boot-整合-redis-实现分页查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/LeetCode-0041-FirstMissingPositive/">LeetCode_0041_FirstMissingPositive</a>
+      <a class="article-title" href="/2020/04/17/spring-boot-%E6%95%B4%E5%90%88-redis-%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">spring boot 整合 redis 实现分页查询</a>
     </h1>
   
 
         
-        <a href="/2020/04/17/LeetCode-0041-FirstMissingPositive/" class="archive-article-date">
-  	<time datetime="2020-04-17T12:27:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+        <a href="/2020/04/17/spring-boot-%E6%95%B4%E5%90%88-redis-%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/" class="archive-article-date">
+  	<time datetime="2020-04-17T12:30:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>嗯，这道题吧，怎么说呢，有点难，难的是对于细节的思考，然后我在做的时候总是提交后，然后出错了，又照着给出的案例，进行程序的缺陷的修补，所以导致代码写得很冗余，所以以后在写代码之前一定要多思考下，思考下具体的一些测试用例，尽量补全，然后再写程序，不然后面去补的话会导致代码的思维很零散，看起来很乱。先上传吧，等有时间再改下。然后这道题的思路，我是这样想的：</p>
-<ol>
-<li>就是先把这个数组进行排序，有序了才好进行后续的处理<code>Arrays.sort(nums);</code>这个是最好的选择！耶！</li>
-<li>然后就是找到第一个==正整数==，并记录下它的位置</li>
-<li>从第一个正整数(==firstPos==)位置开始往后扫描，如果<code>nums[firstPos + 1] - nums[firstPos] &gt; 1</code>那么就可以不用往后面扫描了，直接退出循环</li>
-<li>最后输出缺失的正整数，如果是步骤3直接退出的话，那么就可以返回<code>nums[firstPos]+1</code>就可以了，但是如果不是直接退出，而是不满足循环条件后退出的话，那么就是需要判读<code>if (firstPos == nums.length - 1)</code>，注意这一步是不能和第二个==for==循环里面的==if==判断后的执行语句相结合的。看着似乎是可以没必要这个==if==判断，但是其是有作用的。</li>
+        <h1 id="需求："><a href="#需求：" class="headerlink" title="需求："></a>需求：</h1><p>有 视频 图片 文档 这样三个分类<br>然后每个分类下都有许多对应的文件，我现在需要在每个分类下进行分页查询，比如当我点击 视频 分类的时候就会从数据库中查询到所有带有 视频 分类名的所有文件，然后可以在这些文件基础上进行 分页查询<br>但是这样有一个问题，就是容易对数据库进行频繁的查询操作，所以我就想在这两层之间加一个 redis 来做缓存，然后我就是想的，当用户点击 视频 卡片的时候，如果 redis 中有相应的数据的话，那么我就直接从 redis 缓存中获取而不用再去向数据库中查询，但是这样我遇到了几个问题：</p>
+<h1 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h1><ol>
+<li><p>选用 redis 哪种数据结构来存储比较合适，因为涉及到分页查询，所以就有两种数据结构 List 和 ZSet 数据结构，我参考的这篇文章 <a href="https://my.oschina.net/1107156537/blog/1617252" target="_blank" rel="noopener">基于 redis 做缓存分页</a> 中选用了 redis 中的 ZSet 数据结构</p>
+</li>
+<li><p>选定好数据结构后，又有一个新的问题，那就是在进行键值对存储的时候，redis 中好像都是使用的 add(Object key,Object value)这样来存储一个键值对，我是想的能不能用一个键(key) 来对应一个对象集合，因为我在使用分页查询的时候，前期我是使用的 com.github.pagehelper 这个 jar 包 里面的方法</p>
+<p> <img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200328145928.png" alt=""> </p>
+<p> 将全部的查询结果封装到 PageInfo<T> 中后，前端就可以根据传递相关的参数就可以进行分页查询了，然后我后面就是想着能不能往 redis 数据库中存入这样的一个 add(“video”,PageInfo<T>) 键值对，但是我看了下提供的方法：</p>
+<p> <img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200328150734.png" alt=""></p>
+<p> 只有图中红色框中的两个，第一个可以存入一个 Set 集合，但是我又不知道如何将 PageInfo<T> 给转换成 TypeTuple 类型的，所以我就放弃这个方法了<br> 第二个方法就是简单的 key-value 的，这样存储的话，我是这样想的，数据库中查询结果返回 List 后，然后通过遍历其中的元素（对象），依次将其中的元素（对象）给 转换成 json 字符串后存入 redis 中，然后如果前端发来分页查询请求的话，那么我就从 redis 中获取到指定范围的数据后，然后将 json 字符串再转换为对象后再封装进 PageInfo<T> 里面，但是我不清楚这样的可行性有多高？</p>
+</li>
 </ol>
-<h1 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h1><p><strong>Example 1:</strong><br></p>
-<blockquote>
-<p>Input: [1,2,0]<br><br>Output: 3<br><br></p>
-</blockquote>
-<p><strong>Example 2:</strong><br></p>
-<blockquote>
-<p>Input: [3,4,-1,1]<br><br>Output: 2<br></p>
-</blockquote>
-<p><strong>Example 3:</strong><br></p>
-<blockquote>
-<p>Input: [7,8,9,11,12]<br><br>Output: 1<br></p>
-</blockquote>
-<p>注意： 您的算法应该在O（n）时间运行并使用恒定的额外空间。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">package javaLeetCode.hard;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">public class FirstMissingPositive_41 &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		int []nums &#x3D; &#123;0,2,2,1,1&#125;;</span><br><span class="line">		System.out.println(firstMissingPositive(nums));</span><br><span class="line">	&#125;&#x2F;&#x2F;end main()</span><br><span class="line">	</span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * </span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 * Test Data:</span><br><span class="line">	 * 1. &#123;3,4,-1,1&#125;--2</span><br><span class="line">	 * 2. &#123;7,8,9,11,12&#125;--1</span><br><span class="line">	 * 3. &#123;1,2,0&#125;--3</span><br><span class="line">	 * 4. &#123;0&#125;--1</span><br><span class="line">	 * 5. &#123;1000,-1&#125;--1</span><br><span class="line">	 * 6. &#123;0,2,2,1,1&#125;--3</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	public static int firstMissingPositive(int[] nums) &#123;</span><br><span class="line">		if (nums &#x3D;&#x3D; null) &#123;</span><br><span class="line">			return -1;</span><br><span class="line">		&#125; &#x2F;&#x2F; end if</span><br><span class="line">		int firstPos &#x3D; -1;&#x2F;&#x2F; First positive position;</span><br><span class="line">		int misPos &#x3D; -1;&#x2F;&#x2F; Missing positive;</span><br><span class="line">		Arrays.sort(nums);</span><br><span class="line">		&#x2F;&#x2F; Find the position of the first positive number.</span><br><span class="line">		if (nums.length &#x3D;&#x3D; 0 || nums[0] &gt; 1 || nums[nums.length - 1] &lt; 0) &#123;</span><br><span class="line">			misPos &#x3D; 1;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			for (int i &#x3D; 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">				if (nums[i] &gt;&#x3D; 0) &#123;</span><br><span class="line">					firstPos &#x3D; i;</span><br><span class="line">					if (nums[firstPos] &gt; 1) &#123;</span><br><span class="line">						return 1;</span><br><span class="line">					&#125; else &#123;</span><br><span class="line">						break;</span><br><span class="line">					&#125; &#x2F;&#x2F; end if</span><br><span class="line">				&#125; else &#123;</span><br><span class="line">					continue;</span><br><span class="line">				&#125; &#x2F;&#x2F; end if</span><br><span class="line">			&#125; &#x2F;&#x2F; end for</span><br><span class="line">			&#x2F;&#x2F;</span><br><span class="line">			for (; firstPos &lt; nums.length - 1; firstPos++) &#123;</span><br><span class="line">				if (nums[firstPos + 1] - nums[firstPos] &gt; 1) &#123;</span><br><span class="line">					misPos &#x3D; nums[firstPos] + 1;</span><br><span class="line">					break;</span><br><span class="line">				&#125; else &#123;</span><br><span class="line">					continue;</span><br><span class="line">				&#125; &#x2F;&#x2F; end if</span><br><span class="line">			&#125; &#x2F;&#x2F; end for</span><br><span class="line">				&#x2F;&#x2F; If the firstPos equals last index of the array of &quot;nums&quot;.</span><br><span class="line">			if (firstPos &#x3D;&#x3D; nums.length - 1) &#123;</span><br><span class="line">				misPos &#x3D; nums[nums.length - 1] + 1;</span><br><span class="line">			&#125; &#x2F;&#x2F; end if</span><br><span class="line">		&#125; &#x2F;&#x2F; end if</span><br><span class="line"></span><br><span class="line">		return misPos;</span><br><span class="line">	&#125;&#x2F;&#x2F; end firstMissingPositive()</span><br><span class="line">&#125;&#x2F;&#x2F;end FirstMissingPositive_41</span><br></pre></td></tr></table></figure>
 
       
 
@@ -206,7 +196,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">javaweb</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
         		</li>
       		
 		</ul>
@@ -216,7 +214,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/LeetCode-0041-FirstMissingPositive/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/17/spring-boot-%E6%95%B4%E5%90%88-redis-%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">展开全文 >></a>
         </p>
       
 
@@ -270,7 +268,7 @@ gitalk.render('gitalk-container')
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/12/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/14/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/12/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/14/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -436,6 +434,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">LinuxEnvironmentSetup</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">lanqioaOJ</a>
               </li>
             
             <div class="clearfix"></div>

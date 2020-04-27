@@ -152,70 +152,106 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-将本地仓库-push-到-GitHub" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-关于-jdk-Integer-类的基本使用的梳理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/23/%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93-push-%E5%88%B0-GitHub/">将本地仓库 push 到 GitHub</a>
+      <a class="article-title" href="/2020/04/26/%E5%85%B3%E4%BA%8E-jdk-Integer-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/">关于 jdk-Integer 类的基本使用的梳理</a>
     </h1>
   
 
         
-        <a href="/2020/04/23/%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93-push-%E5%88%B0-GitHub/" class="archive-article-date">
-  	<time datetime="2020-04-23T09:43:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
+        <a href="/2020/04/26/%E5%85%B3%E4%BA%8E-jdk-Integer-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/" class="archive-article-date">
+  	<time datetime="2020-04-25T22:27:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>记录下当在本地新建一个未 git 初始化工程时如何推送到 git</p>
-<h1 id="新建一个工程"><a href="#新建一个工程" class="headerlink" title="新建一个工程"></a>新建一个工程</h1><p>使用 idea 新建一个工程 test</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422160330.png" alt=""></p>
-<p>这时候这个工程没有用 git 初始化的</p>
-<h1 id="利用-idea-来初始化"><a href="#利用-idea-来初始化" class="headerlink" title="利用 idea 来初始化"></a>利用 idea 来初始化</h1><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422160704.png" alt=""></p>
-<p>在当前 test 工程下按照图中操作</p>
-<h1 id="或者利用-git-bash-来初始化"><a href="#或者利用-git-bash-来初始化" class="headerlink" title="或者利用 git bash 来初始化"></a>或者利用 git bash 来初始化</h1><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Snipaste_2020-04-22_16-08-37.png" alt=""></p>
-<p>输入 <code>git init</code> 命令即可</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422161156.png" alt=""></p>
-<p>不过我建议安装一个 .gitignore 插件，然后在创建 git 工程后添加一个 .gitignore 文件，可以避免上传一些和源码不想关的文件</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Snipaste_2020-04-22_16-13-35.png" alt=""></p>
-<p><a href="https://blog.csdn.net/static_void_james/article/details/78619314" target="_blank" rel="noopener">git .gitignore规则及取消追踪已追踪文件</a></p>
-<p><a href="https://blog.csdn.net/qq_34590097/article/details/56284935" target="_blank" rel="noopener">如何在IntelliJ IDEA中使用.ignore插件忽略不必要提交的文件</a></p>
-<p>可以参考下这两篇博文</p>
-<h1 id="github-上建立一个远程仓库"><a href="#github-上建立一个远程仓库" class="headerlink" title="github 上建立一个远程仓库"></a>github 上建立一个远程仓库</h1><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422162410.png" alt=""></p>
-<p>两个地方建立都行，任选一个</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Snipaste_2020-04-22_16-25-23.png" alt=""></p>
-<h1 id="上传本地项目到远程仓库"><a href="#上传本地项目到远程仓库" class="headerlink" title="上传本地项目到远程仓库"></a>上传本地项目到远程仓库</h1><p><a href="https://www.liaoxuefeng.com/wiki/896043488029600/898732864121440" target="_blank" rel="noopener">参考资料：廖雪峰的官方网站</a></p>
-<p>先复制远程仓库地址</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Snipaste_2020-04-22_16-27-46.png" alt=""></p>
-<p>使用命令 <code>git remote add 远程名(一般是 origin) 远程仓库地址</code><br>这里使用 <code>git remote add origin https://github.com/LVCHANGXU/test.git</code></p>
-<p>在本地添加一些内容<br>git add * 表示将所有内容添加<br>然后本地提交<br>git commit -m “first commit”</p>
-<p>然后使用 <code>git push -u 远程名 master</code> 即可<br>这里使用 <code>git push -u origin master</code></p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Snipaste_2020-04-22_16-49-35.png" alt=""></p>
-<p>注意这时候我使用 <code>git push</code> 命令出现了这个错误，我想原因就是我在远程创建仓库的时候勾选了初始化 readme.md 文件，所以我的远程仓库相对于我的本地仓库更新了，所以需要先 <code>git pull</code> 下，但是呢，我刚在本地又 commit 了下，所以 pull 也会出问题，它提示我：</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Snipaste_2020-04-22_16-53-37.png" alt=""></p>
-<h2 id="尝试一：失败"><a href="#尝试一：失败" class="headerlink" title="尝试一：失败"></a>尝试一：失败</h2><p>我想是因为我这个操作是合并远程的 master 到本地的 master，本地又不能给合并，所以我觉得应该可以在本地创建一个其他分支，比如 fix 啥的，然后切换本地到 fix 分支看下能不能给 pull，然后我试了下，也是不能，（因为我 git 也就只会一些基本的命令，然后对 git 的理解也是不够透彻，所以就试试，哈哈）</p>
-<h2 id="尝试二：成功"><a href="#尝试二：成功" class="headerlink" title="尝试二：成功"></a>尝试二：成功</h2><p>把远程仓库给删掉，然后新建一个，不过不选初始化 readme.md 文件</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422171124.png" alt=""></p>
-<p>这时候远程仓库就是最干净的了，这时候再 push 下，这时候就成功了</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422171450.png" alt=""></p>
-<h2 id="尝试三：成功"><a href="#尝试三：成功" class="headerlink" title="尝试三：成功"></a>尝试三：成功</h2><p>不过如果我不想做 “尝试二”呢？，然后我就在浏览器中搜寻 “refusing to merge unrelated histories” 然后就搜寻到了<a href="https://github.community/t5/How-to-use-Git-and-GitHub/How-to-deal-with-quot-refusing-to-merge-unrelated-histories-quot/m-p/16305#M5000" target="_blank" rel="noopener">这篇博文</a> 解决了问题，方法就是使用命令 <code>git pull --allow-unrelated-histories</code> ，然后我还得试下，于是我在 github 上新建了一个文件：</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422172050.png" alt=""></p>
-<p>这时候远程就比本地新了，然后我本地再新建一个文件后添加提交一次，</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422172325.png" alt=""></p>
-<p>然后使用  <code>git pull --allow-unrelated-histories</code>  命令试下能不能成功</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422172852.png" alt=""></p>
-<p>这时候也是成功了</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422173114.png" alt=""></p>
-<p>发现本地和远程也都没啥变化啊</p>
-<p>然后这时候再把本地的给 push 到远程，发现还是可以</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422173347.png" alt=""></p>
-<p>至此，测试就完成了！！！</p>
-<h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>不过我推荐还是使用 “尝试二”比较简单快捷方便，还有就是如果你是想同步本地仓库到远程的话，那么最好是在远程创建一个新的仓库，不要选 初始化 readme.md 文件</p>
+        <h1 id="Integer-类的定义"><a href="#Integer-类的定义" class="headerlink" title="Integer 类的定义"></a>Integer 类的定义</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> java.lang;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Integer</span> <span class="keyword">extends</span> <span class="title">Number</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Integer</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><a href="http://c.biancheng.net/view/890.html" target="_blank" rel="noopener">Java Integer类详解</a></p>
+<p><a href="https://blog.csdn.net/softwave/article/details/1381846" target="_blank" rel="noopener">Java中Integer类的方法</a></p>
+<h1 id="Integer-创建对象"><a href="#Integer-创建对象" class="headerlink" title="Integer 创建对象"></a>Integer 创建对象</h1><table>
+<thead>
+<tr>
+<th>构造函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public Integer(int value)</td>
+<td>将传入的 int 值构造为整数类型</td>
+</tr>
+<tr>
+<td>public Integer(String s) throws NumberFormatException</td>
+<td>将字符串 s 解析为整数类型，默认以 10 进制方式去解析，底层就是将每个字符取出来，获取每个字符的字面值，然后乘以给定的进制(基数)，最后返回结果，注意 s 的字面值是 [Integer.MIN_VALUE,Integer.MAX_VALUE]</td>
+</tr>
+</tbody></table>
+<h1 id="Integer-常用方法"><a href="#Integer-常用方法" class="headerlink" title="Integer 常用方法"></a>Integer 常用方法</h1><table>
+<thead>
+<tr>
+<th>常用方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public static int compare(int x, int y)</td>
+<td>比较 x,y; 如果 x&gt;y,返回正数；x&lt;y, 返回负数；x==y,返回 0</td>
+</tr>
+<tr>
+<td>public int compareTo(Integer anotherInteger)</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>public boolean equals(Object obj)</td>
+<td>判断值是否相等，如果相等返回 true</td>
+</tr>
+<tr>
+<td>public int intValue()</td>
+<td>返回 int 值</td>
+</tr>
+<tr>
+<td>public static int max(int a, int b)</td>
+<td>返回 较大值</td>
+</tr>
+<tr>
+<td>public static int min(int a, int b)</td>
+<td>返回 较小值</td>
+</tr>
+<tr>
+<td>public static int parseInt(String s) throws NumberFormatException</td>
+<td>将 s 解析成十进制整数</td>
+</tr>
+<tr>
+<td>public static int parseInt(String s, int radix)throwsNumberFormatException</td>
+<td>以指定基数去解析 s</td>
+</tr>
+<tr>
+<td>public static int sum(int a, int b)</td>
+<td>求和</td>
+</tr>
+<tr>
+<td>public static String toHexString(int i)</td>
+<td>返回 i 的十六进制字符串</td>
+</tr>
+<tr>
+<td>public String toString()</td>
+<td>以字面值字符串形式返回</td>
+</tr>
+<tr>
+<td>public static Integer valueOf(int i)</td>
+<td>返回 i 的 Integer 包装类型</td>
+</tr>
+<tr>
+<td>public static Integer valueOf(String s) throws NumberFormatException</td>
+<td>将 s 转换为 Integer 类型</td>
+</tr>
+</tbody></table>
 
       
 
@@ -229,7 +265,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JDK</a>
         		</li>
       		
 		</ul>
@@ -239,7 +275,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/23/%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93-push-%E5%88%B0-GitHub/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/26/%E5%85%B3%E4%BA%8E-jdk-Integer-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/">展开全文 >></a>
         </p>
       
 
@@ -293,7 +329,7 @@ gitalk.render('gitalk-container')
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -459,6 +495,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">LinuxEnvironmentSetup</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">lanqioaOJ</a>
               </li>
             
             <div class="clearfix"></div>
