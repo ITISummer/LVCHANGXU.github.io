@@ -152,106 +152,31 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-关于-jdk-Integer-类的基本使用的梳理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-蓝桥杯-真题练习-猜字母" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/26/%E5%85%B3%E4%BA%8E-jdk-Integer-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/">关于 jdk-Integer 类的基本使用的梳理</a>
+      <a class="article-title" href="/2020/04/28/%E8%93%9D%E6%A1%A5%E6%9D%AF-%E7%9C%9F%E9%A2%98%E7%BB%83%E4%B9%A0-%E7%8C%9C%E5%AD%97%E6%AF%8D/">蓝桥杯 - 真题练习 - 猜字母</a>
     </h1>
   
 
         
-        <a href="/2020/04/26/%E5%85%B3%E4%BA%8E-jdk-Integer-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/" class="archive-article-date">
-  	<time datetime="2020-04-25T22:27:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
+        <a href="/2020/04/28/%E8%93%9D%E6%A1%A5%E6%9D%AF-%E7%9C%9F%E9%A2%98%E7%BB%83%E4%B9%A0-%E7%8C%9C%E5%AD%97%E6%AF%8D/" class="archive-article-date">
+  	<time datetime="2020-04-27T22:49:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Integer-类的定义"><a href="#Integer-类的定义" class="headerlink" title="Integer 类的定义"></a>Integer 类的定义</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> java.lang;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Integer</span> <span class="keyword">extends</span> <span class="title">Number</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Integer</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><a href="http://c.biancheng.net/view/890.html" target="_blank" rel="noopener">Java Integer类详解</a></p>
-<p><a href="https://blog.csdn.net/softwave/article/details/1381846" target="_blank" rel="noopener">Java中Integer类的方法</a></p>
-<h1 id="Integer-创建对象"><a href="#Integer-创建对象" class="headerlink" title="Integer 创建对象"></a>Integer 创建对象</h1><table>
-<thead>
-<tr>
-<th>构造函数</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public Integer(int value)</td>
-<td>将传入的 int 值构造为整数类型</td>
-</tr>
-<tr>
-<td>public Integer(String s) throws NumberFormatException</td>
-<td>将字符串 s 解析为整数类型，默认以 10 进制方式去解析，底层就是将每个字符取出来，获取每个字符的字面值，然后乘以给定的进制(基数)，最后返回结果，注意 s 的字面值是 [Integer.MIN_VALUE,Integer.MAX_VALUE]</td>
-</tr>
-</tbody></table>
-<h1 id="Integer-常用方法"><a href="#Integer-常用方法" class="headerlink" title="Integer 常用方法"></a>Integer 常用方法</h1><table>
-<thead>
-<tr>
-<th>常用方法</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public static int compare(int x, int y)</td>
-<td>比较 x,y; 如果 x&gt;y,返回正数；x&lt;y, 返回负数；x==y,返回 0</td>
-</tr>
-<tr>
-<td>public int compareTo(Integer anotherInteger)</td>
-<td>同上</td>
-</tr>
-<tr>
-<td>public boolean equals(Object obj)</td>
-<td>判断值是否相等，如果相等返回 true</td>
-</tr>
-<tr>
-<td>public int intValue()</td>
-<td>返回 int 值</td>
-</tr>
-<tr>
-<td>public static int max(int a, int b)</td>
-<td>返回 较大值</td>
-</tr>
-<tr>
-<td>public static int min(int a, int b)</td>
-<td>返回 较小值</td>
-</tr>
-<tr>
-<td>public static int parseInt(String s) throws NumberFormatException</td>
-<td>将 s 解析成十进制整数</td>
-</tr>
-<tr>
-<td>public static int parseInt(String s, int radix)throwsNumberFormatException</td>
-<td>以指定基数去解析 s</td>
-</tr>
-<tr>
-<td>public static int sum(int a, int b)</td>
-<td>求和</td>
-</tr>
-<tr>
-<td>public static String toHexString(int i)</td>
-<td>返回 i 的十六进制字符串</td>
-</tr>
-<tr>
-<td>public String toString()</td>
-<td>以字面值字符串形式返回</td>
-</tr>
-<tr>
-<td>public static Integer valueOf(int i)</td>
-<td>返回 i 的 Integer 包装类型</td>
-</tr>
-<tr>
-<td>public static Integer valueOf(String s) throws NumberFormatException</td>
-<td>将 s 转换为 Integer 类型</td>
-</tr>
-</tbody></table>
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>猜字母把abcd..s共19个字母组成的序列重复拼接106次，<br>得到长度为2014的串<br>接下来删除第1个字母（即开头的字母a），<br>以及第3个，第5个等所有奇数位置的字母得到的新串再进行删除 奇数位置 字母的动作。<br>如此下去，最后只剩下一个字母，请写出该字母。<br>答案是一个小写字母，请通过浏览器提交答案。不要填写任何多余的內容。</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>过程题，按着过程描述来做就行了</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">_03_</span>猜字母 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// initialize char array</span></span><br><span class="line">        <span class="keyword">char</span>[] arr = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">2014</span>];</span><br><span class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">106</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= <span class="number">18</span>; j++) &#123;</span><br><span class="line">                arr[k++] = (<span class="keyword">char</span>) (<span class="string">'a'</span> + j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// calculation</span></span><br><span class="line">        <span class="keyword">int</span> len = arr.length;</span><br><span class="line">        <span class="keyword">while</span> (len &gt; <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> newLen = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i += <span class="number">2</span>) &#123;</span><br><span class="line">                arr[newLen++] = arr[i];</span><br><span class="line">            &#125;</span><br><span class="line">            len = newLen;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// print the result</span></span><br><span class="line">        System.out.println(arr[<span class="number">0</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是我第一次想的是用 <code>ArrayList</code> 来做，因为其移除和动态获得大小都很方便，但是我忽略了在每次移除一个元素的时候，其他每一个元素的下标都会发生动态的变化，例如：[a,b,c,d,e] 中，当 i = 0 时，移除掉 arr[0] 及 a  后，i = 1，数组元素变为 [b,c,d,e,f] ,这时候按以下解法的话，应该移动 arr[2] 的位置，及移动 d 元素，但是其实是应该移动原来 arr[2] 位置的元素，即 c 元素，所以得不到正确的答案。可以调试下，发现在移除过程中，第一次移除 a 可以移除，但是第二次移除 c 字母的时候，不行，被跳过了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">_03_</span>猜字母 </span>&#123;</span><br><span class="line">    <span class="comment">// initialize char array</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;Character&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">106</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= <span class="number">18</span>; j++) &#123;</span><br><span class="line">                list.add((<span class="keyword">char</span>) (<span class="string">'a'</span> + j));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        System.out.println(list.toString());</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// calculation</span></span><br><span class="line">        <span class="keyword">while</span> (list.size() &gt; <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> ((i + <span class="number">1</span>) % <span class="number">2</span> != <span class="number">0</span>) &#123;</span><br><span class="line">                    list.remove(i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// print the result</span></span><br><span class="line">        System.out.println((<span class="keyword">char</span>) list.get(<span class="number">0</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -265,7 +190,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JDK</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">lanqiaoOJ</a>
         		</li>
       		
 		</ul>
@@ -275,7 +200,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/26/%E5%85%B3%E4%BA%8E-jdk-Integer-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/28/%E8%93%9D%E6%A1%A5%E6%9D%AF-%E7%9C%9F%E9%A2%98%E7%BB%83%E4%B9%A0-%E7%8C%9C%E5%AD%97%E6%AF%8D/">展开全文 >></a>
         </p>
       
 
@@ -329,7 +254,7 @@ gitalk.render('gitalk-container')
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -498,7 +423,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lanqioaOJ</a>
+                <a href="javascript:void(0)" class="js-tag color1">CommonAlgorithm</a>
               </li>
             
             <div class="clearfix"></div>

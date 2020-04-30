@@ -152,53 +152,103 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-centos-7-x-版本安装-docker-并在其中安装-mysql-和-redis-镜像" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-使用-WorldPress-phpStudy-搭建个人网站过程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/centos-7-x-%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85-docker-%E5%B9%B6%E5%9C%A8%E5%85%B6%E4%B8%AD%E5%AE%89%E8%A3%85-mysql-%E5%92%8C-redis-%E9%95%9C%E5%83%8F/">centos 7.x 版本安装 docker 并在其中安装 mysql 和 redis 镜像</a>
+      <a class="article-title" href="/2020/04/17/%E4%BD%BF%E7%94%A8-WorldPress-phpStudy-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E8%BF%87%E7%A8%8B/">使用 WorldPress+phpStudy 搭建个人网站过程</a>
     </h1>
   
 
         
-        <a href="/2020/04/17/centos-7-x-%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85-docker-%E5%B9%B6%E5%9C%A8%E5%85%B6%E4%B8%AD%E5%AE%89%E8%A3%85-mysql-%E5%92%8C-redis-%E9%95%9C%E5%83%8F/" class="archive-article-date">
-  	<time datetime="2020-04-17T12:28:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+        <a href="/2020/04/17/%E4%BD%BF%E7%94%A8-WorldPress-phpStudy-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E8%BF%87%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2020-04-17T12:33:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我主要是看了这篇博文：</p>
-<p><a href="https://yq.aliyun.com/articles/336442" target="_blank" rel="noopener">阿里云CentOS 7上安装配置Docker</a></p>
-<p><a href="https://www.jianshu.com/p/5fbb02d886d4" target="_blank" rel="noopener">使用docker安装mysql和redis</a></p>
-<p><a href="https://www.bilibili.com/video/BV1MJ411e7y7?p=9" target="_blank" rel="noopener">springboot 项目学习</a></p>
-<p><a href="https://blog.csdn.net/u010246789/article/details/53958662" target="_blank" rel="noopener">docker 一些命令</a></p>
-<p><strong>如果有不懂的请转到列出的博文</strong></p>
-<h1 id="检查-centos-内核版本"><a href="#检查-centos-内核版本" class="headerlink" title="检查 centos 内核版本"></a>检查 centos 内核版本</h1><p>这一步检查 centos 内核版本主要是 </p>
-<blockquote>
-<p>RedHat/CentOS必须要6.6版本以上，或者7.x才能安装docker，建议在RedHat/CentOS 7上使用docker，因为RedHat/CentOS 7的内核升级到了kernel 3.10，对lxc容器支持更好。</p>
-</blockquote>
-<p>里面的一些步骤我没有完全照做，主要用了以下命令：<br>检查 centos 内核版本：<code>cat /proc/version</code></p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410175036.png" alt=""></p>
-<h1 id="安装-docker"><a href="#安装-docker" class="headerlink" title="安装 docker"></a>安装 docker</h1><p>命令：<code>yum  install docker -y</code></p>
-<p>由于我已经安装了，所以就不再执行下命令了</p>
-<p>安装完后可以查看 docker 的版本： <code>docker -v</code><br><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410175644.png" alt=""></p>
-<p>docker 一些命令：<br><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410185252.png" alt=""></p>
-<h1 id="安装并启动-mysql"><a href="#安装并启动-mysql" class="headerlink" title="安装并启动 mysql"></a>安装并启动 mysql</h1><p>可以使用 <code>docker search mysql</code><br>查看 mysql 目前有哪些版本可以安装<br><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410175938.png" alt=""></p>
-<p>这里默认安装最新版本镜像：<code>docker pull mysql</code></p>
-<p>查看是否安装成功：<code>docker images</code><br><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410180249.png" alt=""></p>
-<p>安装成功后启动 mysql 容器（MySQL 镜像实例）：<code>docker run --name 镜像名 -p 外部访问端口:docker内mysql容器运行端口 -e MYSQL_ROOT_PASSWORD=mysql123 -d 镜像名:版本号</code></p>
-<p><a href="https://blog.csdn.net/qq_33997121/article/details/83689068" target="_blank" rel="noopener">关于这里启动参数没明白的可以看这篇博文</a></p>
-<p>如果还不明白的可以自己搜索下也可以参考 本文中前言中的第三条链接，是视频讲解</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410181258.png" alt=""></p>
-<p>对了，因为是使用的远程服务器，所以还得去远程服务器配置安全组规则开启外部的端口的访问权限，比如开启 5555 端口啥的，这样才能通过服务器公网 ip 地址+ 端口 去访问到 docker 容器中的 mysql 服务</p>
-<h1 id="安装并启动-redis"><a href="#安装并启动-redis" class="headerlink" title="安装并启动 redis"></a>安装并启动 redis</h1><p>使用下载命令：<code>docker pull redis</code><br>使用启动命令：<code>docker run --name redis -p 外部访问端口:6379 -v docker/redis/data:/data -d redis redis-server --appendonly yes</code></p>
-<p>同样记得开启外部访问端口的安全组规则配置</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200410183837.png" alt=""></p>
+        <h1 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h1><p><a href="www.bilibili.com/video/av40307690">根据此教程学习，很详细</a></p>
+<h1 id="下载-phpStudy"><a href="#下载-phpStudy" class="headerlink" title="下载 phpStudy"></a>下载 phpStudy</h1><p><a href="https://www.xp.cn/download.html" target="_blank" rel="noopener">点击下载 phpStudy</a></p>
+<p>之所以建议下载 phpStudy 是因为这是一款集成了 mysql apache php 环境的一个软件吧，而 worldpress 是 php 写的，apache 可以作为本机的网络服务器，然后 mysql 作为存储网站数据的数据库，所以需要下载这个 phpStudy，一键下载就可以了。当然可能你原来在本机安装过 mysql 可能会与原来的 mysql 服务冲突，但是别慌，网上有很多关于这些问题的教程，上网耐心搜搜，这里放下我搜过的一些：</p>
+<ul>
+<li><a href="https://blog.csdn.net/aokuiyu1635/article/details/101973758?utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">完美解决phpstudy安装后mysql无法启动（无需删除原数据库，无需更改任何配置，无需更改端口）直接共存…</a></li>
+<li><a href="https://blog.csdn.net/Al_assad/article/details/70510889" target="_blank" rel="noopener">PHPStudy 无法启动 Apache 和 MySQL (Windows环境)</a></li>
+</ul>
+<p>在这里说下我的问题，就是我可以启动 Apache 服务，但是 MYSQL 服务不能启动，于是我去手动启动 MYSQLa, 这个在 任务管理器-&gt;服务 中可以找到，但是也不能启动，我在网上搜了很多，刚开始我也以为和他们的问题一样，但是我忽然猛的记起，我以前好像因为 MYSQLa 总是开机自启，然后我用 火绒安全软件 的 启动项管理功能 把 MYSQLa 服务给 禁止启动 了，所以我后面解除了禁止后，然后就可以了，还有就是你可能使用以下界面 只能启动 Apache 服务，但是 MYSQL 服务也不能启动，先去 任务管理器-&gt;服务 里面手动启动下 MYSQLa 服务吧，别一来就上网搜，然后把原来的 MYSQL 服务给删掉，还让你删干净，记得遇到问题多看多搜教程，别一股脑的就按着别人教程来做：<br><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image.png" alt=""></p>
+<h1 id="下载-WorldPress"><a href="#下载-WorldPress" class="headerlink" title="下载 WorldPress"></a>下载 WorldPress</h1><p><a href="www.WorldPress.com">点击下载 WorldPress</a></p>
+<ol>
+<li><p>解压缩后放到 [F:\PhpStudy2018\PHPTutorial\WWW] 我这里是这样的，请对照这找到 WWW 文件夹，这个文件夹里面是放网站的，如果你找不到下载的位置，那如果你能正常启动 phpStudy ，看到上图的话，那么 点击 其他选项菜单-&gt;网站跟目录，这样也可以弹出资源管理器窗口，所打开的文件夹正是 WWW 文件夹。</p>
+</li>
+<li><p>访问 worldpress 里面的 index.php 文件，注意查看下解压的目录里面是否有子目录</p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B1%5D.png" alt=""></p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B2%5D.png" alt=""></p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B3%5D.png" alt=""></p>
+</li>
+</ol>
+<p>点击 MYSQL 管理器-&gt;phpMyAdmin<br>6. <img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B4%5D.png" alt=""></p>
+<ol start="7">
+<li><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B5%5D.png" alt=""></p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B6%5D.png" alt=""></p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B7%5D.png" alt=""></p>
+</li>
+<li><p>登录成功-&gt;网站管理后台：<br><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B8%5D.png" alt=""></p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B9%5D.png" alt=""></p>
+</li>
+</ol>
+<h1 id="WorldPress-后台操作"><a href="#WorldPress-后台操作" class="headerlink" title="WorldPress 后台操作"></a>WorldPress 后台操作</h1><h2 id="一、插件"><a href="#一、插件" class="headerlink" title="一、插件"></a>一、插件</h2><ol>
+<li>这里可以安装一些插件：<img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B10%5D.png" alt=""></li>
+</ol>
+<p>下载下来的插件位置：【F:\PhpStudy2018\PHPTutorial\WWW\wordpress\wp-content\plugins】<br>2. 注意你下次登录 WorldPress 时，只要访问 worldPress文件夹 里面的 wp-login.php 文件就行，在浏览器访问，注意在这之前把 phpStudy 运行起来<br>3. 安装插件，在进行后台管理的时候会发现页面加载速度很慢，可以安装 Disable Google Fonts 这款插件，点击 安装插件 按钮后 搜索即可安装</p>
+<h2 id="二、分类目录"><a href="#二、分类目录" class="headerlink" title="二、分类目录"></a>二、分类目录</h2><p>文章：放网站的主要的内容的地方</p>
+<p>页面：放网站其他内容的地方</p>
+<ol>
+<li><p>添加自己网站的分类：<img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B11%5D.png" alt=""></p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B12%5D.png" alt=""></p>
+</li>
+</ol>
+<h2 id="三、填充内容"><a href="#三、填充内容" class="headerlink" title="三、填充内容"></a>三、填充内容</h2><ol>
+<li><p>点击写文章：<img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B13%5D.png" alt=""></p>
+</li>
+<li><p>页面：管理网站中每一张网页，和文章相关操作差不多</p>
+</li>
+<li><p>媒体库：管理网站中上传的多媒体（图片，视频，音频）等</p>
+</li>
+<li><p>评论：管理访问（使用）你网站用户的评论</p>
+</li>
+<li><p>添加用户：可以提供给用户注册的功能</p>
+</li>
+<li><p>工具栏：可以添加丰富网站功能的系列工具</p>
+</li>
+<li><p>外观：内有设置网站主题相关操作，显示什么内容，由主题决定，好的主题会让网站视觉效果发生很大的改变，网站更加好看</p>
+</li>
+<li><p>设置：对一些网站基础功能进行预先设置</p>
+<ol>
+<li><p>设置里面对固定连接进行自定义或者更改前，对 apache 开启 rewrite 功能，不然有可能出现此错误 <a href="http://blog.sina.com.cn/s/blog_737ebdf20101gfmy.html" target="_blank" rel="noopener">Wordpress修改固定链接后出现403 Forbidden错误</a></p>
+</li>
+<li><p>让 apache 开启 rewrite 功能：<img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B14%5D.png" alt=""></p>
+<p>其他选项菜单-&gt;打开配置文件-&gt;httpd-conf</p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B15%5D.png" alt=""></p>
+</li>
+<li><p>去掉前面的 “#” 符号，然后保存</p>
+</li>
+</ol>
+</li>
+<li><p>开启用户注册：设置-&gt;常规-&gt;开启用户注册 <img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Image%20%5B16%5D.png" alt=""></p>
+</li>
+</ol>
 
       
 
@@ -212,7 +262,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">phpStudy</a>
         		</li>
       		
 		</ul>
@@ -222,7 +272,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/centos-7-x-%E7%89%88%E6%9C%AC%E5%AE%89%E8%A3%85-docker-%E5%B9%B6%E5%9C%A8%E5%85%B6%E4%B8%AD%E5%AE%89%E8%A3%85-mysql-%E5%92%8C-redis-%E9%95%9C%E5%83%8F/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/17/%E4%BD%BF%E7%94%A8-WorldPress-phpStudy-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E8%BF%87%E7%A8%8B/">展开全文 >></a>
         </p>
       
 
@@ -276,7 +326,7 @@ gitalk.render('gitalk-container')
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/13/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/15/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/13/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="extend next" rel="next" href="/page/15/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -445,7 +495,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lanqioaOJ</a>
+                <a href="javascript:void(0)" class="js-tag color1">CommonAlgorithm</a>
               </li>
             
             <div class="clearfix"></div>

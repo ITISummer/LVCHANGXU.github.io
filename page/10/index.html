@@ -152,38 +152,70 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-centos-云主机使用-WordPress-出现的问题汇总" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-将本地仓库-push-到-GitHub" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/centos-%E4%BA%91%E4%B8%BB%E6%9C%BA%E4%BD%BF%E7%94%A8-WordPress-%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/">centos 云主机使用 WordPress 出现的问题汇总</a>
+      <a class="article-title" href="/2020/04/23/%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93-push-%E5%88%B0-GitHub/">将本地仓库 push 到 GitHub</a>
     </h1>
   
 
         
-        <a href="/2020/04/17/centos-%E4%BA%91%E4%B8%BB%E6%9C%BA%E4%BD%BF%E7%94%A8-WordPress-%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/" class="archive-article-date">
-  	<time datetime="2020-04-17T12:34:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+        <a href="/2020/04/23/%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93-push-%E5%88%B0-GitHub/" class="archive-article-date">
+  	<time datetime="2020-04-23T09:43:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h1><p>对于 “问题一” 和 “问题二”都可以只看看就行，不用一步步的按着操作，可以滑动到最底部 “终极方案”，找到更快捷便利的方法</p>
-<h1 id="问题一：-安装过程出现不能创建-wp-config-php-文件，要求手动创建，然后复制内容，图文如下："><a href="#问题一：-安装过程出现不能创建-wp-config-php-文件，要求手动创建，然后复制内容，图文如下：" class="headerlink" title="问题一： 安装过程出现不能创建 wp-config.php 文件，要求手动创建，然后复制内容，图文如下："></a>问题一： 安装过程出现不能创建 wp-config.php 文件，要求手动创建，然后复制内容，图文如下：</h1><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200318181613.png" alt=""></p>
-<p>出现这个问题，我就是直接按着它说的做，复制那个文本内容，然后自己手动在指定目录创建 wp-config.php，然后粘贴内容就行</p>
-<h1 id="问题二：一切配置好后，进入-WordPress-后台管理界面，当我想上传媒体文件时，出现以下错误："><a href="#问题二：一切配置好后，进入-WordPress-后台管理界面，当我想上传媒体文件时，出现以下错误：" class="headerlink" title="问题二：一切配置好后，进入 WordPress 后台管理界面，当我想上传媒体文件时，出现以下错误："></a>问题二：一切配置好后，进入 WordPress 后台管理界面，当我想上传媒体文件时，出现以下错误：</h1><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200319132710.png" alt=""></p>
-<p>这个图片是我在别人的博客中截图的，因为我写这篇博文的时候，已经把那些问题给解决了，然后期间也没做好笔记，所以先用下别人的图，嘿嘿！</p>
-<p>然后连续遇到的问题就是这篇博文中遇到的，然后我按着做就暂时解决了问题，不过我得说下只是暂时性的，有兴趣可以看下这篇博文：<br><a href="https://blog.csdn.net/wy_bk/article/details/78405588" target="_blank" rel="noopener">wordpress 问题</a></p>
-<p>然后当我设置好后，我安装插件的时候又不行了，而且我的主题什么的，总是提手我 style.css 不能用，然后那些已经安装好的主题的样式就没有了，我当时就郁闷了</p>
-<h1 id="终极方案："><a href="#终极方案：" class="headerlink" title="终极方案："></a>终极方案：</h1><p>然后我今天有开始搜索，当我搜索到一篇英文的博文时，我读完，顿时就醒悟了：<a href="https://kinsta.com/knowledgebase/installation-failed-could-not-create-directory/" target="_blank" rel="noopener">终极解决 wordpress 一系列问题-英文博文</a></p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200319134343.png" alt=""></p>
-<p>简单地说：就是去主面板下 Tools-&gt;Site Health 去找到最后的 Filesystem Permissions 你会看到哪些文件夹包含有写的权限，哪些没有写的权限，然后我的终极解决方案就是将你解压出来的 wordpress 程序包给全部给个 0766 或者 0777 权限，我就是这样以后，然后就给解决了以上所有问题，可以安装插件，可以上传多媒体文件了，自带的主题样式也可以了，主题安装也可以了，反正目前遇到的问题都解决了！！！</p>
-<p>总结下来，就是你的 wordpress 中每个文件夹没有一些写的权限，所以需要你给它们赋予可以写的权限，一般 0766 就够了吧</p>
-<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200319131855.png" alt=""></p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>记录下当在本地新建一个未 git 初始化工程时如何推送到 git</p>
+<h1 id="新建一个工程"><a href="#新建一个工程" class="headerlink" title="新建一个工程"></a>新建一个工程</h1><p>使用 idea 新建一个工程 test</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422160330.png" alt=""></p>
+<p>这时候这个工程没有用 git 初始化的</p>
+<h1 id="利用-idea-来初始化"><a href="#利用-idea-来初始化" class="headerlink" title="利用 idea 来初始化"></a>利用 idea 来初始化</h1><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422160704.png" alt=""></p>
+<p>在当前 test 工程下按照图中操作</p>
+<h1 id="或者利用-git-bash-来初始化"><a href="#或者利用-git-bash-来初始化" class="headerlink" title="或者利用 git bash 来初始化"></a>或者利用 git bash 来初始化</h1><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Snipaste_2020-04-22_16-08-37.png" alt=""></p>
+<p>输入 <code>git init</code> 命令即可</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422161156.png" alt=""></p>
+<p>不过我建议安装一个 .gitignore 插件，然后在创建 git 工程后添加一个 .gitignore 文件，可以避免上传一些和源码不想关的文件</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Snipaste_2020-04-22_16-13-35.png" alt=""></p>
+<p><a href="https://blog.csdn.net/static_void_james/article/details/78619314" target="_blank" rel="noopener">git .gitignore规则及取消追踪已追踪文件</a></p>
+<p><a href="https://blog.csdn.net/qq_34590097/article/details/56284935" target="_blank" rel="noopener">如何在IntelliJ IDEA中使用.ignore插件忽略不必要提交的文件</a></p>
+<p>可以参考下这两篇博文</p>
+<h1 id="github-上建立一个远程仓库"><a href="#github-上建立一个远程仓库" class="headerlink" title="github 上建立一个远程仓库"></a>github 上建立一个远程仓库</h1><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422162410.png" alt=""></p>
+<p>两个地方建立都行，任选一个</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Snipaste_2020-04-22_16-25-23.png" alt=""></p>
+<h1 id="上传本地项目到远程仓库"><a href="#上传本地项目到远程仓库" class="headerlink" title="上传本地项目到远程仓库"></a>上传本地项目到远程仓库</h1><p><a href="https://www.liaoxuefeng.com/wiki/896043488029600/898732864121440" target="_blank" rel="noopener">参考资料：廖雪峰的官方网站</a></p>
+<p>先复制远程仓库地址</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Snipaste_2020-04-22_16-27-46.png" alt=""></p>
+<p>使用命令 <code>git remote add 远程名(一般是 origin) 远程仓库地址</code><br>这里使用 <code>git remote add origin https://github.com/LVCHANGXU/test.git</code></p>
+<p>在本地添加一些内容<br>git add * 表示将所有内容添加<br>然后本地提交<br>git commit -m “first commit”</p>
+<p>然后使用 <code>git push -u 远程名 master</code> 即可<br>这里使用 <code>git push -u origin master</code></p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Snipaste_2020-04-22_16-49-35.png" alt=""></p>
+<p>注意这时候我使用 <code>git push</code> 命令出现了这个错误，我想原因就是我在远程创建仓库的时候勾选了初始化 readme.md 文件，所以我的远程仓库相对于我的本地仓库更新了，所以需要先 <code>git pull</code> 下，但是呢，我刚在本地又 commit 了下，所以 pull 也会出问题，它提示我：</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/Snipaste_2020-04-22_16-53-37.png" alt=""></p>
+<h2 id="尝试一：失败"><a href="#尝试一：失败" class="headerlink" title="尝试一：失败"></a>尝试一：失败</h2><p>我想是因为我这个操作是合并远程的 master 到本地的 master，本地又不能给合并，所以我觉得应该可以在本地创建一个其他分支，比如 fix 啥的，然后切换本地到 fix 分支看下能不能给 pull，然后我试了下，也是不能，（因为我 git 也就只会一些基本的命令，然后对 git 的理解也是不够透彻，所以就试试，哈哈）</p>
+<h2 id="尝试二：成功"><a href="#尝试二：成功" class="headerlink" title="尝试二：成功"></a>尝试二：成功</h2><p>把远程仓库给删掉，然后新建一个，不过不选初始化 readme.md 文件</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422171124.png" alt=""></p>
+<p>这时候远程仓库就是最干净的了，这时候再 push 下，这时候就成功了</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422171450.png" alt=""></p>
+<h2 id="尝试三：成功"><a href="#尝试三：成功" class="headerlink" title="尝试三：成功"></a>尝试三：成功</h2><p>不过如果我不想做 “尝试二”呢？，然后我就在浏览器中搜寻 “refusing to merge unrelated histories” 然后就搜寻到了<a href="https://github.community/t5/How-to-use-Git-and-GitHub/How-to-deal-with-quot-refusing-to-merge-unrelated-histories-quot/m-p/16305#M5000" target="_blank" rel="noopener">这篇博文</a> 解决了问题，方法就是使用命令 <code>git pull --allow-unrelated-histories</code> ，然后我还得试下，于是我在 github 上新建了一个文件：</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422172050.png" alt=""></p>
+<p>这时候远程就比本地新了，然后我本地再新建一个文件后添加提交一次，</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422172325.png" alt=""></p>
+<p>然后使用  <code>git pull --allow-unrelated-histories</code>  命令试下能不能成功</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422172852.png" alt=""></p>
+<p>这时候也是成功了</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422173114.png" alt=""></p>
+<p>发现本地和远程也都没啥变化啊</p>
+<p>然后这时候再把本地的给 push 到远程，发现还是可以</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200422173347.png" alt=""></p>
+<p>至此，测试就完成了！！！</p>
+<h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>不过我推荐还是使用 “尝试二”比较简单快捷方便，还有就是如果你是想同步本地仓库到远程的话，那么最好是在远程创建一个新的仓库，不要选 初始化 readme.md 文件</p>
 
       
 
@@ -197,7 +229,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">WebsiteBuildProblemsSolutions</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
         		</li>
       		
 		</ul>
@@ -207,7 +239,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/centos-%E4%BA%91%E4%B8%BB%E6%9C%BA%E4%BD%BF%E7%94%A8-WordPress-%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/23/%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93-push-%E5%88%B0-GitHub/">展开全文 >></a>
         </p>
       
 
@@ -261,7 +293,7 @@ gitalk.render('gitalk-container')
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/9/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/11/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/9/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="extend next" rel="next" href="/page/11/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -430,7 +462,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lanqioaOJ</a>
+                <a href="javascript:void(0)" class="js-tag color1">CommonAlgorithm</a>
               </li>
             
             <div class="clearfix"></div>

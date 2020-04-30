@@ -152,39 +152,104 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-关于-jdk-BigDecimal类的基本使用的梳理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/16/hello-world/">Hello World</a>
+      <a class="article-title" href="/2020/04/17/%E5%85%B3%E4%BA%8E-jdk-BigDecimal%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/">关于 jdk-BigDecimal类的基本使用的梳理</a>
     </h1>
   
 
         
-        <a href="/2020/04/16/hello-world/" class="archive-article-date">
-  	<time datetime="2020-04-16T08:49:25.689Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-16</time>
+        <a href="/2020/04/17/%E5%85%B3%E4%BA%8E-jdk-BigDecimal%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/" class="archive-article-date">
+  	<time datetime="2020-04-17T12:02:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h1 id="BigDecimal-类的定义："><a href="#BigDecimal-类的定义：" class="headerlink" title="BigDecimal 类的定义："></a>BigDecimal 类的定义：</h1><p><a href="https://blog.csdn.net/lisongjia123/article/details/51232657?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-11&utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-11" target="_blank" rel="noopener">参考文档1</a></p>
+<p><a href="https://www.jianshu.com/p/2947868d76eb" target="_blank" rel="noopener">参考文档2</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java.math </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BigDecimal</span></span></span><br><span class="line"><span class="class"><span class="keyword">extends</span> <span class="title">Number</span></span></span><br><span class="line"><span class="class"><span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">BigDecimal</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<h1 id="BigDecimal-创建对象："><a href="#BigDecimal-创建对象：" class="headerlink" title="BigDecimal 创建对象："></a>BigDecimal 创建对象：</h1><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200415112307.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th>构造方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public BigDecimal(BigInteger val)</td>
+<td>转换大整数为大实数</td>
+</tr>
+<tr>
+<td>public BigDecimal(BigInteger unscaledVal, int scale)</td>
+<td>以指定 scale (规模，数值范围，精度) 来转换大整数为大实数</td>
+</tr>
+<tr>
+<td>public BigDecimal(double val)</td>
+<td>转换双精度数为大实数</td>
+</tr>
+<tr>
+<td>public BigDecimal(int val)</td>
+<td>转换整数为大实数</td>
+</tr>
+<tr>
+<td>public BigDecimal(long val)</td>
+<td>转换长整型数为大实数</td>
+</tr>
+<tr>
+<td>public BigDecimal(String val)</td>
+<td>转换字符串为大实数</td>
+</tr>
+</tbody></table>
+<h1 id="BigDecimal-常用方法："><a href="#BigDecimal-常用方法：" class="headerlink" title="BigDecimal 常用方法："></a>BigDecimal 常用方法：</h1><table>
+<thead>
+<tr>
+<th>常用方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public BigDecimal abs()</td>
+<td>返回绝对值</td>
+</tr>
+<tr>
+<td>public BigDecimal add(BigDecimal augend)</td>
+<td>加法</td>
+</tr>
+<tr>
+<td>public int compareTo(BigDecimal val)</td>
+<td>比较两个大实数</td>
+</tr>
+<tr>
+<td>public BigDecimal multiply(BigDecimal multiplicand)</td>
+<td>乘法</td>
+</tr>
+<tr>
+<td>public BigDecimal subtract(BigDecimal subtrahend)</td>
+<td>减法</td>
+</tr>
+<tr>
+<td>public static BigDecimal valueOf(double val)</td>
+<td>双精度转换为大实数，</td>
+</tr>
+<tr>
+<td>public String toString()</td>
+<td>可能是使用的科学计数法的形式来表示大实数</td>
+</tr>
+<tr>
+<td>public String toPlainString()</td>
+<td>不会采用科学计数法的形式来表示大实数，完全采用字符串的形式来表示</td>
+</tr>
+</tbody></table>
+<h1 id="舍入模式："><a href="#舍入模式：" class="headerlink" title="舍入模式："></a>舍入模式：</h1><p><a href="https://www.jianshu.com/p/2947868d76eb" target="_blank" rel="noopener">参考此文</a></p>
 
       
 
@@ -193,11 +258,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JDK</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/16/hello-world/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/17/%E5%85%B3%E4%BA%8E-jdk-BigDecimal%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/">展开全文 >></a>
         </p>
       
 
@@ -251,7 +327,7 @@ gitalk.render('gitalk-container')
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/36/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><a class="page-number" href="/page/36/">36</a><span class="page-number current">37</span>
+      <a class="extend prev" rel="prev" href="/page/36/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><a class="page-number" href="/page/36/">36</a><span class="page-number current">37</span><a class="page-number" href="/page/38/">38</a><a class="page-number" href="/page/39/">39</a><a class="page-number" href="/page/40/">40</a><a class="extend next" rel="next" href="/page/38/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -420,7 +496,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lanqioaOJ</a>
+                <a href="javascript:void(0)" class="js-tag color1">CommonAlgorithm</a>
               </li>
             
             <div class="clearfix"></div>

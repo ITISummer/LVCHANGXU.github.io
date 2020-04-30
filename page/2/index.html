@@ -152,104 +152,31 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-关于-jdk-Collections-类的基本使用的梳理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="蓝桥杯 - 真题练习 - 奇怪的分式-java-求解最大公因数" class="article article-type-蓝桥杯 - 真题练习 - 奇怪的分式  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/27/%E5%85%B3%E4%BA%8E-jdk-Collections-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/">关于 jdk-Collections 类的基本使用的梳理</a>
+      <a class="article-title" href="/2020/05/01/java-%E6%B1%82%E8%A7%A3%E6%9C%80%E5%A4%A7%E5%85%AC%E5%9B%A0%E6%95%B0/">java 求解最大公因数</a>
     </h1>
   
 
         
-        <a href="/2020/04/27/%E5%85%B3%E4%BA%8E-jdk-Collections-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/" class="archive-article-date">
-  	<time datetime="2020-04-26T18:50:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
+        <a href="/2020/05/01/java-%E6%B1%82%E8%A7%A3%E6%9C%80%E5%A4%A7%E5%85%AC%E5%9B%A0%E6%95%B0/" class="archive-article-date">
+  	<time datetime="2020-05-01T00:23:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Collections-类的定义"><a href="#Collections-类的定义" class="headerlink" title="Collections 类的定义"></a>Collections 类的定义</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> java.util;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Collections</span></span></span><br></pre></td></tr></table></figure>
-
-<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><a href="https://blog.csdn.net/zgrgfr/article/details/53082778" target="_blank" rel="noopener">Java 集合，Collections工具类的用法</a></p>
-<p><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1299919855943714" target="_blank" rel="noopener">使用Collections</a></p>
-<h1 id="Collections-创建对象"><a href="#Collections-创建对象" class="headerlink" title="Collections 创建对象"></a>Collections 创建对象</h1><p>有一个私有的 无参构造方法，不需要创建对象，可以通过 类名.方法名 调用方法即可</p>
-<h1 id="Collections-常用方法"><a href="#Collections-常用方法" class="headerlink" title="Collections 常用方法"></a>Collections 常用方法</h1><table>
-<thead>
-<tr>
-<th>常用方法</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public static <T> boolean addAll(Collection&lt;? super T&gt; c, T… elements)</td>
-<td>将 elements 添加进 c 中</td>
-</tr>
-<tr>
-<td>public static <T>int binarySearch(List&lt;? extends Comparable&lt;? super T&gt;&gt; list, T key)</td>
-<td>二叉搜索</td>
-</tr>
-<tr>
-<td>public static <T> void copy(List&lt;? super T&gt; dest, List&lt;? extends T&gt; src)</td>
-<td>将 src 复制到 dest 中</td>
-</tr>
-<tr>
-<td>public static boolean disjoint(Collection<?> c1, Collection<?> c2)</td>
-<td>如果 c1 和 c2 中没有公共元素，则返回 true</td>
-</tr>
-<tr>
-<td>public static <T> void fill(List&lt;? super T&gt; list, T obj)</td>
-<td>以 obj 来填充 list</td>
-</tr>
-<tr>
-<td>public static int frequency(Collection&lt;?&gt; c, Object o)</td>
-<td>返回 c 中 o 出现的次数</td>
-</tr>
-<tr>
-<td>public static int indexOfSubList(List<?> source, List<?> target)</td>
-<td>返回指定源列表中指定目标列表第一次出现的起始位置</td>
-</tr>
-<tr>
-<td>public static int lastIndexOfSubList(List<?> source, List<?> target)</td>
-<td>返回指定源列表中指定目标列表的最后一次出现的起始位置</td>
-</tr>
-<tr>
-<td>public static &lt;T extends Object &amp; Comparable&lt;? super T&gt;&gt; T max(Collection&lt;? extends T&gt; coll)</td>
-<td>返回给定集合的最大元素，每个元素必须是要可比较的，也就是说每个元素实现了 Comparable 接口</td>
-</tr>
-<tr>
-<td>public static <T> boolean replaceAll(List<T> list, T oldVal, T newVal)</td>
-<td>用 newVal 替换 list 中所有的 oldVal</td>
-</tr>
-<tr>
-<td>public static void reverse(List&lt;?&gt; list)</td>
-<td>反转 list</td>
-</tr>
-<tr>
-<td>public static void rotate(List&lt;?&gt; list, int distance)</td>
-<td>将 list 中所有元素都往后移动 distance 距离，i 位置的元素移动到 (i+distance)%list.size())</td>
-</tr>
-<tr>
-<td>public static void shuffle(List&lt;?&gt; list)</td>
-<td>对 list 中所有元素进行随机重新排列</td>
-</tr>
-<tr>
-<td>public static &lt;T extends Comparable&lt;? super T&gt;&gt; void sort(List<T> list)</td>
-<td>对 list 进行排序</td>
-</tr>
-<tr>
-<td>public static <T> void sort(List<T> list, Comparator&lt;? super T&gt; c)</td>
-<td>根据指定比较器产生的顺序对指定列表进行排序</td>
-</tr>
-<tr>
-<td>public static void swap(List&lt;?&gt; list, int i, int j)</td>
-<td>交换 i,j 位置的元素</td>
-</tr>
-</tbody></table>
-
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>总结下求解最大公因数的方法</p>
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><a href="https://blog.csdn.net/jadeandplum/article/details/103049255" target="_blank" rel="noopener">计算两个整数的最大公约数（算法学习）</a></p>
+<p><a href="http://www.word666.com/ruanjian/168642.html" target="_blank" rel="noopener">Java求解两个非负整数最大公约数算法【循环法与递归法】</a></p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>主要是使用的 循环检测法 和 辗转相除法</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">example:</span></span><br><span class="line"><span class="comment">input     output</span></span><br><span class="line"><span class="comment">12 -16 -&gt; -4 -4 -4</span></span><br><span class="line"><span class="comment">12 16 -&gt; 4 4 4</span></span><br><span class="line"><span class="comment">-12 -16 -&gt; -4 -4 -4</span></span><br><span class="line"><span class="comment">0 12 -&gt; 12 12 12</span></span><br><span class="line"><span class="comment">12 0 -&gt; 12 12 12</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Gcd</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">int</span> a = in.nextInt();</span><br><span class="line">        <span class="keyword">int</span> b = in.nextInt();</span><br><span class="line">        System.out.println(gcdByRecursion(a,b));</span><br><span class="line">        System.out.println(gcdByLoop_1(a,b));</span><br><span class="line">        System.out.println(gcdByLoop_2(a,b));</span><br><span class="line">        in.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * get the greatest common divisor by loop</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> a</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> b</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">gcdByLoop_1</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (a == <span class="number">0</span>) &#123;</span><br><span class="line">           <span class="keyword">return</span> b;</span><br><span class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (b == <span class="number">0</span>) &#123;</span><br><span class="line">           <span class="keyword">return</span> a;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">int</span> gcd = Math.min(a,b);</span><br><span class="line">       <span class="keyword">while</span> (gcd != <span class="number">0</span>) &#123;</span><br><span class="line">           <span class="keyword">if</span> (a % gcd == <span class="number">0</span> &amp;&amp; b % gcd == <span class="number">0</span>) &#123;</span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">if</span> (gcd &gt; <span class="number">0</span>) &#123;</span><br><span class="line">               gcd--;</span><br><span class="line">           &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               gcd++;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> gcd;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> a</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> b</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">gcdByLoop_2</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> r = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (b != <span class="number">0</span> ) &#123;</span><br><span class="line">            r = a % b;</span><br><span class="line">            a = b;</span><br><span class="line">            b = r;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * get the greatest common divisor by recursion</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> a</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> b</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">gcdByRecursion</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (b == <span class="number">0</span>) <span class="keyword">return</span> a;</span><br><span class="line">       <span class="keyword">return</span> gcdByRecursion(b,a % b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -262,7 +189,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JDK</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CommonAlgorithm</a>
         		</li>
       		
 		</ul>
@@ -272,7 +199,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/27/%E5%85%B3%E4%BA%8E-jdk-Collections-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/05/01/java-%E6%B1%82%E8%A7%A3%E6%9C%80%E5%A4%A7%E5%85%AC%E5%9B%A0%E6%95%B0/">展开全文 >></a>
         </p>
       
 
@@ -326,7 +253,7 @@ gitalk.render('gitalk-container')
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -495,7 +422,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lanqioaOJ</a>
+                <a href="javascript:void(0)" class="js-tag color1">CommonAlgorithm</a>
               </li>
             
             <div class="clearfix"></div>

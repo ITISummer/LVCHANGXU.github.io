@@ -152,39 +152,47 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-LeetCode-0026-RemoveDuplicatesFromSortedArray" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-LeetCode-0041-FirstMissingPositive" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/LeetCode-0026-RemoveDuplicatesFromSortedArray/">LeetCode_0026_RemoveDuplicatesFromSortedArray</a>
+      <a class="article-title" href="/2020/04/17/LeetCode-0041-FirstMissingPositive/">LeetCode_0041_FirstMissingPositive</a>
     </h1>
   
 
         
-        <a href="/2020/04/17/LeetCode-0026-RemoveDuplicatesFromSortedArray/" class="archive-article-date">
-  	<time datetime="2020-04-17T12:24:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+        <a href="/2020/04/17/LeetCode-0041-FirstMissingPositive/" class="archive-article-date">
+  	<time datetime="2020-04-17T12:27:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这道题也是很简单的，不算复杂，因为我做的都是简单的题型，都没人来解答的，哈哈，估计都看不上吧！这道题思想跟==LeetCode_0038_CountandSay==思想差不多的，就不过多解释了。</p>
-<h1 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h1><p>给定一个已排序的数组号，删除重复项，使每个元素只出现一次，并返回新的长度。<br><br>不要为另一个数组分配额外的空间，您必须使用O(1)额外内存修改输入数组。<br></p>
-<p><strong>Example 1:</strong><br></p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>嗯，这道题吧，怎么说呢，有点难，难的是对于细节的思考，然后我在做的时候总是提交后，然后出错了，又照着给出的案例，进行程序的缺陷的修补，所以导致代码写得很冗余，所以以后在写代码之前一定要多思考下，思考下具体的一些测试用例，尽量补全，然后再写程序，不然后面去补的话会导致代码的思维很零散，看起来很乱。先上传吧，等有时间再改下。然后这道题的思路，我是这样想的：</p>
+<ol>
+<li>就是先把这个数组进行排序，有序了才好进行后续的处理<code>Arrays.sort(nums);</code>这个是最好的选择！耶！</li>
+<li>然后就是找到第一个==正整数==，并记录下它的位置</li>
+<li>从第一个正整数(==firstPos==)位置开始往后扫描，如果<code>nums[firstPos + 1] - nums[firstPos] &gt; 1</code>那么就可以不用往后面扫描了，直接退出循环</li>
+<li>最后输出缺失的正整数，如果是步骤3直接退出的话，那么就可以返回<code>nums[firstPos]+1</code>就可以了，但是如果不是直接退出，而是不满足循环条件后退出的话，那么就是需要判读<code>if (firstPos == nums.length - 1)</code>，注意这一步是不能和第二个==for==循环里面的==if==判断后的执行语句相结合的。看着似乎是可以没必要这个==if==判断，但是其是有作用的。</li>
+</ol>
+<h1 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h1><p><strong>Example 1:</strong><br></p>
 <blockquote>
-<p>给定nums = [1,1,2]，<br><br>函数应该返回length = 2, nums的前两个元素分别为1和2。<br><br>在返回长度之外留下什么并不重要。<br></p>
+<p>Input: [1,2,0]<br><br>Output: 3<br><br></p>
 </blockquote>
 <p><strong>Example 2:</strong><br></p>
 <blockquote>
-<p>给定nums = [0,0,1,1,1,2,2,3,3,4]，<br><br>函数应该返回length = 5,<br> nums的前五个元素分别修改为0、1、2、3和4。<br><br>在返回长度之外设置什么值并不重要。<br></p>
+<p>Input: [3,4,-1,1]<br><br>Output: 2<br></p>
 </blockquote>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> javaLeetCode.primary;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RemoveDuplicatesFromSortedArray_26</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> []nums = &#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>&#125;;</span><br><span class="line">		System.out.println(removeDuplicates(nums));</span><br><span class="line">	&#125;<span class="comment">//end main()</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * */</span></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * Test Data:</span></span><br><span class="line"><span class="comment">	 * [1,1,2]--2</span></span><br><span class="line"><span class="comment">	 * [0,0,1,1,1,2,2,3,3,4]--5</span></span><br><span class="line"><span class="comment">	 * */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">       </span><br><span class="line">	<span class="keyword">if</span>(nums==<span class="keyword">null</span>||nums.length==<span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> j=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(i&lt;nums.length)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(nums[j]!=nums[i])</span><br><span class="line">			nums[++j]=nums[i++];</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			i++;</span><br><span class="line">	&#125;<span class="comment">//end while</span></span><br><span class="line">	<span class="keyword">return</span> j+<span class="number">1</span>;</span><br><span class="line">    &#125;<span class="comment">//end removeDuplicates()</span></span><br><span class="line"></span><br><span class="line">&#125;<span class="comment">//end RemoveDuplicatesFromSortedArray_26</span></span><br></pre></td></tr></table></figure>
-
-
+<p><strong>Example 3:</strong><br></p>
+<blockquote>
+<p>Input: [7,8,9,11,12]<br><br>Output: 1<br></p>
+</blockquote>
+<p>注意： 您的算法应该在O（n）时间运行并使用恒定的额外空间。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">package javaLeetCode.hard;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">public class FirstMissingPositive_41 &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		int []nums &#x3D; &#123;0,2,2,1,1&#125;;</span><br><span class="line">		System.out.println(firstMissingPositive(nums));</span><br><span class="line">	&#125;&#x2F;&#x2F;end main()</span><br><span class="line">	</span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * </span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 * Test Data:</span><br><span class="line">	 * 1. &#123;3,4,-1,1&#125;--2</span><br><span class="line">	 * 2. &#123;7,8,9,11,12&#125;--1</span><br><span class="line">	 * 3. &#123;1,2,0&#125;--3</span><br><span class="line">	 * 4. &#123;0&#125;--1</span><br><span class="line">	 * 5. &#123;1000,-1&#125;--1</span><br><span class="line">	 * 6. &#123;0,2,2,1,1&#125;--3</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	public static int firstMissingPositive(int[] nums) &#123;</span><br><span class="line">		if (nums &#x3D;&#x3D; null) &#123;</span><br><span class="line">			return -1;</span><br><span class="line">		&#125; &#x2F;&#x2F; end if</span><br><span class="line">		int firstPos &#x3D; -1;&#x2F;&#x2F; First positive position;</span><br><span class="line">		int misPos &#x3D; -1;&#x2F;&#x2F; Missing positive;</span><br><span class="line">		Arrays.sort(nums);</span><br><span class="line">		&#x2F;&#x2F; Find the position of the first positive number.</span><br><span class="line">		if (nums.length &#x3D;&#x3D; 0 || nums[0] &gt; 1 || nums[nums.length - 1] &lt; 0) &#123;</span><br><span class="line">			misPos &#x3D; 1;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			for (int i &#x3D; 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">				if (nums[i] &gt;&#x3D; 0) &#123;</span><br><span class="line">					firstPos &#x3D; i;</span><br><span class="line">					if (nums[firstPos] &gt; 1) &#123;</span><br><span class="line">						return 1;</span><br><span class="line">					&#125; else &#123;</span><br><span class="line">						break;</span><br><span class="line">					&#125; &#x2F;&#x2F; end if</span><br><span class="line">				&#125; else &#123;</span><br><span class="line">					continue;</span><br><span class="line">				&#125; &#x2F;&#x2F; end if</span><br><span class="line">			&#125; &#x2F;&#x2F; end for</span><br><span class="line">			&#x2F;&#x2F;</span><br><span class="line">			for (; firstPos &lt; nums.length - 1; firstPos++) &#123;</span><br><span class="line">				if (nums[firstPos + 1] - nums[firstPos] &gt; 1) &#123;</span><br><span class="line">					misPos &#x3D; nums[firstPos] + 1;</span><br><span class="line">					break;</span><br><span class="line">				&#125; else &#123;</span><br><span class="line">					continue;</span><br><span class="line">				&#125; &#x2F;&#x2F; end if</span><br><span class="line">			&#125; &#x2F;&#x2F; end for</span><br><span class="line">				&#x2F;&#x2F; If the firstPos equals last index of the array of &quot;nums&quot;.</span><br><span class="line">			if (firstPos &#x3D;&#x3D; nums.length - 1) &#123;</span><br><span class="line">				misPos &#x3D; nums[nums.length - 1] + 1;</span><br><span class="line">			&#125; &#x2F;&#x2F; end if</span><br><span class="line">		&#125; &#x2F;&#x2F; end if</span><br><span class="line"></span><br><span class="line">		return misPos;</span><br><span class="line">	&#125;&#x2F;&#x2F; end firstMissingPositive()</span><br><span class="line">&#125;&#x2F;&#x2F;end FirstMissingPositive_41</span><br></pre></td></tr></table></figure>
 
       
 
@@ -208,7 +216,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/LeetCode-0026-RemoveDuplicatesFromSortedArray/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/17/LeetCode-0041-FirstMissingPositive/">展开全文 >></a>
         </p>
       
 
@@ -262,7 +270,7 @@ gitalk.render('gitalk-container')
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/18/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/20/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/18/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="extend next" rel="next" href="/page/20/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -431,7 +439,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lanqioaOJ</a>
+                <a href="javascript:void(0)" class="js-tag color1">CommonAlgorithm</a>
               </li>
             
             <div class="clearfix"></div>

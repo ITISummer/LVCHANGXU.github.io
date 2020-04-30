@@ -152,166 +152,42 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-LeetCode-0013-RomanToInteger" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-LeetCode-0027-RemoveElement" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/LeetCode-0013-RomanToInteger/">LeetCode_0013_RomanToInteger</a>
+      <a class="article-title" href="/2020/04/17/LeetCode-0027-RemoveElement/">LeetCode_0027_RemoveElement</a>
     </h1>
   
 
         
-        <a href="/2020/04/17/LeetCode-0013-RomanToInteger/" class="archive-article-date">
-  	<time datetime="2020-04-17T12:20:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+        <a href="/2020/04/17/LeetCode-0027-RemoveElement/" class="archive-article-date">
+  	<time datetime="2020-04-17T12:22:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>罗马数字转整型数，这个问题有很多写法，不过就我认为的基本思考就是使用枚举或者是动态解析吧！我感觉这两种方式就好像解释型语言和编译型语言的思想一样。只是有这种感觉。哈哈！</p>
-<h1 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h1><ul>
-<li>罗马数字由七种不同的符号表示:I、V、X、L、C、D和M。</li>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这道题还是很简单的，就是使用两个标记，然后进行判断什么的。不过同一种思想的不同实现方式是很有趣的。可以借鉴下。</p>
+<h1 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h1><p>给定数组号和值val，删除该值的所有实例并返回新的长度。<br>不要为另一个数组分配额外的空间，您必须使用O(1)额外内存修改输入数组。<br>元素的顺序可以改变。在新的长度之外留下什么并不重要。</p>
+<p><strong>Example 1:</strong></p>
+<blockquote>
+<p>给定nums = [3,2,2,3]， val = 3，<br>函数应该返回length = 2, nums的前两个元素为2。<br>在返回长度之外留下什么并不重要。</p>
+</blockquote>
+<p><strong>Example 2:</strong></p>
+<blockquote>
+<p>给定nums = [0,1,2,2,3,0,4,2]， val = 2，<br>函数应该返回length = 5, nums的前五个元素包含0、1、3、0和4。</p>
+</blockquote>
+<p><strong>Note:</strong></p>
+<ul>
+<li>注意，这五个元素的顺序可以是任意的。</li>
+<li>在返回长度之外设置什么值并不重要。</li>
 </ul>
-<table>
-<thead>
-<tr>
-<th>Symbol</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>I</td>
-<td>1</td>
-</tr>
-<tr>
-<td>V</td>
-<td>5</td>
-</tr>
-<tr>
-<td>X</td>
-<td>10</td>
-</tr>
-<tr>
-<td>L</td>
-<td>50</td>
-</tr>
-<tr>
-<td>C</td>
-<td>100</td>
-</tr>
-<tr>
-<td>D</td>
-<td>500</td>
-</tr>
-<tr>
-<td>M</td>
-<td>1000</td>
-</tr>
-<tr>
-<td>例如，2用罗马数字写成II，两个1相加。12写成，XII，就是X + II。27被写成XXVII，也就是XX + V + II。罗马数字通常从左到右由大到小书写。然而，4的数字不是IIII。4写成了4，因为1在5之前，所以减4。同样的原理也适用于数字9，也就是9。使用减法有六种情况:I可以放在V(5)和X(10)前面，得到4和9。X可以放在L(50)和C(100)之前，得到40和90。C可以放在D(500)和M(1000)之前，得到400和900。给定一个罗马数字，把它转换成整数。输入保证在1到3999之间。<br></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Example 1:</strong><br></td>
-<td></td>
-</tr>
-<tr>
-<td>Input: “III”<br></td>
-<td></td>
-</tr>
-<tr>
-<td>Output: 3<br><br></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Example 2:</strong><br></td>
-<td></td>
-</tr>
-<tr>
-<td>Input: “IV”<br></td>
-<td></td>
-</tr>
-<tr>
-<td>Output: 4<br><br></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Example 3:</strong><br></td>
-<td></td>
-</tr>
-<tr>
-<td>Input: “IX”<br></td>
-<td></td>
-</tr>
-<tr>
-<td>Output: 9<br><br></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Example 4:</strong><br></td>
-<td></td>
-</tr>
-<tr>
-<td>Input: “LVIII”<br></td>
-<td></td>
-</tr>
-<tr>
-<td>Output: 58<br></td>
-<td></td>
-</tr>
-<tr>
-<td>Explanation: L = 50, V= 5, III = 3.<br><br></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Example 5:</strong><br></td>
-<td></td>
-</tr>
-<tr>
-<td>Input: “MCMXCIV”<br></td>
-<td></td>
-</tr>
-<tr>
-<td>Output: 1994<br></td>
-<td></td>
-</tr>
-<tr>
-<td>Explanation: M = 1000, CM = 900, XC = 90 and IV = 4<br></td>
-<td></td>
-</tr>
-<tr>
-<td>—</td>
-<td></td>
-</tr>
-<tr>
-<td># 代码</td>
-<td></td>
-</tr>
-<tr>
-<td>- 第一个方法和第二个方法类似，都是通过边“解释”边累加</td>
-<td></td>
-</tr>
-<tr>
-<td>- 不同的是第一个方法使用了Map来代替两个数组，而第二个方法是通过栈来存储中间值</td>
-<td></td>
-</tr>
-<tr>
-<td>- 第三个方法就是纯枚举了，思路很简单的。</td>
-<td></td>
-</tr>
-<tr>
-<td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line">package javaLeetCode.primary;</span><br><span class="line"></span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Map;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">import java.util.Stack;</span><br><span class="line"></span><br><span class="line">public class RomanToInteger_13 &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		System.out.println(&quot;Please input a roman numeral:&quot;);</span><br><span class="line">		@SuppressWarnings(&quot;resource&quot;)</span><br><span class="line">		Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">		String s &#x3D; input.next();</span><br><span class="line">		System.out.println(romanToInt_3(s));</span><br><span class="line">	&#125;&#x2F;&#x2F; end main()</span><br><span class="line"></span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Conventional thinking.</span><br><span class="line">	 * Scan from head to tail and use Map or Array.</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 * Test Data: </span><br><span class="line">	 * III--3 </span><br><span class="line">	 * IV--4 </span><br><span class="line">	 * IX--9 </span><br><span class="line">	 * LVIII--58 </span><br><span class="line">	 * MCMXCIV--1994</span><br><span class="line">	 * MCCCXIV--1314</span><br><span class="line">	 * MMMIX--3009</span><br><span class="line">	 * MMMCCXLIX--3249</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	public static int romanToInt_1(String s) &#123;</span><br><span class="line">		char[] str &#x3D; s.toCharArray();</span><br><span class="line">		Map&lt;Character, Integer&gt; map &#x3D; new HashMap&lt;Character, Integer&gt;();</span><br><span class="line">		map.put(&#39;I&#39;, 1);</span><br><span class="line">		map.put(&#39;V&#39;, 5);</span><br><span class="line">		map.put(&#39;X&#39;, 10);</span><br><span class="line">		map.put(&#39;L&#39;, 50);</span><br><span class="line">		map.put(&#39;C&#39;, 100);</span><br><span class="line">		map.put(&#39;D&#39;, 500);</span><br><span class="line">		map.put(&#39;M&#39;, 1000);</span><br><span class="line"></span><br><span class="line">		int num &#x3D; 0;</span><br><span class="line">		for (int i &#x3D; 0; i &lt; s.length() - 1; i++) &#123;</span><br><span class="line">			if (map.get(str[i]) &gt;&#x3D; map.get(str[i + 1])) &#123;</span><br><span class="line">				num +&#x3D; map.get(str[i]);</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				num -&#x3D; map.get(str[i]);</span><br><span class="line">			&#125; &#x2F;&#x2F; end if</span><br><span class="line">		&#125; &#x2F;&#x2F; end for</span><br><span class="line">		num +&#x3D; map.get(str[str.length - 1]);</span><br><span class="line">		return num;</span><br><span class="line">	&#125;&#x2F;&#x2F; end romanToInt()</span><br><span class="line">	</span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Conventional thinking.</span><br><span class="line">	 * Scan from head to tail and use Stack to reserve the total.</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	public static int romanToInt_2(String s) &#123;</span><br><span class="line">		char[] str &#x3D; s.toCharArray();</span><br><span class="line">		Stack &lt;Integer&gt;romanStack &#x3D; new Stack&lt;Integer&gt;();</span><br><span class="line">		Map&lt;Character, Integer&gt; map &#x3D; new HashMap&lt;Character, Integer&gt;();</span><br><span class="line">		map.put(&#39;I&#39;, 1);</span><br><span class="line">		map.put(&#39;V&#39;, 5);</span><br><span class="line">		map.put(&#39;X&#39;, 10);</span><br><span class="line">		map.put(&#39;L&#39;, 50);</span><br><span class="line">		map.put(&#39;C&#39;, 100);</span><br><span class="line">		map.put(&#39;D&#39;, 500);</span><br><span class="line">		map.put(&#39;M&#39;, 1000);</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">		int num &#x3D; 0;</span><br><span class="line">		romanStack.push(map.get(str[0]));</span><br><span class="line">		for (int i &#x3D; 1; i &lt; s.length() ; i++) &#123;</span><br><span class="line">			if (map.get(str[i]) &lt;&#x3D; map.get(str[i - 1])) &#123;</span><br><span class="line">				romanStack.push(map.get(str[i]));</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				romanStack.push(map.get(str[i])-romanStack.pop());</span><br><span class="line">			&#125; &#x2F;&#x2F; end if</span><br><span class="line">		&#125; &#x2F;&#x2F; end for</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;Don&#39;t write &quot;for(int I &#x3D;0;I &lt; romanStack. The size ();I++) &quot;, </span><br><span class="line">		&#x2F;&#x2F;because the stack size is fetched every time the loop occurs</span><br><span class="line">		int length &#x3D; romanStack.size();</span><br><span class="line">		for(int i&#x3D;0;i&lt;length;i++) &#123;</span><br><span class="line">			num +&#x3D; romanStack.pop();</span><br><span class="line">		&#125;&#x2F;&#x2F;end for</span><br><span class="line">		return num;</span><br><span class="line">	&#125;&#x2F;&#x2F; end romanToInt()</span><br><span class="line">	</span><br><span class="line">	public static int romanToInt_3(String s) &#123;</span><br><span class="line">		int num &#x3D; 0;</span><br><span class="line">		for(int i&#x3D;0;i&lt;s.length();i++) &#123;</span><br><span class="line">			char c &#x3D; s.charAt(i);</span><br><span class="line">			if(c&#x3D;&#x3D;&#39;I&#39;) &#123;num +&#x3D; 1;&#125;</span><br><span class="line">			if(c&#x3D;&#x3D;&#39;V&#39;) &#123;num +&#x3D; 5;&#125;</span><br><span class="line">			if(c&#x3D;&#x3D;&#39;X&#39;) &#123;num +&#x3D; 10;&#125;</span><br><span class="line">			if(c&#x3D;&#x3D;&#39;L&#39;) &#123;num +&#x3D; 50;&#125;</span><br><span class="line">			if(c&#x3D;&#x3D;&#39;C&#39;) &#123;num +&#x3D; 100;&#125;</span><br><span class="line">			if(c&#x3D;&#x3D;&#39;D&#39;) &#123;num +&#x3D; 500;&#125;</span><br><span class="line">			if(c&#x3D;&#x3D;&#39;M&#39;) &#123;num +&#x3D; 1000;&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;&#x2F;&#x2F;end for</span><br><span class="line">		</span><br><span class="line">		if(s.contains(&quot;IV&quot;)) &#123;num -&#x3D; 2;&#125;</span><br><span class="line">		if(s.contains(&quot;IX&quot;)) &#123;num -&#x3D; 2;&#125;</span><br><span class="line">		if(s.contains(&quot;XL&quot;)) &#123;num -&#x3D; 20;&#125;</span><br><span class="line">		if(s.contains(&quot;XC&quot;)) &#123;num -&#x3D; 20;&#125;</span><br><span class="line">		if(s.contains(&quot;CD&quot;)) &#123;num -&#x3D; 200;&#125;</span><br><span class="line">		if(s.contains(&quot;CM&quot;)) &#123;num -&#x3D; 200;&#125;</span><br><span class="line">		</span><br><span class="line">		return num;</span><br><span class="line">	&#125;&#x2F;&#x2F; end romanToInt()</span><br><span class="line">&#125;&#x2F;&#x2F; end RomanToInteger_13</span><br></pre></td></tr></table></figure></td>
-<td></td>
-</tr>
-<tr>
-<td>—</td>
-<td></td>
-</tr>
-</tbody></table>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">package javaLeetCode.primary;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class RemoveElement_27 &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		int[] nums&#x3D; &#123;0,1,2,2,3,0,4,2&#125;;</span><br><span class="line">		System.out.println(&quot;Please input a variable&quot;);</span><br><span class="line">		@SuppressWarnings(&quot;resource&quot;)</span><br><span class="line">		Scanner input &#x3D; new Scanner(System.in);</span><br><span class="line">		int val &#x3D; input.nextInt();</span><br><span class="line">		System.out.println(removeElement_2(nums,val));</span><br><span class="line">	&#125;&#x2F;&#x2F; end main()</span><br><span class="line"></span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * </span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 * Test Data:</span><br><span class="line">	 * [3,2,2,3]--2--2</span><br><span class="line">	 * [0,1,2,2,3,0,4,2]--2--5</span><br><span class="line">	 * </span><br><span class="line">	 *&#x2F;</span><br><span class="line">	public static int removeElement_1(int[] nums, int val) &#123;</span><br><span class="line">		int j&#x3D;0;</span><br><span class="line">		int i&#x3D;0;</span><br><span class="line">		while(i&lt;nums.length)</span><br><span class="line">		&#123;</span><br><span class="line">			if(nums[i]!&#x3D;val)</span><br><span class="line">				nums[j++]&#x3D;nums[i++];</span><br><span class="line">			else</span><br><span class="line">				i++;</span><br><span class="line">		&#125;&#x2F;&#x2F;end while</span><br><span class="line">&#x2F;&#x2F;		for(i&#x3D;0;i&lt;j;i++) &#123;</span><br><span class="line">&#x2F;&#x2F;			System.out.print(nums[i]);</span><br><span class="line">&#x2F;&#x2F;		&#125;&#x2F;&#x2F;end for</span><br><span class="line">&#x2F;&#x2F;		System.out.println();</span><br><span class="line">		return j;</span><br><span class="line">	&#125;&#x2F;&#x2F; end removeElement()</span><br><span class="line">	</span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Answer online.</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	public static int removeElement_2(int[] nums, int val) &#123;</span><br><span class="line">	    int i &#x3D; 0;</span><br><span class="line">	    for (int j &#x3D; 0; j &lt; nums.length; j++) &#123;</span><br><span class="line">	        if (nums[j] !&#x3D; val) &#123;</span><br><span class="line">	            nums[i] &#x3D; nums[j];</span><br><span class="line">	            i++;</span><br><span class="line">	        &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">	    return i;</span><br><span class="line">	&#125;&#x2F;&#x2F;end removeElement</span><br><span class="line">	</span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * Answer online.</span><br><span class="line">	 * *&#x2F;</span><br><span class="line">	public static int removeElement_3(int[] nums, int val) &#123;</span><br><span class="line">	    int i &#x3D; 0;</span><br><span class="line">	    int n &#x3D; nums.length;</span><br><span class="line">	    while (i &lt; n) &#123;</span><br><span class="line">	        if (nums[i] &#x3D;&#x3D; val) &#123;</span><br><span class="line">	            nums[i] &#x3D; nums[n - 1];</span><br><span class="line">	            &#x2F;&#x2F; reduce array size by one</span><br><span class="line">	            n--;</span><br><span class="line">	        &#125; else &#123;</span><br><span class="line">	            i++;</span><br><span class="line">	        &#125;&#x2F;&#x2F;end if</span><br><span class="line">	    &#125;&#x2F;&#x2F;end while</span><br><span class="line">	    return n;</span><br><span class="line">	&#125;&#x2F;&#x2F;end removeElement()</span><br><span class="line">&#125;&#x2F;&#x2F; end RemoveElement_27</span><br></pre></td></tr></table></figure>
 
       
 
@@ -335,7 +211,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/LeetCode-0013-RomanToInteger/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/17/LeetCode-0027-RemoveElement/">展开全文 >></a>
         </p>
       
 
@@ -389,7 +265,7 @@ gitalk.render('gitalk-container')
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/23/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="page-number" href="/page/23/">23</a><span class="page-number current">24</span><a class="page-number" href="/page/25/">25</a><a class="page-number" href="/page/26/">26</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/25/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/23/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="page-number" href="/page/23/">23</a><span class="page-number current">24</span><a class="page-number" href="/page/25/">25</a><a class="page-number" href="/page/26/">26</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="extend next" rel="next" href="/page/25/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -558,7 +434,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lanqioaOJ</a>
+                <a href="javascript:void(0)" class="js-tag color1">CommonAlgorithm</a>
               </li>
             
             <div class="clearfix"></div>

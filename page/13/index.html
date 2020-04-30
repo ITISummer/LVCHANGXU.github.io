@@ -152,37 +152,38 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-spring-boot-整合-redis-实现分页查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-centos-云主机使用-WordPress-出现的问题汇总" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/spring-boot-%E6%95%B4%E5%90%88-redis-%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">spring boot 整合 redis 实现分页查询</a>
+      <a class="article-title" href="/2020/04/17/centos-%E4%BA%91%E4%B8%BB%E6%9C%BA%E4%BD%BF%E7%94%A8-WordPress-%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/">centos 云主机使用 WordPress 出现的问题汇总</a>
     </h1>
   
 
         
-        <a href="/2020/04/17/spring-boot-%E6%95%B4%E5%90%88-redis-%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/" class="archive-article-date">
-  	<time datetime="2020-04-17T12:30:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+        <a href="/2020/04/17/centos-%E4%BA%91%E4%B8%BB%E6%9C%BA%E4%BD%BF%E7%94%A8-WordPress-%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/" class="archive-article-date">
+  	<time datetime="2020-04-17T12:34:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="需求："><a href="#需求：" class="headerlink" title="需求："></a>需求：</h1><p>有 视频 图片 文档 这样三个分类<br>然后每个分类下都有许多对应的文件，我现在需要在每个分类下进行分页查询，比如当我点击 视频 分类的时候就会从数据库中查询到所有带有 视频 分类名的所有文件，然后可以在这些文件基础上进行 分页查询<br>但是这样有一个问题，就是容易对数据库进行频繁的查询操作，所以我就想在这两层之间加一个 redis 来做缓存，然后我就是想的，当用户点击 视频 卡片的时候，如果 redis 中有相应的数据的话，那么我就直接从 redis 缓存中获取而不用再去向数据库中查询，但是这样我遇到了几个问题：</p>
-<h1 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h1><ol>
-<li><p>选用 redis 哪种数据结构来存储比较合适，因为涉及到分页查询，所以就有两种数据结构 List 和 ZSet 数据结构，我参考的这篇文章 <a href="https://my.oschina.net/1107156537/blog/1617252" target="_blank" rel="noopener">基于 redis 做缓存分页</a> 中选用了 redis 中的 ZSet 数据结构</p>
-</li>
-<li><p>选定好数据结构后，又有一个新的问题，那就是在进行键值对存储的时候，redis 中好像都是使用的 add(Object key,Object value)这样来存储一个键值对，我是想的能不能用一个键(key) 来对应一个对象集合，因为我在使用分页查询的时候，前期我是使用的 com.github.pagehelper 这个 jar 包 里面的方法</p>
-<p> <img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200328145928.png" alt=""> </p>
-<p> 将全部的查询结果封装到 PageInfo<T> 中后，前端就可以根据传递相关的参数就可以进行分页查询了，然后我后面就是想着能不能往 redis 数据库中存入这样的一个 add(“video”,PageInfo<T>) 键值对，但是我看了下提供的方法：</p>
-<p> <img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200328150734.png" alt=""></p>
-<p> 只有图中红色框中的两个，第一个可以存入一个 Set 集合，但是我又不知道如何将 PageInfo<T> 给转换成 TypeTuple 类型的，所以我就放弃这个方法了<br> 第二个方法就是简单的 key-value 的，这样存储的话，我是这样想的，数据库中查询结果返回 List 后，然后通过遍历其中的元素（对象），依次将其中的元素（对象）给 转换成 json 字符串后存入 redis 中，然后如果前端发来分页查询请求的话，那么我就从 redis 中获取到指定范围的数据后，然后将 json 字符串再转换为对象后再封装进 PageInfo<T> 里面，但是我不清楚这样的可行性有多高？</p>
-</li>
-</ol>
+        <h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h1><p>对于 “问题一” 和 “问题二”都可以只看看就行，不用一步步的按着操作，可以滑动到最底部 “终极方案”，找到更快捷便利的方法</p>
+<h1 id="问题一：-安装过程出现不能创建-wp-config-php-文件，要求手动创建，然后复制内容，图文如下："><a href="#问题一：-安装过程出现不能创建-wp-config-php-文件，要求手动创建，然后复制内容，图文如下：" class="headerlink" title="问题一： 安装过程出现不能创建 wp-config.php 文件，要求手动创建，然后复制内容，图文如下："></a>问题一： 安装过程出现不能创建 wp-config.php 文件，要求手动创建，然后复制内容，图文如下：</h1><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200318181613.png" alt=""></p>
+<p>出现这个问题，我就是直接按着它说的做，复制那个文本内容，然后自己手动在指定目录创建 wp-config.php，然后粘贴内容就行</p>
+<h1 id="问题二：一切配置好后，进入-WordPress-后台管理界面，当我想上传媒体文件时，出现以下错误："><a href="#问题二：一切配置好后，进入-WordPress-后台管理界面，当我想上传媒体文件时，出现以下错误：" class="headerlink" title="问题二：一切配置好后，进入 WordPress 后台管理界面，当我想上传媒体文件时，出现以下错误："></a>问题二：一切配置好后，进入 WordPress 后台管理界面，当我想上传媒体文件时，出现以下错误：</h1><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200319132710.png" alt=""></p>
+<p>这个图片是我在别人的博客中截图的，因为我写这篇博文的时候，已经把那些问题给解决了，然后期间也没做好笔记，所以先用下别人的图，嘿嘿！</p>
+<p>然后连续遇到的问题就是这篇博文中遇到的，然后我按着做就暂时解决了问题，不过我得说下只是暂时性的，有兴趣可以看下这篇博文：<br><a href="https://blog.csdn.net/wy_bk/article/details/78405588" target="_blank" rel="noopener">wordpress 问题</a></p>
+<p>然后当我设置好后，我安装插件的时候又不行了，而且我的主题什么的，总是提手我 style.css 不能用，然后那些已经安装好的主题的样式就没有了，我当时就郁闷了</p>
+<h1 id="终极方案："><a href="#终极方案：" class="headerlink" title="终极方案："></a>终极方案：</h1><p>然后我今天有开始搜索，当我搜索到一篇英文的博文时，我读完，顿时就醒悟了：<a href="https://kinsta.com/knowledgebase/installation-failed-could-not-create-directory/" target="_blank" rel="noopener">终极解决 wordpress 一系列问题-英文博文</a></p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200319134343.png" alt=""></p>
+<p>简单地说：就是去主面板下 Tools-&gt;Site Health 去找到最后的 Filesystem Permissions 你会看到哪些文件夹包含有写的权限，哪些没有写的权限，然后我的终极解决方案就是将你解压出来的 wordpress 程序包给全部给个 0766 或者 0777 权限，我就是这样以后，然后就给解决了以上所有问题，可以安装插件，可以上传多媒体文件了，自带的主题样式也可以了，主题安装也可以了，反正目前遇到的问题都解决了！！！</p>
+<p>总结下来，就是你的 wordpress 中每个文件夹没有一些写的权限，所以需要你给它们赋予可以写的权限，一般 0766 就够了吧</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200319131855.png" alt=""></p>
 
       
 
@@ -196,15 +197,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">javaweb</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">WebsiteBuildProblemsSolutions</a>
         		</li>
       		
 		</ul>
@@ -214,7 +207,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/spring-boot-%E6%95%B4%E5%90%88-redis-%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/17/centos-%E4%BA%91%E4%B8%BB%E6%9C%BA%E4%BD%BF%E7%94%A8-WordPress-%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/">展开全文 >></a>
         </p>
       
 
@@ -268,7 +261,7 @@ gitalk.render('gitalk-container')
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/12/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/14/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/12/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="extend next" rel="next" href="/page/14/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -437,7 +430,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lanqioaOJ</a>
+                <a href="javascript:void(0)" class="js-tag color1">CommonAlgorithm</a>
               </li>
             
             <div class="clearfix"></div>

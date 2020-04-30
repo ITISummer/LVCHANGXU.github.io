@@ -152,104 +152,30 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-关于-jdk-BigDecimal类的基本使用的梳理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Java-Calculator" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/%E5%85%B3%E4%BA%8E-jdk-BigDecimal%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/">关于 jdk-BigDecimal类的基本使用的梳理</a>
+      <a class="article-title" href="/2020/04/17/Java-Calculator/">Java Calculator</a>
     </h1>
   
 
         
-        <a href="/2020/04/17/%E5%85%B3%E4%BA%8E-jdk-BigDecimal%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/" class="archive-article-date">
-  	<time datetime="2020-04-17T12:02:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+        <a href="/2020/04/17/Java-Calculator/" class="archive-article-date">
+  	<time datetime="2020-04-17T12:11:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="BigDecimal-类的定义："><a href="#BigDecimal-类的定义：" class="headerlink" title="BigDecimal 类的定义："></a>BigDecimal 类的定义：</h1><p><a href="https://blog.csdn.net/lisongjia123/article/details/51232657?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-11&utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-11" target="_blank" rel="noopener">参考文档1</a></p>
-<p><a href="https://www.jianshu.com/p/2947868d76eb" target="_blank" rel="noopener">参考文档2</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java.math </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BigDecimal</span></span></span><br><span class="line"><span class="class"><span class="keyword">extends</span> <span class="title">Number</span></span></span><br><span class="line"><span class="class"><span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">BigDecimal</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="BigDecimal-创建对象："><a href="#BigDecimal-创建对象：" class="headerlink" title="BigDecimal 创建对象："></a>BigDecimal 创建对象：</h1><p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/20200415112307.png" alt=""></p>
-<table>
-<thead>
-<tr>
-<th>构造方法</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public BigDecimal(BigInteger val)</td>
-<td>转换大整数为大实数</td>
-</tr>
-<tr>
-<td>public BigDecimal(BigInteger unscaledVal, int scale)</td>
-<td>以指定 scale (规模，数值范围，精度) 来转换大整数为大实数</td>
-</tr>
-<tr>
-<td>public BigDecimal(double val)</td>
-<td>转换双精度数为大实数</td>
-</tr>
-<tr>
-<td>public BigDecimal(int val)</td>
-<td>转换整数为大实数</td>
-</tr>
-<tr>
-<td>public BigDecimal(long val)</td>
-<td>转换长整型数为大实数</td>
-</tr>
-<tr>
-<td>public BigDecimal(String val)</td>
-<td>转换字符串为大实数</td>
-</tr>
-</tbody></table>
-<h1 id="BigDecimal-常用方法："><a href="#BigDecimal-常用方法：" class="headerlink" title="BigDecimal 常用方法："></a>BigDecimal 常用方法：</h1><table>
-<thead>
-<tr>
-<th>常用方法</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public BigDecimal abs()</td>
-<td>返回绝对值</td>
-</tr>
-<tr>
-<td>public BigDecimal add(BigDecimal augend)</td>
-<td>加法</td>
-</tr>
-<tr>
-<td>public int compareTo(BigDecimal val)</td>
-<td>比较两个大实数</td>
-</tr>
-<tr>
-<td>public BigDecimal multiply(BigDecimal multiplicand)</td>
-<td>乘法</td>
-</tr>
-<tr>
-<td>public BigDecimal subtract(BigDecimal subtrahend)</td>
-<td>减法</td>
-</tr>
-<tr>
-<td>public static BigDecimal valueOf(double val)</td>
-<td>双精度转换为大实数，</td>
-</tr>
-<tr>
-<td>public String toString()</td>
-<td>可能是使用的科学计数法的形式来表示大实数</td>
-</tr>
-<tr>
-<td>public String toPlainString()</td>
-<td>不会采用科学计数法的形式来表示大实数，完全采用字符串的形式来表示</td>
-</tr>
-</tbody></table>
-<h1 id="舍入模式："><a href="#舍入模式：" class="headerlink" title="舍入模式："></a>舍入模式：</h1><p><a href="https://www.jianshu.com/p/2947868d76eb" target="_blank" rel="noopener">参考此文</a></p>
+        <h1 id="about-the-project"><a href="#about-the-project" class="headerlink" title="about the project"></a>about the project</h1><p><a href="https://github.com/LVCHANGXU/javaCalculator" target="_blank" rel="noopener">The Project on GitHub</a></p>
+<p>Hello, this is a project about the calculator created by Java,<br>and the technology about this project is Java Swing and the data structure is Stack.<br>The concrete function of the project shown by following gif picture.</p>
+<p><img src="https://raw.githubusercontent.com/LVCHANGXU/FigureBed/master/img/calculator.gif" alt=""></p>
+<p>As you can see, this calculator include the basic function of integer arithmetic.<br>But the Floating-Point Calculation can not be used.<br>So if you have the good ideas which are used to complete this project or if you need a calculator project created with java programming language, you can use the command <code>git clone</code> to clone my project to your local machine.<br>I am looking forward to your joining me.<br>Thanks guys.<br>best wish to you guys.</p>
 
       
 
@@ -263,7 +189,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JDK</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaProjects</a>
         		</li>
       		
 		</ul>
@@ -273,7 +199,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/%E5%85%B3%E4%BA%8E-jdk-BigDecimal%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E6%A2%B3%E7%90%86/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/17/Java-Calculator/">展开全文 >></a>
         </p>
       
 
@@ -327,7 +253,7 @@ gitalk.render('gitalk-container')
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/33/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><a class="page-number" href="/page/33/">33</a><span class="page-number current">34</span><a class="page-number" href="/page/35/">35</a><a class="page-number" href="/page/36/">36</a><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/35/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/33/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><a class="page-number" href="/page/33/">33</a><span class="page-number current">34</span><a class="page-number" href="/page/35/">35</a><a class="page-number" href="/page/36/">36</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="extend next" rel="next" href="/page/35/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -496,7 +422,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lanqioaOJ</a>
+                <a href="javascript:void(0)" class="js-tag color1">CommonAlgorithm</a>
               </li>
             
             <div class="clearfix"></div>
